@@ -17,7 +17,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({Config.CONGIFURATIONS_PATH})
+@ComponentScan({Config.CONFIGURATIONS_PATH})
 @PropertySource(value = {Config.APPLICATION_PROPERTIES_PATH})
 public class HibernateConfiguration {
 

@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 
-@ComponentScan(value = Config.CONGIFURATIONS_PATH)
+@ComponentScan(value = Config.CONFIGURATIONS_PATH)
 public abstract class AbstractDao<PK extends Serializable, T> {
 
     private final Class<T> persistentClass;
