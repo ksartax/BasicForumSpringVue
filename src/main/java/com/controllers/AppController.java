@@ -16,4 +16,10 @@ public class AppController {
     {
         return "Home/index";
     }
+
+    @RequestMapping(path = "/a")
+    public String indeax()
+    {
+        return "template";
+    }
 }
