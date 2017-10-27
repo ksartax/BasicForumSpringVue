@@ -1,8 +1,11 @@
+<!DOCTYPE html>
 <html>
-    <head th:include="fragments/header :: headerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></head>
+    <head>
+        <div th:replace="fragments/header :: headerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    </head>
     <body>
-        <nav th:include="fragments/nav :: navFragment" xmlns:th="http://www.w3.org/1999/xhtml"></nav>
-        <div th:include="${body} :: bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        <nav th:replace="fragments/nav :: navFragment" xmlns:th="http://www.w3.org/1999/xhtml"></nav>
+        <div th:replace="${body} :: bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        <footer th:replace="fragments/footer :: footerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></footer>
     </body>
-    <footer th:include="fragments/footer :: footerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></footer>
 </html>
