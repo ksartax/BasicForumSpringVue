@@ -1,0 +1,24 @@
+nav {
+  background: #33363c !important;
+
+  a {
+    color: white !important;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+
+    div {
+      padding: 5px;
+      border-radius: 10px;
+    }
+  }
+
+  .green {
+    background-color: #77AF2B;
+  }
+
+  .brand-text {
+    position: absolute;
+    right: -55px;
+  }
+}

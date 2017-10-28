@@ -1,0 +1,25 @@
+body {
+  background: #f0f0ed;
+
+  .page-wrapper {
+    position: relative;
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .component {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .right {
+    float: right;
+  }
+
+  .left {
+    float: left;
+  }
+}

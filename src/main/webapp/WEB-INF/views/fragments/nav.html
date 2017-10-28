@@ -1,3 +1,73 @@
-<nav th:fragment="navFragment" xmlns:th="http://www.w3.org/1999/xhtml">
-   Nav
+<nav th:fragment="navFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="navbar navbar-inverse">
+   <div class="container-fluid">
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="#">
+            <div>
+               <span class="glyphicon glyphicon-comment">
+                  <span class="brand-text">
+                     Buddy
+                  </span>
+               </span>
+            </div>
+         </a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+         <ul class="nav navbar-nav navbar-right">
+            <li>
+               <a href="#">
+                  <div>
+                     Strona Główna
+                  </div>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+                  <div>
+                     Forum
+                  </div>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+                  <div>
+                     Grupy
+                  </div>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+                  <div>
+                     Użytkownicy
+                  </div>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+                  <div>
+                     Kontakt
+                  </div>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+                  <div class="green">
+                     Logowanie
+                  </div>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+                  <div class="green">
+                     Rejestracja
+                  </div>
+               </a>
+            </li>
+         </ul>
+      </div>
+   </div>
 </nav>

@@ -1,0 +1,42 @@
+<div th:fragment="groupsFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component groups">
+    <span>
+        <b>
+            Grupy
+        </b>
+    </span>
+    <hr/>
+    <div class="buttons">
+        <button type="button" class="btn btn-success">Nowi</button>
+        <button type="button" class="btn btn-success">Aktywni</button>
+        <button type="button" class="btn btn-success">Popularni</button>
+    </div>
+    <div class="group-container">
+        <div class="group-item">
+            <img th:src="@{/resources/img/a.jpg}" class="img-rounded"/>
+            <div class="group-text">
+                <span>
+                    Renee Gomez
+                </span>
+                <span>
+                    <div class="group-text-friends">
+                        aktywnosc
+                    </div>
+                </span>
+            </div>
+        </div>
+
+        <div class="group-item">
+            <img th:src="@{/resources/img/a.jpg}" class="img-rounded"/>
+            <div class="group-text">
+                <span>
+                    Renee Gomez
+                </span>
+                <span>
+                    <div class="group-text-friends">
+                        aktywnosc
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

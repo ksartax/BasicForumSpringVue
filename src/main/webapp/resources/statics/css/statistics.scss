@@ -1,0 +1,22 @@
+.statistics {
+
+    .statistic {
+        background-color: #C12F6C;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 20px;
+        color: #fff;
+        padding: 6px 10px;
+        margin-bottom: 5px;
+        border-radius: 4px;
+
+        .text-container {
+            width: 100%;
+            height: 100%;
+
+            .count {
+                float: inline-end;
+            }
+        }
+    }
+}

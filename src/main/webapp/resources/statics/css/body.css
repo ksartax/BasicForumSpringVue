@@ -1,0 +1,16 @@
+body {
+  background: #f0f0ed; }
+  body .page-wrapper {
+    position: relative;
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden; }
+  body .component {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px; }
+  body .right {
+    float: right; }
+  body .left {
+    float: left; }
