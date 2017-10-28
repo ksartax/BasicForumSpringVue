@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAEI,mCAAc;EACZ,gBAAgB,EAAE,kBAAkB;EACpC,KAAK,EAAE,KAAK;AAGhB,kCAA4B;EAC1B,WAAW,EAAE,GAAG;EAChB,gDAAc;IACZ,gBAAgB,EAAE,OAAO;IACzB,KAAK,EAAE,KAAK",
+"mappings": "AAEI,mCAAc;EACZ,gBAAgB,EAAE,kBAAkB;EACpC,KAAK,EAAE,KAAK",
 "sources": ["forum.scss"],
 "names": [],
 "file": "forum.css"

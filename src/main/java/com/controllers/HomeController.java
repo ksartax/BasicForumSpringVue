@@ -14,4 +14,10 @@ public class HomeController
     {
         return this.path + "index";
     }
+
+    @RequestMapping(path = "/register")
+    public String register()
+    {
+        return this.path + "register";
+    }
 }
