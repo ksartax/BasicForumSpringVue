@@ -1,0 +1,11 @@
+<div th:fragment="bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="forum component">
+    <div>
+        <p>
+            <b>
+                Forum
+            </b>
+        </p>
+    </div>
+    <div th:replace="elements/forum :: forumFragment (title='Generalny')" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <div th:replace="elements/forum :: forumFragment (title='Ogólny')" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+</div>

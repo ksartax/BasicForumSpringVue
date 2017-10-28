@@ -1,0 +1,12 @@
+footer {
+  .icon {
+    font-size: 5em;
+  }
+  .elements {
+    display: grid;
+    padding-bottom: 1em;
+    .element {
+      padding: 5px;
+    }
+  }
+}

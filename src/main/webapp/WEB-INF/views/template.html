@@ -4,10 +4,34 @@
         <div th:replace="fragments/header :: headerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
     </head>
     <body>
-    <div class="container-fluid page-wrapper">
-        <nav    th:replace="fragments/nav    :: navFragment" xmlns:th="http://www.w3.org/1999/xhtml"></nav>
-        <div    th:replace="${body}          :: bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-        <footer th:replace="fragments/footer :: footerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></footer>
-    </div>
+        <div class="container-fluid page-wrapper">
+
+            <nav th:replace="fragments/nav :: navFragment" xmlns:th="http://www.w3.org/1999/xhtml"></nav>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div th:replace="elements/search :: searchFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                    <br/>
+                    <div th:replace="elements/members :: membersFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                    <br/>
+                    <div th:replace="elements/groups :: groupsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div th:replace="${body} :: bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div th:replace="elements/login :: loginFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                    <br/>
+                    <div th:replace="elements/statistics :: statisticsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                </div>
+            </div>
+
+            <hr/>
+
+            <footer th:replace="fragments/footer :: footerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></footer>
+
+        </div>
     </body>
 </html>

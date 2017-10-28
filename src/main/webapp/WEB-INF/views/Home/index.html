@@ -1,19 +1,7 @@
 <div th:fragment="bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml">
-    <div class="row">
-        <div class="col-sm-3">
-            <div th:replace="elements/search :: searchFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-            <br/>
-            <div th:replace="elements/members :: membersFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-            <br/>
-            <div th:replace="elements/groups :: groupsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-        </div>
-        <div class="col-sm-6">
-            <div th:replace="elements/slider :: sliderFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-        </div>
-        <div class="col-sm-3">
-            <div th:replace="elements/login :: loginFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-            <br/>
-            <div th:replace="elements/statistics :: statisticsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-        </div>
-    </div>
+    <div th:replace="elements/slider :: sliderFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <br/>
+    <div th:replace="elements/activityUsers :: activityUsersFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <br/>
+    <div th:replace="elements/activityPosts :: activityPostsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
 </div>

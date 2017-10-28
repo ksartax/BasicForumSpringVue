@@ -1,0 +1,63 @@
+<div th:fragment="forumFragment (title)" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
+    <div class="panel panel-default">
+        <div class="panel-heading header-title">
+           <b>
+               <span th:text="${title}"></span>
+           </b>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-8">
+                    <p>
+                        <b>
+                            <a th:href="@{/forum/category}">
+                                <div>
+                                    General Chat
+                                </div>
+                            </a>
+                        </b>
+                    </p>
+                    <div>
+                        Phosfluorescently transform distributed strategic theme areas.
+                    </div>
+                </div>
+                <div class="col-sm-4 center">
+                    <div>
+                        Topics: 3
+                    </div>
+                    <div>
+                        Posts: 7
+                    </div>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <p>
+                        <b>
+                            <a th:href="@{/forum/topic}">
+                                <div>
+                                    General Chat
+                                </div>
+                            </a>
+                        </b>
+                    </p>
+                    <div>
+                        Phosfluorescently transform distributed strategic theme areas.
+                    </div>
+                </div>
+                <div class="col-sm-4 center">
+                    <div>
+                        Topics: 3
+                    </div>
+                    <div>
+                        Posts: 7
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

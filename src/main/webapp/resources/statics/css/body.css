@@ -1,5 +1,7 @@
 body {
   background: #f0f0ed; }
+  body a {
+    text-decoration: none; }
   body .page-wrapper {
     position: relative;
     text-align: left;
@@ -14,3 +16,5 @@ body {
     float: right; }
   body .left {
     float: left; }
+  body .center {
+    text-align: center; }

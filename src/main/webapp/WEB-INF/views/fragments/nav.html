@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" href="#">
+         <a class="navbar-brand" th:href="@{/}">
             <div>
                <span class="glyphicon glyphicon-comment">
                   <span class="brand-text">
@@ -19,14 +19,14 @@
       <div class="collapse navbar-collapse" id="myNavbar">
          <ul class="nav navbar-nav navbar-right">
             <li>
-               <a href="#">
+               <a th:href="@{/}">
                   <div>
                      Strona Główna
                   </div>
                </a>
             </li>
             <li>
-               <a href="#">
+               <a th:href="@{/forum}">
                   <div>
                      Forum
                   </div>
