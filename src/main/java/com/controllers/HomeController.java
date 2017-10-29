@@ -20,4 +20,10 @@ public class HomeController
     {
         return this.path + "register";
     }
+
+    @RequestMapping(path = "/contact")
+    public String contact()
+    {
+        return this.path + "contact";
+    }
 }

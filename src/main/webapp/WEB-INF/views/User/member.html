@@ -1,0 +1,116 @@
+<div th:fragment="bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component member">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="header-member-title">
+                <div>
+                    <center>
+                        <div class="member-title-text">
+                           <h2>
+                               <b>
+                                   @matiGej
+                               </b>
+                           </h2>
+                        </div>
+                        <div class="member-active-text">
+                            Not recently active
+                        </div>
+                    </center>
+                </div>
+                <img th:src="@{/resources/img/a.jpg}" class="member-img"/>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-12">
+            <div>
+                <div>
+                    <center>
+                        <a href="#" class="btn btn-default margin-1p" role="button">Aktywność</a>
+                        <a href="#" class="btn btn-default margin-1p" role="button">Profil </a>
+                        <a href="#" class="btn btn-default margin-1p" role="button">Przyjaciele <span class="count"> <span class="count-margin">14</span> </span></a>
+                        <a href="#" class="btn btn-default margin-1p" role="button">Grupy <span class="count"> <span class="count-margin">3</span> </span></a>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-12">
+            <div th:replace="User/member :: activityCommentMemberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div th:replace="User/member :: activityProfileFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div th:replace="User/member :: friendsProfileFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div th:replace="User/member :: groupsProfileFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div th:fragment="activityCommentMemberFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="forum">
+        <div th:replace="elements/forumComments :: commentFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        <hr/>
+        <div th:replace="elements/forumComments :: commentFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    </div>
+</div>
+
+
+
+<div th:fragment="activityProfileFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+    <table class="width-100p table">
+        <tr th:replace="User/member :: activityProfileElementFragment (title='Imie')" xmlns:th="http://www.w3.org/1999/xhtml"></tr>
+        <tr th:replace="User/member :: activityProfileElementFragment (title='Nazwisko')" xmlns:th="http://www.w3.org/1999/xhtml"></tr>
+        <tr th:replace="User/member :: activityProfileElementFragment (title='Email')" xmlns:th="http://www.w3.org/1999/xhtml"></tr>
+        <tr th:replace="User/member :: activityProfileElementFragment (title='Ilość postów')" xmlns:th="http://www.w3.org/1999/xhtml"></tr>
+        <tr th:replace="User/member :: activityProfileElementFragment (title='Ilosc komentarzy')" xmlns:th="http://www.w3.org/1999/xhtml"></tr>
+    </table>
+</div>
+
+<tr th:fragment="activityProfileElementFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+    <td style="width: 25%;border-right: 1px solid #eaeaea;">
+        <b>
+            <p>
+                <span th:text="${title}"></span>
+            </p>
+        </b>
+    </td>
+    <td>
+        <p>
+            Seba
+        </p>
+    </td>
+</tr>
+
+
+
+<div th:fragment="friendsProfileFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="members">
+    <div class="member-container">
+        <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        <hr/>
+        <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    </div>
+</div>
+
+
+
+<div th:fragment="groupsProfileFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="groups">
+    <div class="group-container">
+        <div th:replace="elements/groups :: groupFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        <hr/>
+        <div th:replace="elements/groups :: groupFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    </div>
+</div>

@@ -11,32 +11,23 @@
         <button type="button" class="btn btn-success">Popularni</button>
     </div>
     <div class="member-container">
-        <div class="member-item">
-            <img th:src="@{/resources/img/a.jpg}" class="img-rounded"/>
-            <div class="member-text">
-                <span>
-                    Renee Gomez
-                </span>
-                <span>
-                    <div class="member-text-friends">
-                        14 friends
-                    </div>
-                </span>
-            </div>
-        </div>
+        <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    </div>
+</div>
 
-        <div class="member-item">
-            <img th:src="@{/resources/img/a.jpg}" class="img-rounded"/>
-            <div class="member-text">
+<div th:fragment="memberFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="member-item">
+        <img th:src="@{/resources/img/a.jpg}" class="img-rounded"/>
+        <div class="member-text">
                 <span>
-                    Renee Gomez
+                    <a th:href="@{/user/member}"> Mati Gej </a>
                 </span>
-                <span>
-                    <div class="member-text-friends">
-                        14 friends
-                    </div>
-                </span>
-            </div>
+            <span>
+                <div class="member-text-friends">
+                    14 przyjaciuł
+                </div>
+            </span>
         </div>
     </div>
 </div>

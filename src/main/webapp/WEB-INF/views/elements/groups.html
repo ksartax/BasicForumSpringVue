@@ -11,32 +11,23 @@
         <button type="button" class="btn btn-success">Popularni</button>
     </div>
     <div class="group-container">
-        <div class="group-item">
-            <img th:src="@{/resources/img/a.jpg}" class="img-rounded"/>
-            <div class="group-text">
-                <span>
-                    Renee Gomez
-                </span>
-                <span>
-                    <div class="group-text-friends">
-                        aktywnosc
-                    </div>
-                </span>
-            </div>
-        </div>
+        <div th:replace="elements/groups :: groupFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        <div th:replace="elements/groups :: groupFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    </div>
+</div>
 
-        <div class="group-item">
-            <img th:src="@{/resources/img/a.jpg}" class="img-rounded"/>
-            <div class="group-text">
-                <span>
-                    Renee Gomez
-                </span>
-                <span>
-                    <div class="group-text-friends">
-                        aktywnosc
-                    </div>
-                </span>
-            </div>
+<div th:fragment="groupFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="group-item">
+        <img th:src="@{/resources/img/a.jpg}" class="img-rounded"/>
+        <div class="group-text">
+            <span>
+               Mati Gej
+            </span>
+            <span>
+               <div class="group-text-friends">
+                   aktywnosc
+               </div>
+            </span>
         </div>
     </div>
 </div>

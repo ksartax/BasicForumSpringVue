@@ -1,0 +1,39 @@
+.member {
+  .header-member-title {
+    background-color: #c5c5c5 !important;
+    height: 160px;
+    .member-title-text {
+      padding-top: 1px;
+    }
+    .member-active-text {
+      background: #E4ECF1;
+      color: #6595AF;
+      border-radius: 5px;
+      text-align: center;
+      width: 135px;
+    }
+    .member-img {
+      border-radius: 100%;
+      position: relative;
+      margin-left: 20px;
+      border: solid 2px #fff;
+    }
+  }
+  .margin-1p {
+    margin: 1%
+  }
+
+  .count {
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 100%;
+    .count-margin {
+      margin: 3px;
+    }
+  }
+
+  .width-100p {
+    width: 100%;
+  }
+}
