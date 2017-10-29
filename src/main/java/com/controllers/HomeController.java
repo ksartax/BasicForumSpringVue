@@ -26,4 +26,10 @@ public class HomeController
     {
         return this.path + "contact";
     }
+
+    @RequestMapping(path = "/members")
+    public String members()
+    {
+        return this.path + "members";
+    }
 }

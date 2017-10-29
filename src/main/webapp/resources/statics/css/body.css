@@ -24,3 +24,7 @@ body {
       background-color: #77AF2B;
       color: white;
       border-radius: 10px; }
+  body .font-size-big {
+    font-size: 24px; }
+  body .padding-bottom-3p {
+    padding-bottom: 3%; }

@@ -1,0 +1,26 @@
+<div th:fragment="bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component members">
+    <span class="font-size-big">
+        <b>
+            Użytkownicy
+        </b>
+    </span>
+
+    <span th:replace="elements/lists :: listElementCountFragment" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+
+    <hr/>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="member-container">
+
+                <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                <hr/>
+                <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                <hr/>
+                <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+
+
+                <div th:replace="elements/lists :: listElementPagerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+            </div>
+        </div>
+    </div>
+</div>
