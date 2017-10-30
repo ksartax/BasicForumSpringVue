@@ -9,9 +9,5 @@ public class GroupController
 {
     private String path = "Group/";
 
-    @RequestMapping(path = "")
-    public String index()
-    {
-        return this.path + "index";
-    }
+
 }

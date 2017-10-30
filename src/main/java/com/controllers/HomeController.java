@@ -32,4 +32,10 @@ public class HomeController
     {
         return this.path + "members";
     }
+
+    @RequestMapping(path = "/groups")
+    public String groups()
+    {
+        return this.path + "groups";
+    }
 }
