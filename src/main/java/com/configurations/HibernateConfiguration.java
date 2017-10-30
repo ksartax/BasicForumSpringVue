@@ -19,13 +19,14 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan({Config.CONFIGURATIONS_PATH})
 @PropertySource(value = {Config.APPLICATION_PROPERTIES_PATH})
-public class HibernateConfiguration {
-
+public class HibernateConfiguration
+{
     @Autowired
     private Environment environment;
 
     @Bean
-    public LocalSessionFactoryBean getSessionFactory() {
+    public LocalSessionFactoryBean getSessionFactory()
+    {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(getDataSource());
         sessionFactory.setPackagesToScan(Config.MODELS_PATH);
@@ -35,7 +36,8 @@ public class HibernateConfiguration {
     }
 
     @Bean
-    public DataSource getDataSource() {
+    public DataSource getDataSource()
+    {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
@@ -46,7 +48,8 @@ public class HibernateConfiguration {
         return dataSource;
     }
 
-    private Properties getHibernateProperties() {
+    private Properties getHibernateProperties()
+    {
         Properties properties = new Properties();
 
         properties.put(AvailableSettings.DIALECT, environment.getRequiredProperty("hibernate.dialect"));
@@ -59,7 +62,8 @@ public class HibernateConfiguration {
 
     @Bean
     @Autowired
-    public HibernateTransactionManager transactionManager(SessionFactory s){
+    public HibernateTransactionManager transactionManager(SessionFactory s)
+    {
         HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
         hibernateTransactionManager.setSessionFactory(s);
 
