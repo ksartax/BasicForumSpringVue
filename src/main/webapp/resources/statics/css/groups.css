@@ -20,14 +20,14 @@
 .groups .group-container .group-item {
   display: flex;
   padding-bottom: 10px; }
-  .groups .group-container .group-item img {
+  .groups .group-container .group-item .img-height-50 {
     max-height: 50px; }
   .groups .group-container .group-item .group-text {
     display: inline-grid;
     padding-bottom: 15px;
     padding-left: 10px; }
-    .groups .group-container .group-item .group-text .group-text-friends {
-      background: #E4ECF1;
-      color: #6595AF;
-      border-radius: 5px;
-      text-align: center; }
+  .groups .group-container .group-item .group-text-friends {
+    background: #E4ECF1;
+    color: #6595AF;
+    border-radius: 5px;
+    text-align: center; }

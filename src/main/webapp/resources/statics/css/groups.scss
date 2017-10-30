@@ -27,7 +27,7 @@
       display: flex;
       padding-bottom: 10px;
 
-      img {
+      .img-height-50 {
         max-height: 50px;
       }
 
@@ -35,13 +35,13 @@
         display: inline-grid;
         padding-bottom: 15px;
         padding-left: 10px;
+      }
 
-        .group-text-friends {
-          background: #E4ECF1;
-          color: #6595AF;
-          border-radius: 5px;
-          text-align: center;
-        }
+      .group-text-friends {
+        background: #E4ECF1;
+        color: #6595AF;
+        border-radius: 5px;
+        text-align: center;
       }
     }
   }

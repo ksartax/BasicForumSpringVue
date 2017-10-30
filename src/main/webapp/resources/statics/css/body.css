@@ -28,3 +28,5 @@ body {
     font-size: 24px; }
   body .padding-bottom-3p {
     padding-bottom: 3%; }
+  body .img-height-100p {
+    max-height: 100%; }

@@ -18,7 +18,7 @@
 
 <div th:fragment="groupFragment" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="group-item">
-        <img th:src="@{/resources/img/a.jpg}" class="img-rounded"/>
+        <img th:src="@{/resources/img/a.jpg}" class="img-rounded img-height-50"/>
         <div class="group-text">
             <span>
                Mati Gej
@@ -27,6 +27,27 @@
                <div class="group-text-friends">
                    aktywnosc
                </div>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="group2Fragment" xmlns:th="http://www.w3.org/1999/xhtml" class="group-item">
+    <div>
+        <img th:src="@{/resources/img/a.jpg}" class="img-rounded img-height-100p padding-bottom-3p"/>
+        <div>
+            <b>
+                The Tourist
+            </b>
+        </div>
+        <div class="group-text-friends">
+            <span>
+                active 1 year ago
+            </span>
+        </div>
+        <div>
+            <span>
+                Public Group / 14 members
             </span>
         </div>
     </div>
