@@ -19,7 +19,7 @@ public class Statistic implements Serializable
     private int comments_count;
 
     @Column(name = "friends_count", nullable = false, columnDefinition = "0")
-    private int friends_count;
+    private int friendsCount;
 
     public int getId() {
         return id;
@@ -45,11 +45,11 @@ public class Statistic implements Serializable
         this.comments_count = comments_count;
     }
 
-    public int getFriends_count() {
-        return friends_count;
+    public int getFriendsCount() {
+        return friendsCount;
     }
 
-    public void setFriends_count(int friends_count) {
-        this.friends_count = friends_count;
+    public void setFriendsCount(int friendsCount) {
+        this.friendsCount = friendsCount;
     }
 }

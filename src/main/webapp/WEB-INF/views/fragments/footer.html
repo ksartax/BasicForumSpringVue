@@ -11,20 +11,8 @@
             <b>Kategorie</b>
 
             <span class="elements">
-                <div class="element">
-                    Business (5)
-                </div>
-                <div class="element">
-                    Gaming (2)
-                </div>
-                <div class="element">
-                    Media (2)
-                </div>
-                <div class="element">
-                    Movies (1)
-                </div>
-                <div class="element">
-                    Technology (1)
+                <div class="element" v-for="category in categories">
+                    <span v-html="category.title"> </span> <span v-html="'(' + category.postsCount + ')'"> </span>
                 </div>
             </span>
         </div>
@@ -42,4 +30,19 @@
     <center>
         <p>@Created By Damian Stępniak 2017</p>
     </center>
+
+    <!-- scrip -->
+    <script type="application/javascript" src="webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script type="application/javascript" src="webjars/vue/2.5.2/vue.min.js"></script>
+    <script type="application/javascript" src="webjars/whatwg-fetch/2.0.3/fetch.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="webjars/sockjs-client/1.0.2/sockjs.min.js"></script>
+    <script src="webjars/stomp-websocket/2.3.3/stomp.min.js"></script>
+    <script th:src="@{/resources/js/groups.js}"></script>
+    <script th:src="@{/resources/js/globalStatistics.js}"></script>
+    <script th:src="@{/resources/js/categories.js}"></script>
+    <script th:src="@{/resources/js/users.js}"></script>
+    <script th:src="@{/resources/js/comments.js}"></script>
+    <script th:src="@{/resources/js/posts.js}"></script>
+    <script th:src="@{/resources/js/socket.js}"></script>
 </footer>

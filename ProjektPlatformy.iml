@@ -53,7 +53,7 @@
     <orderEntry type="library" name="Maven: org.jboss:jandex:1.1.0.Final" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.7.5" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.7.0" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.7.5" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.7.3" level="project" />
     <orderEntry type="library" name="Maven: org.thymeleaf:thymeleaf-spring4:3.0.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.thymeleaf:thymeleaf:3.0.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.attoparser:attoparser:2.0.4.RELEASE" level="project" />
@@ -64,5 +64,10 @@
     <orderEntry type="library" name="Maven: org.webjars:vue:2.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:jquery:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.bower:popper.js:1.12.5" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars.npm:whatwg-fetch:2.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-websocket:4.2.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-messaging:4.2.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:sockjs-client:1.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:stomp-websocket:2.3.3" level="project" />
   </component>
 </module>

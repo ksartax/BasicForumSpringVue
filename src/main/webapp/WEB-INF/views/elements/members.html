@@ -5,27 +5,21 @@
         </b>
     </span>
     <hr/>
-    <div class="buttons">
-        <button type="button" class="btn btn-success">Nowi</button>
-        <button type="button" class="btn btn-success">Aktywni</button>
-        <button type="button" class="btn btn-success">Popularni</button>
-    </div>
-    <div class="member-container">
-        <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <div class="member-container" id="usersComponent">
         <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
     </div>
 </div>
 
-<div th:fragment="memberFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:fragment="memberFragment" xmlns:th="http://www.w3.org/1999/xhtml" v-for="user in users">
     <div class="member-item">
-        <img th:src="@{/resources/img/a.jpg}" class="img-rounded"/>
+        <img v-bind:src="'/resources/img/' + user.pathImg" class="img-rounded"/>
         <div class="member-text">
                 <span>
-                    <a th:href="@{/user/member}"> Mati Gej </a>
+                    <a v-bind:href="'/user/member/' + user.id" v-html="user.username"> </a>
                 </span>
             <span>
                 <div class="member-text-friends">
-                    14 przyjaciuł
+                    <span v-html="user.statistics.friendsCount + ' przyjaciuł'"> </span>
                 </div>
             </span>
         </div>

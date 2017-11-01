@@ -6,30 +6,10 @@
     </span>
     <hr/>
 
-    <div>
-        <div class="statistic">
+    <div id="globalStatisticsComponent">
+        <div class="statistic" v-for="globalStatistic in globalStatistics">
             <span class="glyphicon glyphicon-pencil text-container">
-                Posty <span class="count"> 6 </span>
-            </span>
-        </div>
-        <div class="statistic">
-            <span class="glyphicon glyphicon-pencil text-container">
-                Komentarze <span class="count"> 6 </span>
-            </span>
-        </div>
-        <div class="statistic">
-            <span class="glyphicon glyphicon-pencil text-container">
-                Tematy <span class="count"> 6 </span>
-            </span>
-        </div>
-        <div class="statistic">
-            <span class="glyphicon glyphicon-pencil text-container">
-                Użytkownicy <span class="count"> 6 </span>
-            </span>
-        </div>
-        <div class="statistic">
-            <span class="glyphicon glyphicon-pencil text-container">
-                Grupy <span class="count"> 6 </span>
+                <span v-html="globalStatistic.title"></span> <span class="count" v-html="' ' + globalStatistic.count">  </span>
             </span>
         </div>
     </div>

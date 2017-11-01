@@ -1,6 +1,8 @@
 package com.controllers;
 
-import com.models.User;
+import com.models.Group;
+import com.models.GroupMember;
+import com.service.GroupsService;
 import com.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +17,8 @@ public class te {
     @Autowired
     private UsersService usersService;
 
-    @RequestMapping(path = "/test", method = RequestMethod.POST)
-    public List<User> test()
-    {
-        List<User> a = usersService.getAll();
+    @Autowired
+    private GroupsService groupsService;
 
-        return a;
-    }
+
 }

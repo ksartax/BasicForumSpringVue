@@ -12,11 +12,13 @@ public class Comment implements Serializable
     @Column(unique = true)
     private int id;
 
-    @Column(name = "post_id")
-    private int postId;
+    @OneToOne
+    @JoinColumn(name="post_id", nullable = true)
+    private Post post;
 
-    @Column(name = "user_id")
-    private int userId;
+    @OneToOne
+    @JoinColumn(name="user_id", nullable = true)
+    private User user;
 
     @Column(name = "description")
     private String description;
@@ -29,20 +31,20 @@ public class Comment implements Serializable
         this.id = id;
     }
 
-    public int getPostId() {
-        return postId;
+    public Post getPost() {
+        return post;
     }
 
-    public void setPostId(int postId) {
-        this.postId = postId;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getDescription() {

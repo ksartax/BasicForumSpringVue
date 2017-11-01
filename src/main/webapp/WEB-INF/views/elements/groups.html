@@ -1,31 +1,26 @@
-<div th:fragment="groupsFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component groups">
+<div th:fragment="groupsFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component groups"
+     xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <span>
         <b>
             Grupy
         </b>
     </span>
     <hr/>
-    <div class="buttons">
-        <button type="button" class="btn btn-success">Nowi</button>
-        <button type="button" class="btn btn-success">Aktywni</button>
-        <button type="button" class="btn btn-success">Popularni</button>
-    </div>
-    <div class="group-container">
-        <div th:replace="elements/groups :: groupFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <div class="group-container" id="groupsComponent">
         <div th:replace="elements/groups :: groupFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
     </div>
 </div>
 
-<div th:fragment="groupFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:fragment="groupFragment" xmlns:th="http://www.w3.org/1999/xhtml" v-for="group in groups">
     <div class="group-item">
-        <img th:src="@{/resources/img/a.jpg}" class="img-rounded img-height-50"/>
+        <img v-bind:src="'/resources/img/' + group.pathImg" class="img-rounded img-height-50"/>
         <div class="group-text">
             <span>
-               Mati Gej
+                <a v-bind:href="'/group/member/' + group.id" v-html="group.name"> </a>
             </span>
             <span>
                <div class="group-text-friends">
-                   aktywnosc
+                   <span v-html="group.memberCount + ' osób'"> </span>
                </div>
             </span>
         </div>

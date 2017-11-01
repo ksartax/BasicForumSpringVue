@@ -26,7 +26,7 @@ public class User implements Serializable
     private Statistic statistics;
 
     @Column(name = "path_img", nullable = true)
-    private String path_img;
+    private String pathImg;
 
     public int getId() {
         return id;
@@ -60,19 +60,19 @@ public class User implements Serializable
         this.email = email;
     }
 
-    public Statistic statistics() {
+    public String getPathImg() {
+        return pathImg;
+    }
+
+    public void setPathImg(String pathImg) {
+        this.pathImg = pathImg;
+    }
+
+    public Statistic getStatistics() {
         return statistics;
     }
 
-    public void statistics(Statistic statistics_id) {
-        this.statistics = statistics_id;
-    }
-
-    public String getPath_img() {
-        return path_img;
-    }
-
-    public void setPath_img(String path_img) {
-        this.path_img = path_img;
+    public void setStatistics(Statistic statistics) {
+        this.statistics = statistics;
     }
 }

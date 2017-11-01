@@ -13,11 +13,13 @@ public class Post implements Serializable
     @Column(unique = true)
     private int id;
 
-    @Column(name = "user_id")
-    private int userId;
+    @OneToOne
+    @JoinColumn(name="user_id", nullable = true)
+    private User user;
 
-    @Column(name = "category_id")
-    private int categoryId;
+    @OneToOne
+    @JoinColumn(name="category_id", nullable = true)
+    private Category category;
 
     @Column(name = "title")
     private String title;
@@ -41,20 +43,20 @@ public class Post implements Serializable
         this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getTitle() {
