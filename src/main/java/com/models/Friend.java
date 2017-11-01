@@ -12,11 +12,13 @@ public class Friend implements Serializable
     @Column(unique = true)
     private int id;
 
-    @Column(name = "my_user_id")
-    private int myUserId;
+    @OneToOne
+    @JoinColumn(name="my_user_id", nullable = true)
+    private User myUser;
 
-    @Column(name = "other_user_id")
-    private int otherUserId;
+    @OneToOne
+    @JoinColumn(name="other_user_id", nullable = true)
+    private User otherUser;
 
     public int getId() {
         return id;
@@ -26,19 +28,19 @@ public class Friend implements Serializable
         this.id = id;
     }
 
-    public int getMyUserId() {
-        return myUserId;
+    public User getMyUser() {
+        return myUser;
     }
 
-    public void setMyUserId(int myUserId) {
-        this.myUserId = myUserId;
+    public void setMyUser(User myUser) {
+        this.myUser = myUser;
     }
 
-    public int getOtherUserId() {
-        return otherUserId;
+    public User getOtherUser() {
+        return otherUser;
     }
 
-    public void setOtherUserId(int otherUserId) {
-        this.otherUserId = otherUserId;
+    public void setOtherUser(User otherUser) {
+        this.otherUser = otherUser;
     }
 }

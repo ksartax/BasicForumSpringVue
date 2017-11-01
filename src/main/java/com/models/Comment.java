@@ -2,6 +2,7 @@ package com.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "Comments")
@@ -22,6 +23,14 @@ public class Comment implements Serializable
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "created_at")
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date createdAt;
+
+    @Column(name = "updated_at")
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date updatedAt;
 
     public int getId() {
         return id;
@@ -53,5 +62,21 @@ public class Comment implements Serializable
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

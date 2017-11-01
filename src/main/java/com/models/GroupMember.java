@@ -14,10 +14,11 @@ public class GroupMember  implements Serializable
     @Column(unique = true)
     private int id;
 
-    @Column(name = "user_id")
-    private int userId;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "group_id")
     private Group group;
 
@@ -40,12 +41,12 @@ public class GroupMember  implements Serializable
         this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getLevel() {

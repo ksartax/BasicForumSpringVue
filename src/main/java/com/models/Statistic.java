@@ -13,13 +13,24 @@ public class Statistic implements Serializable
     private int id;
 
     @Column(name = "posts_count", nullable = false, columnDefinition = "0")
-    private int posts_count;
+    private int postsCount;
 
     @Column(name = "comments_count", nullable = false, columnDefinition = "0")
-    private int comments_count;
+    private int commentsCount;
 
     @Column(name = "friends_count", nullable = false, columnDefinition = "0")
     private int friendsCount;
+
+    @Column(name = "groups_count")
+    private int groupsCount;
+
+    public int getGroupsCount() {
+        return groupsCount;
+    }
+
+    public void setGroupsCount(int groupsCount) {
+        this.groupsCount = groupsCount;
+    }
 
     public int getId() {
         return id;
@@ -29,20 +40,20 @@ public class Statistic implements Serializable
         this.id = id;
     }
 
-    public int getPosts_count() {
-        return posts_count;
+    public int getPostsCount() {
+        return postsCount;
     }
 
-    public void setPosts_count(int posts_count) {
-        this.posts_count = posts_count;
+    public void setPostsCount(int postsCount) {
+        this.postsCount = postsCount;
     }
 
-    public int getComments_count() {
-        return comments_count;
+    public int getCommentsCount() {
+        return commentsCount;
     }
 
-    public void setComments_count(int comments_count) {
-        this.comments_count = comments_count;
+    public void setCommentsCount(int commentsCount) {
+        this.commentsCount = commentsCount;
     }
 
     public int getFriendsCount() {

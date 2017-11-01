@@ -6,4 +6,6 @@ import java.util.List;
 public interface CategoriesService
 {
     public List<Category> getAll();
+    public Category get(int id);
+    public List<Category> getByLevel(int level);
 }

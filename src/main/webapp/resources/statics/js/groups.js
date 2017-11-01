@@ -4,11 +4,7 @@ var groupsElements = null;
 function groupsSubscribe(frame) {
     console.log('Connected group: ' + frame);
     stompClient.subscribe('/group', function (data) {
-        var obj = jQuery.parseJSON(data.body);
-        groupsElements.groups.unshift(obj);
-        if (groupsElements.groups.length > 5) {
-            groupsElements.groups.pop();
-        }
+        pushGroupsData(data);
     });
 }
 
@@ -41,4 +37,18 @@ function renderGroups() {
             groups: groups
         }
     });
+}
+
+function pushGroupsData(data) {
+    var obj = jQuery.parseJSON(data.body);
+    groups.unshift(obj);
+    if (groups.length > 5) {
+        groups.pop();
+    }
+    if (groupsElements) {
+        groupsElements.groups = groups;
+
+        return;
+    }
+    renderGroups();
 }

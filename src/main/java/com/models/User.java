@@ -12,6 +12,9 @@ public class User implements Serializable
     @Column(unique = true)
     private int id;
 
+    @Column(name = "active", nullable = false)
+    private int active;
+
     @Column(name = "username", nullable = false)
     private String username;
 
@@ -27,6 +30,14 @@ public class User implements Serializable
 
     @Column(name = "path_img", nullable = true)
     private String pathImg;
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
 
     public int getId() {
         return id;

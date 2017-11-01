@@ -6,4 +6,6 @@ import java.util.List;
 public interface CommentsDao
 {
     public List<Comment> getAll();
+    public List<Comment> getAllByUserId(int id);
+
 }

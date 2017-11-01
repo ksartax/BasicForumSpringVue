@@ -4,6 +4,7 @@ var commentsElements = null;
 function commentsSubscribe(frame) {
     console.log('Connected comment: ' + frame);
     stompClient.subscribe('/comment', function (data) {
+        console.log("g-p");
         var obj = jQuery.parseJSON(data.body);
         commentsElements.comments.unshift(obj);
         if (commentsElements.comments.length > 5) {

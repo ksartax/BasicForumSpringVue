@@ -27,6 +27,9 @@ public class Post implements Serializable
     @Column(name = "description")
     private String description;
 
+    @Column(name = "comment_count")
+    private int commentCount;
+
     @Column(name = "created_at")
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -57,6 +60,14 @@ public class Post implements Serializable
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
     }
 
     public String getTitle() {

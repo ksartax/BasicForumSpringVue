@@ -23,4 +23,12 @@ public class CategoriesServiceImpl implements CategoriesService
     {
         return categoriesDao.getAll();
     }
+
+    public Category get(int id) {
+        return categoriesDao.get(id);
+    }
+
+    public List<Category> getByLevel(int level) {
+        return categoriesDao.getByLevel(level);
+    }
 }

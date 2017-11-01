@@ -4,6 +4,7 @@ var usersElements = null;
 function usersSubscribe(frame) {
     console.log('Connected user: ' + frame);
     stompClient.subscribe('/user', function (data) {
+        console.log("g-p");
         var obj = jQuery.parseJSON(data.body);
         usersElements.users.unshift(obj);
         if (usersElements.users.length > 5) {

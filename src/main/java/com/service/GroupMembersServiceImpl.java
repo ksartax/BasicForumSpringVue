@@ -1,26 +1,23 @@
 package com.service;
 
-import com.dao.UsersDao;
-import com.models.User;
+import com.dao.GroupMembersDao;
+import com.models.GroupMember;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Service("usersService")
+@Service("groupMembersService")
 @ComponentScan(value = "spring.dao")
 @Transactional
-public class UsersServiceImpl implements UsersService {
-
+public class GroupMembersServiceImpl implements GroupMembersService
+{
     @Autowired
-    private UsersDao usersDao;
+    private GroupMembersDao groupMembersDao;
 
-    public List<User> getAll() {
-        return usersDao.getAll();
-    }
-
-    public User get(int id) {
-        return usersDao.get(id);
+    public List<GroupMember> getAllByUser(int id) {
+        return groupMembersDao.getAllByUser(id);
     }
 }

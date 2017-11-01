@@ -20,4 +20,12 @@ public class PostsServiceImpl implements PostsService
     public List<Post> getAll() {
         return this.postsDao.getAll();
     }
+
+    public List<Post> getAllByUserId(int id) {
+        return postsDao.getAllByUserId(id);
+    }
+
+    public List<Post> getAllByCategoryId(int id) {
+        return postsDao.getAllByCategoryId(id);
+    }
 }

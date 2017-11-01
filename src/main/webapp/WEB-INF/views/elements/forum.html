@@ -1,15 +1,60 @@
-<div th:fragment="forumFragment (title)" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
+<div th:fragment="forumGeneralFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
     <div class="panel panel-default">
         <div class="panel-heading header-title">
            <b>
-               <span th:text="${title}"></span>
+               <span>Generalne</span>
            </b>
         </div>
 
-        <div class="panel-body">
-            <div th:replace="elements/forum :: categoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-            <hr/>
-            <div th:replace="elements/forum :: categoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        <div class="panel-body"  id="categoriesGeneralComponent">
+            <span v-for="category in categoriesGeneral">
+                <div th:replace="elements/forum :: categoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                <hr/>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="forumBasicFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
+    <div class="panel panel-default">
+        <div class="panel-heading header-title">
+            <b>
+                <span>Ogólne</span>
+            </b>
+        </div>
+
+        <div class="panel-body" id="categoriesBasicComponent">
+            <span v-for="category in categoriesBasic">
+                <div th:replace="elements/forum :: categoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                <hr/>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="forumPostsFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
+    <div class="panel panel-default">
+        <div class="panel-body" id="postsCategoryComponent" th:attr="data-c=${category.id}">
+            <span v-for="post in postsCategory">
+                <div th:replace="elements/forum :: postsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                <hr/>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="postsFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="row">
+        <div class="col-sm-8">
+            <p>
+                <b>
+                    <a v-bind:href="'/forum/post/' + post.id"> <span v-html="post.title"></span> </a>
+                </b>
+            </p>
+            <div v-html="post.description"></div>
+        </div>
+        <div class="col-sm-4 center">
+            <div v-html="'Komentarze : ' + post.commentCount"></div>
         </div>
     </div>
 </div>
@@ -19,24 +64,16 @@
         <div class="col-sm-8">
             <p>
                 <b>
-                    <a th:href="@{/forum/category}">
-                        <div>
-                            General Chat
-                        </div>
-                    </a>
+                    <a v-bind:href="'/forum/category/' + category.id"> <span v-html="category.title"></span> </a>
                 </b>
             </p>
-            <div>
-                Phosfluorescently transform distributed strategic theme areas.
-            </div>
+            <div v-html="category.description"></div>
         </div>
         <div class="col-sm-4 center">
-            <div>
-                Topics: 3
-            </div>
-            <div>
-                Posts: 7
-            </div>
+            <!--<div>-->
+                <!--Topics: 3-->
+            <!--</div>-->
+            <div v-html="'Posty : ' + category.postsCount"></div>
         </div>
     </div>
 </div>
