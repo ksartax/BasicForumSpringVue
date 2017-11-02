@@ -16,8 +16,8 @@ public class GroupsServiceImpl implements GroupsService
     @Autowired
     private GroupsDao groupsDao;
 
-    public List<Group> getAll() {
-        return groupsDao.getAll();
+    public List<Group> getAll(int limit) {
+        return groupsDao.getAll(limit);
     }
 
     public Group add(Group group) {

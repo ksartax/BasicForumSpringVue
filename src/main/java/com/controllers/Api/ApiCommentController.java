@@ -18,12 +18,6 @@ public class ApiCommentController
     @Autowired
     private CommentsService commentsService;
 
-    @RequestMapping(path = "/add", method = RequestMethod.POST)
-    public void add() {
-        Comment comment = new Comment();
-        this.template.convertAndSend("/comment", comment);
-    }
-
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<Comment> index()
     {

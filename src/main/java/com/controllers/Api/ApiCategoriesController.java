@@ -41,12 +41,12 @@ public class ApiCategoriesController
     @RequestMapping(path = "/generals", method = RequestMethod.GET)
     public List<Category> generals()
     {
-        return this.categoriesService.getByLevel(1);
+        return this.categoriesService.getByLevel(Category.GENERAL);
     }
 
     @RequestMapping(path = "/basics", method = RequestMethod.GET)
     public List<Category> basics()
     {
-        return this.categoriesService.getByLevel(0);
+        return this.categoriesService.getByLevel(Category.BASIC);
     }
 }

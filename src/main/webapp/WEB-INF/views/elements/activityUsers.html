@@ -4,7 +4,7 @@
             Ostatnie Komentarze
         </div>
 
-        <div class="panel-body" id="commentsComponent">
+        <div class="panel-body" id="commentsComponent" data-i="1">
             <span v-for="comment in comments">
                 <div th:replace="elements/activityUsers :: activityUserFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 <hr/>
@@ -19,8 +19,8 @@
         <div class="text-container">
             <span>
                 <a v-bind:href="'/user/member/' + comment.user.id"> <b v-html="comment.user.username"></b> </a>
-                <a v-bind:href="'/category/' + comment.post.category.id"> <span v-html="'Kategoria :' + comment.post.category.title"></span> </a>
-                <a v-bind:href="'/post/' + comment.post.id"> <span v-html="'Post : ' + comment.post.title"></span> </a>
+                <a v-bind:href="'/forum/category/' + comment.post.category.id"> <span v-html="'Kategoria :' + comment.post.category.title"></span> </a>
+                <a v-bind:href="'/forum/post/' + comment.post.id"> <span v-html="'Post : ' + comment.post.title"></span> </a>
             </span>
             <span>
                 <div v-html="comment.description"></div>

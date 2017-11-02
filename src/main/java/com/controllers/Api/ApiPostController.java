@@ -1,6 +1,8 @@
 package com.controllers.Api;
 
+import com.models.Comment;
 import com.models.Post;
+import com.service.CommentsService;
 import com.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -19,17 +21,18 @@ public class ApiPostController
     private SimpMessagingTemplate template;
     @Autowired
     private PostsService postsService;
-
-    @RequestMapping(path = "/add", method = RequestMethod.POST)
-    public void add() {
-        Post post = new Post();
-
-        this.template.convertAndSend("/post", post);
-    }
+    @Autowired
+    private CommentsService commentsService;
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<Post> index()
     {
         return this.postsService.getAll();
+    }
+
+    @RequestMapping(path = "/{id}/comments")
+    public List<Comment> posts(@PathVariable("id") int id)
+    {
+        return this.commentsService.getAllByPostId(id);
     }
 }

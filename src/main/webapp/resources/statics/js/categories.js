@@ -50,6 +50,10 @@ var categoriesGeneral = [];
 var categoriesElementsGeneral = null;
 
 function categoriesGeneralSubscribe(frame) {
+    if ($("#categoriesGeneralComponent").attr("data-i") == undefined) {
+        return;
+    }
+
     console.log('Connected category/general: ' + frame);
     stompClient.subscribe('/category/general', function (data) {
         var obj = jQuery.parseJSON(data.body);
@@ -61,6 +65,10 @@ function categoriesGeneralSubscribe(frame) {
 }
 
 function getCategoriesGeneral() {
+    if ($("#categoriesGeneralComponent").attr("data-i") == undefined) {
+        return;
+    }
+
     fetch(
         'http://localhost:8080/api/category/generals', {
             method: "GET",
@@ -98,6 +106,10 @@ var categoriesBasic = [];
 var categoriesElementsBasic = null;
 
 function categoriesBasicSubscribe(frame) {
+    if ($("#categoriesBasicComponent").attr("data-i") == undefined) {
+        return;
+    }
+
     console.log('Connected category/basic: ' + frame);
     stompClient.subscribe('/category/basic', function (data) {
         var obj = jQuery.parseJSON(data.body);
@@ -109,6 +121,10 @@ function categoriesBasicSubscribe(frame) {
 }
 
 function getCategoriesBasic() {
+    if ($("#categoriesBasicComponent").attr("data-i") == undefined) {
+        return;
+    }
+
     fetch(
         'http://localhost:8080/api/category/basics', {
             method: "GET",

@@ -4,7 +4,7 @@
             Ostatnie posty
         </div>
 
-        <div class="panel-body" id="postsComponent">
+        <div class="panel-body" id="postsComponent" data-i="1">
             <span v-for="post in posts">
                 <div th:replace="elements/activityPosts :: activityPostFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 <hr/>
@@ -19,7 +19,7 @@
         <div class="text-container">
             <span>
                 <a v-bind:href="'/user/member/' + post.user.id"> <b v-html="post.user.username"></b> </a>
-                <a v-bind:href="'/post/' + post.id">
+                <a v-bind:href="'/forum/post/' + post.id">
                     <span v-html="'Temat: ' + post.title"></span>
                 </a>
             </span>

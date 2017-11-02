@@ -12,9 +12,9 @@ import java.util.List;
 public class UsersDaoImpl extends AbstractDao<Integer, User> implements UsersDao
 {
     @SuppressWarnings("unchecked")
-    public List<User> getAll()
+    public List<User> getAll(int limit)
     {
-        return (List<User>) createEntityCriteria().list();
+        return (List<User>) createEntityCriteria().setMaxResults(limit).list();
     }
 
     public User get(int id) {

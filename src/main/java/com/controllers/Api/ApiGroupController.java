@@ -4,9 +4,7 @@ import com.models.Group;
 import com.service.GroupsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +17,12 @@ public class ApiGroupController
     @Autowired
     private GroupsService groupsService;
 
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public List<Group> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit)
+    {
+        return this.groupsService.getAll(limit);
+    }
+
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public void add() {
         Group group = new Group();
@@ -30,11 +34,5 @@ public class ApiGroupController
         groupsService.add(group);
 
         this.template.convertAndSend("/group", group);
-    }
-
-    @RequestMapping(path = "/", method = RequestMethod.GET)
-    public List<Group> index()
-    {
-        return this.groupsService.getAll();
     }
 }

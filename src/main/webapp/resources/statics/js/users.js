@@ -4,7 +4,6 @@ var usersElements = null;
 function usersSubscribe(frame) {
     console.log('Connected user: ' + frame);
     stompClient.subscribe('/user', function (data) {
-        console.log("g-p");
         var obj = jQuery.parseJSON(data.body);
         usersElements.users.unshift(obj);
         if (usersElements.users.length > 5) {
@@ -15,7 +14,7 @@ function usersSubscribe(frame) {
 
 function getUsers() {
     fetch(
-        'http://localhost:8080/api/user/', {
+        'http://localhost:8080/api/user/?limit=5', {
             method: "GET",
             headers: {
                 'Accept': 'application/json',

@@ -3,10 +3,11 @@
         <div class="panel-heading header-title">
         </div>
 
-        <div class="panel-body">
-            <div th:replace="elements/forumComments :: commentFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-            <hr/>
-            <div th:replace="elements/forumComments :: commentFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        <div class="panel-body" id="commentsForumComponent" th:attr="data-i=${post.id}">
+            <span v-for="comment in commentsForum">
+                <div th:replace="elements/forumComments :: commentFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                <hr/>
+            </span>
         </div>
     </div>
 </div>
@@ -34,31 +35,21 @@
         <div class="row">
             <div class="col-sm-12">
                 <div>
-                        <span>
-                            November 15, 2015 at 6:55 pm
-                        </span>
+                    <span v-html="comment.createdAt"></span>
                 </div>
             </div>
         </div>
         <hr/>
         <div class="row">
             <div class="col-sm-3">
-                <img th:src="@{/resources/img/a.jpg}" class="img-rounded"/>
+                <img v-bind:src="'/resources/img/' + comment.user.pathImg" class="img-rounded"/>
                 <div class="member-text">
-                        <span>
-                            Mati gej
-                        </span>
+                        <span v-html="comment.user.username"></span>
                 </div>
             </div>
             <div class="col-sm-9">
                 <div>
-                    <p>
-                        Professionally predominate progressive architectures via professional platforms.
-                        Objectively coordinate value-added niche markets after unique e-services.
-                        Distinctively leverage other’s plug-and-play e-commerce via premier manufactured products.
-                        Energistically aggregate 24/7 e-commerce without visionary sources.
-                        Dramatically procrastinate worldwide quality vectors rather than user-centric e-commerce.
-                    </p>
+                    <p v-html="comment.description"></p>
                 </div>
             </div>
         </div>

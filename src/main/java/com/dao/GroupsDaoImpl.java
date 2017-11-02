@@ -11,9 +11,9 @@ import java.util.List;
 public class GroupsDaoImpl extends AbstractDao<Integer, Group> implements GroupsDao
 {
     @SuppressWarnings("unchecked")
-    public List<Group> getAll()
+    public List<Group> getAll(int limit)
     {
-        return (List<Group>) createEntityCriteria().list();
+        return (List<Group>) createEntityCriteria().setMaxResults(limit).list();
     }
 
     public Group add(Group group) {

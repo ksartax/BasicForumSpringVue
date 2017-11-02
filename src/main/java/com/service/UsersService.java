@@ -4,6 +4,6 @@ import com.models.User;
 import java.util.List;
 
 public interface UsersService {
-    public List<User> getAll();
+    public List<User> getAll(int limit);
     public User get(int id);
 }

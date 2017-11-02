@@ -27,4 +27,8 @@ public class PostsDaoImpl extends AbstractDao<Integer, Post> implements PostsDao
         return (List<Post>) createEntityCriteria()
                 .add(Restrictions.eq("category.id", id)).list();
     }
+
+    public Post get(int id) {
+        return getByKey(id);
+    }
 }

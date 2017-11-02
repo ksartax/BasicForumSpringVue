@@ -21,4 +21,10 @@ public class CommentsDaoImpl extends AbstractDao<Integer, Comment> implements Co
         return (List<Comment>) createEntityCriteria()
                 .add(Restrictions.eq("user.id", id)).list();
     }
+
+    @SuppressWarnings("unchecked")
+    public List<Comment> getAllByPostId(int postId) {
+        return (List<Comment>) createEntityCriteria()
+                .add(Restrictions.eq("post.id", postId)).list();
+    }
 }

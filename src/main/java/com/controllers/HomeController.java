@@ -19,27 +19,27 @@ public class HomeController
         return this.path + "index";
     }
 
-//    @RequestMapping(path = "/register")
-//    public String register()
-//    {
-//        return this.path + "register";
-//    }
-//
-//    @RequestMapping(path = "/contact")
-//    public String contact()
-//    {
-//        return this.path + "contact";
-//    }
-//
-//    @RequestMapping(path = "/members")
-//    public String members()
-//    {
-//        return this.path + "members";
-//    }
-//
-//    @RequestMapping(path = "/groups")
-//    public String groups()
-//    {
-//        return this.path + "groups";
-//    }
+    @RequestMapping(path = "/register")
+    public String register()
+    {
+        return this.path + "register";
+    }
+
+    @RequestMapping(path = "/contact")
+    public String contact()
+    {
+        return this.path + "contact";
+    }
+
+    @RequestMapping(path = "/members")
+    public String members()
+    {
+        return this.path + "members";
+    }
+
+    @RequestMapping(path = "/groups")
+    public String groups()
+    {
+        return this.path + "groups";
+    }
 }

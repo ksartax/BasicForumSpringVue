@@ -6,7 +6,7 @@
            </b>
         </div>
 
-        <div class="panel-body"  id="categoriesGeneralComponent">
+        <div class="panel-body"  id="categoriesGeneralComponent" data-i="1">
             <span v-for="category in categoriesGeneral">
                 <div th:replace="elements/forum :: categoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 <hr/>
@@ -23,7 +23,7 @@
             </b>
         </div>
 
-        <div class="panel-body" id="categoriesBasicComponent">
+        <div class="panel-body" id="categoriesBasicComponent" data-i="1">
             <span v-for="category in categoriesBasic">
                 <div th:replace="elements/forum :: categoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 <hr/>

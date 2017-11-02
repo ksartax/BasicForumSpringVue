@@ -16,6 +16,8 @@ public class ForumController
 
     @Autowired
     CategoriesService categoriesService;
+    @Autowired
+    PostsService postsService;
 
     @RequestMapping(path = "")
     public String index()
@@ -31,9 +33,11 @@ public class ForumController
         return this.path + "category";
     }
 
-    @RequestMapping(path = "/topic")
-    public String topic()
+    @RequestMapping(path = "/post/{id}")
+    public String post(@PathVariable("id") int id, ModelMap modelMap)
     {
-        return this.path + "topic";
+        modelMap.addAttribute("post", postsService.get(id));
+
+        return this.path + "post";
     }
 }

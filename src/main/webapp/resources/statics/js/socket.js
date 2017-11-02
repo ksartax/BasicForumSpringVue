@@ -12,12 +12,21 @@ $().ready(function () {
     getCategoriesGeneral();
     getCategoriesBasic();
     getPostsCategory();
+    getCommentsForum();
 });
 
 function connect() {
+    disconnect();
     socket = new SockJS('/endpoint-websocket');
     stompClient = Stomp.over(socket);
     connectSubscribes();
+}
+
+function disconnect() {
+    if(stompClient) {
+        stompClient.disconnect();
+    }
+    console.log("Disconnected");
 }
 
 function connectSubscribes() {
@@ -31,6 +40,7 @@ function connectSubscribes() {
         categoriesGeneralSubscribe(frame);
         categoriesBasicSubscribe(frame);
         postsCategorySubscribe(frame);
+        forumSubscribe(frame);
     });
 }
 

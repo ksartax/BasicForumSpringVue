@@ -2,6 +2,11 @@ var posts = [];
 var postsElements = null;
 
 function postsSubscribe(frame) {
+    var isActive = $("#postsComponent").attr("data-i");
+    if (isActive == undefined) {
+        return;
+    }
+
     console.log('Connected post: ' + frame);
     stompClient.subscribe('/post', function (data) {
         var obj = jQuery.parseJSON(data.body);
@@ -13,6 +18,11 @@ function postsSubscribe(frame) {
 }
 
 function getPosts() {
+    var isActive = $("#postsComponent").attr("data-i");
+    if (isActive == undefined) {
+        return;
+    }
+
     fetch(
         'http://localhost:8080/api/post/', {
             method: "GET",
@@ -50,8 +60,8 @@ var postsCategory = [];
 var postsCategoryElements = null;
 
 function postsCategorySubscribe(frame) {
-    var category = $("#postsCategoryComponent");
-    if (!category) {
+    var categoryId = $("#postsCategoryComponent").attr("data-c");
+    if (categoryId == undefined) {
         return;
     }
 
@@ -63,13 +73,13 @@ function postsCategorySubscribe(frame) {
 }
 
 function getPostsCategory() {
-    var category = $("#postsCategoryComponent");
-    if (!category) {
+    var categoryId = $("#postsCategoryComponent").attr("data-c");
+    if (categoryId == undefined) {
         return;
     }
 
     fetch(
-        'http://localhost:8080/api/category/' + category.attr("data-c") + "/posts", {
+        'http://localhost:8080/api/category/' + categoryId + "/posts", {
             method: "GET",
             headers: {
                 'Accept': 'application/json',

@@ -1,8 +1,6 @@
 package com.controllers.Api;
 
-import com.models.Comment;
 import com.models.GlobalStatistic;
-import com.service.CommentsService;
 import com.service.GlobalStatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -20,8 +18,6 @@ public class ApiGlobalStatisticController
     private SimpMessagingTemplate template;
     @Autowired
     private GlobalStatisticsService globalStatisticsService;
-
-    //this.template.convertAndSend("/globalStatistic", comment);
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<GlobalStatistic> index()

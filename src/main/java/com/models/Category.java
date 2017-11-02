@@ -8,6 +8,9 @@ import java.util.Date;
 @Table(name = "Categories")
 public class Category implements Serializable
 {
+    public static int GENERAL = 1;
+    public static int BASIC = 0;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true)
@@ -24,6 +27,9 @@ public class Category implements Serializable
 
     @Column(name = "user_id")
     private int userId;
+
+    @Column(name = "level")
+    private int level;
 
     @Column(name = "created_at")
     @Temporal(value = TemporalType.TIMESTAMP)
@@ -87,5 +93,13 @@ public class Category implements Serializable
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

@@ -16,8 +16,8 @@ public class UsersServiceImpl implements UsersService {
     @Autowired
     private UsersDao usersDao;
 
-    public List<User> getAll() {
-        return usersDao.getAll();
+    public List<User> getAll(int limit) {
+        return usersDao.getAll(limit);
     }
 
     public User get(int id) {

@@ -10,7 +10,7 @@ function groupsSubscribe(frame) {
 
 function getGroups() {
     fetch(
-        'http://localhost:8080/api/group/', {
+        'http://localhost:8080/api/group/?limit=5', {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
