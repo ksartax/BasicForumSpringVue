@@ -1,6 +1,8 @@
 package com.controllers;
 
+import com.models.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -32,10 +34,4 @@ public class HomeController
     {
         return this.path + "members";
     }
-
-//    @RequestMapping(path = "/groups")
-//    public String groups()
-//    {
-//        return this.path + "groups";
-//    }
 }

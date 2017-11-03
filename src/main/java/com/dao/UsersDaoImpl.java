@@ -1,6 +1,5 @@
 package com.dao;
 
-import com.models.Group;
 import com.models.User;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -20,4 +19,12 @@ public class UsersDaoImpl extends AbstractDao<Integer, User> implements UsersDao
     public User get(int id) {
         return this.getByKey(id);
     }
+
+    public User findByUserName(String username) {
+        List<User> list = (List<User>) createEntityCriteria()
+                .add(Restrictions.eq("username", username)).list();
+
+        return list.get(0);
+    }
+
 }

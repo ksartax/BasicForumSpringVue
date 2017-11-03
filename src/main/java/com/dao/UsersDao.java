@@ -7,4 +7,5 @@ public interface UsersDao
 {
     public List<User> getAll(int limit);
     public User get(int id);
+    public User findByUserName(String username);
 }

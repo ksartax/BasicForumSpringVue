@@ -24,12 +24,21 @@ public class User implements Serializable
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
+    private String role;
+
     @OneToOne
     @JoinColumn(name="statistics_id", nullable = true)
     private Statistic statistics;
 
     @Column(name = "path_img", nullable = true)
     private String pathImg;
+
+    public String getRole() {
+        return role;
+    }
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public int getActive() {
         return active;

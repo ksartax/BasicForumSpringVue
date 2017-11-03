@@ -1,6 +1,9 @@
 package com.service;
 
 import com.models.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import java.util.List;
 
 public interface UsersService {

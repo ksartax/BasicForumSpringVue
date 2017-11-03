@@ -48,6 +48,12 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.webjars:sockjs-client:1.0.2" />
           <element id="library" level="project" name="Maven: org.webjars:stomp-websocket:2.3.3" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:3.2.3.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:3.2.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:3.2.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:3.2.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:3.2.3.RELEASE" />
         </element>
       </element>
       <element id="directory" name="META-INF">
