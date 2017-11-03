@@ -5,21 +5,18 @@
         </b>
     </span>
 
-    <span th:replace="elements/lists :: listElementCountFragment" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+    <!--<span th:replace="elements/lists :: listElementCountFragment" xmlns:th="http://www.w3.org/1999/xhtml"></span>-->
 
     <hr/>
     <div class="row">
         <div class="col-sm-12">
-            <div class="member-container">
+            <div class="member-container" id="usersMembersComponent" th:attr="data-i='1'">
 
-                <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-                <hr/>
-                <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-                <hr/>
-                <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+                    <hr/>
+                </div>
 
-
-                <div th:replace="elements/lists :: listElementPagerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                <!--<div th:replace="elements/lists :: listElementPagerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>-->
             </div>
         </div>
     </div>

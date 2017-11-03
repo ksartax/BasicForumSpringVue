@@ -42,3 +42,57 @@ function renderUsers() {
         }
     });
 }
+
+
+
+var usersMembers = [];
+var usersMembersElements = null;
+
+function usersMembersSubscribe(frame) {
+    var isActive = $("#usersMembersComponent").attr("data-i");
+    if (isActive == undefined) {
+        return;
+    }
+
+    console.log('Connected usersMembers: ' + frame);
+    stompClient.subscribe('/user/members', function (data) {
+        var obj = jQuery.parseJSON(data.body);
+        usersMembersElements.users.unshift(obj);
+    });
+}
+
+function getUsersMembers() {
+    var isActive = $("#usersMembersComponent").attr("data-i");
+    if (isActive == undefined) {
+        return;
+    }
+
+    fetch(
+        'http://localhost:8080/api/user/', {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Accept-Language': 'application/json'
+            }
+        })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (response) {
+            usersMembers = response;
+            renderUsersMembers();
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+}
+
+function renderUsersMembers() {
+    usersMembersElements = new Vue({
+        el: '#usersMembersComponent',
+        data: {
+            users: usersMembers
+        }
+    });
+}

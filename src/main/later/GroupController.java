@@ -10,9 +10,9 @@ public class GroupController
 {
     private String path = "Group/";
 
-    @RequestMapping("/{id}")
-    public String group(@PathVariable("id") int id)
-    {
-        return path + "group";
-    }
+//    @RequestMapping("/{id}")
+//    public String group(@PathVariable("id") int id)
+//    {
+//        return path + "group";
+//    }
 }

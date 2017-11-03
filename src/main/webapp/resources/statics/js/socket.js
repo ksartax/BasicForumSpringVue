@@ -3,7 +3,7 @@ var socket = null;
 
 $().ready(function () {
     connect();
-    getGroups();
+    // getGroups();
     getGlobalStatistics();
     getUsers();
     getComments();
@@ -13,6 +13,7 @@ $().ready(function () {
     getCategoriesBasic();
     getPostsCategory();
     getCommentsForum();
+    getUsersMembers();
 });
 
 function connect() {
@@ -31,7 +32,7 @@ function disconnect() {
 
 function connectSubscribes() {
     stompClient.connect({}, function (frame) {
-        groupsSubscribe(frame);
+        // groupsSubscribe(frame);
         globalStatisticsSubscribe(frame);
         usersSubscribe(frame);
         commentsSubscribe(frame);
@@ -41,6 +42,7 @@ function connectSubscribes() {
         categoriesBasicSubscribe(frame);
         postsCategorySubscribe(frame);
         forumSubscribe(frame);
+        usersMembersSubscribe(frame);
     });
 }
 

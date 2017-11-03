@@ -28,4 +28,8 @@ public class CommentsServiceImpl implements CommentsService
     public List<Comment> getAllByPostId(int postId) {
         return commentsDao.getAllByPostId(postId);
     }
+
+    public Comment add(Comment comment) {
+        return this.commentsDao.add(comment);
+    }
 }

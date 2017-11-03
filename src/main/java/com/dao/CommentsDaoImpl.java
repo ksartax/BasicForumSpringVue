@@ -27,4 +27,10 @@ public class CommentsDaoImpl extends AbstractDao<Integer, Comment> implements Co
         return (List<Comment>) createEntityCriteria()
                 .add(Restrictions.eq("post.id", postId)).list();
     }
+
+    public Comment add(Comment comment) {
+        this.persist(comment);
+
+        return comment;
+    }
 }

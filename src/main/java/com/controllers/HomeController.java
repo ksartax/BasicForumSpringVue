@@ -1,9 +1,5 @@
 package com.controllers;
 
-import com.service.UsersService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -37,9 +33,9 @@ public class HomeController
         return this.path + "members";
     }
 
-    @RequestMapping(path = "/groups")
-    public String groups()
-    {
-        return this.path + "groups";
-    }
+//    @RequestMapping(path = "/groups")
+//    public String groups()
+//    {
+//        return this.path + "groups";
+//    }
 }

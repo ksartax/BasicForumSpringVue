@@ -72,13 +72,14 @@ function forumSubscribe(frame) {
     }
 
     console.log('Connected post/' + postId + '/comments' + frame);
-    stompClient.subscribe('post/' + postId + '/comments', function (data) {
-        var obj = jQuery.parseJSON(data.body);
-        commentsFoumElements.comments.push(obj);
-        // if (commentsFoumElements.comments.length > 5) {
-        //     commentsFoumElements.comments.pop();
-        // }
+    stompClient.subscribe('/post/' + postId + '/comments', function (data) {
+        pushCommentData(data);
     });
+}
+
+function pushCommentData(data) {
+    var obj = jQuery.parseJSON(data.body);
+    commentsFoumElements.commentsForum.push(obj);
 }
 
 function getCommentsForum() {
@@ -109,10 +110,41 @@ function getCommentsForum() {
 }
 
 function renderCommentsForum() {
-    groupsElements = new Vue({
+    console.log(commentsForum);
+    commentsFoumElements = new Vue({
         el: '#commentsForumComponent',
         data: {
-            comments: comments
+            commentsForum: commentsForum
         }
     });
 }
+
+var formAddComment = new Vue({
+    el: '#form-add-comment',
+    data: {
+        description: ''
+    },
+    methods: {
+        submit: function () {
+            fetch(
+                'http://localhost:8080/api/comment/add', {
+                    method: "POST",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Accept-Language': 'application/json'
+                    },
+                    body: JSON.stringify(this.$data)
+                })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (response) {})
+                .catch(function (err) {
+                    console.log(err);
+                });
+        }
+    }
+});
+
+

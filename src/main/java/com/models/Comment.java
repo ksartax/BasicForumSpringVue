@@ -1,7 +1,11 @@
 package com.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -26,10 +30,12 @@ public class Comment implements Serializable
 
     @Column(name = "created_at")
     @Temporal(value = TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date createdAt;
 
     @Column(name = "updated_at")
     @Temporal(value = TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date updatedAt;
 
     public int getId() {
@@ -64,8 +70,8 @@ public class Comment implements Serializable
         this.description = description;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public String getCreatedAt() {
+        return (new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss")).format(createdAt);
     }
 
     public void setCreatedAt(Date createdAt) {

@@ -8,4 +8,5 @@ public interface CommentsDao
     public List<Comment> getAll();
     public List<Comment> getAllByUserId(int id);
     public List<Comment> getAllByPostId(int postId);
+    public Comment add(Comment comment);
 }
