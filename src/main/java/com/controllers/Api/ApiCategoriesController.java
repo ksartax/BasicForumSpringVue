@@ -5,13 +5,13 @@ import com.models.Comment;
 import com.models.Post;
 import com.service.CategoriesService;
 import com.service.CommentsService;
+import com.service.GlobalStatisticsService;
 import com.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +25,8 @@ public class ApiCategoriesController
     private CategoriesService categoriesService;
     @Autowired
     private PostsService postsService;
+    @Autowired
+    private GlobalStatisticsService globalStatisticsService;
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<Category> index()
@@ -48,5 +50,15 @@ public class ApiCategoriesController
     public List<Category> basics()
     {
         return this.categoriesService.getByLevel(Category.BASIC);
+    }
+
+    @RequestMapping(path = "/add", method = RequestMethod.POST)
+    public ResponseEntity<Category> add(@RequestBody Category category)
+    {
+        categoriesService.add(category);
+        globalStatisticsService.increment(globalStatisticsService.getByTitle("Kategorie"), 1);
+//        template.convertAndSend("/post/1/comments", comment);
+
+        return new ResponseEntity<Category>(HttpStatus.OK);
     }
 }

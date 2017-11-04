@@ -1,7 +1,9 @@
 package com.service;
 
+import com.configurations.Auth;
 import com.dao.CategoriesDao;
 import com.dao.CommentsDao;
+import com.dao.UsersDao;
 import com.models.Category;
 import com.models.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ public class CategoriesServiceImpl implements CategoriesService
 {
     @Autowired
     private CategoriesDao categoriesDao;
+    @Autowired
+    private UsersDao usersDao;
 
     public List<Category> getAll()
     {
@@ -34,6 +38,13 @@ public class CategoriesServiceImpl implements CategoriesService
 
     public Category incrementPost(Category category, int count) {
         category.incrementPost(count);
+
+        return categoriesDao.add(category);
+    }
+
+    public Category add(Category category) {
+        category.setLevel(1);
+        category.setUser(usersDao.findByUserName((new Auth().getLoginUser()).getUsername()));
 
         return categoriesDao.add(category);
     }

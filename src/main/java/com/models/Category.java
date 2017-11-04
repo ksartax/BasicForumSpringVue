@@ -1,5 +1,8 @@
 package com.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -25,18 +28,21 @@ public class Category implements Serializable
     @Column(name = "posts_count")
     private int postsCount;
 
-    @Column(name = "user_id")
-    private int userId;
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name="user_id", nullable = true)
+    private User user;
 
     @Column(name = "level")
     private int level;
 
     @Column(name = "created_at")
     @Temporal(value = TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date createdAt;
 
     @Column(name = "updated_at")
     @Temporal(value = TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date updatedAt;
 
     public int getId() {
@@ -71,12 +77,12 @@ public class Category implements Serializable
         this.postsCount = postsCount;
     }
 
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Date getCreatedAt() {

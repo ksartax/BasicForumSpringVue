@@ -6,6 +6,10 @@
             </b>
         </p>
     </div>
+
+    <span th:if="${role == 'ROLE_ADMIN'}">
+        <div th:replace="elements/forum :: forumCategoryAddFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    </span>
     <div th:replace="elements/forum :: forumGeneralFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
     <div th:replace="elements/forum :: forumBasicFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
 </div>

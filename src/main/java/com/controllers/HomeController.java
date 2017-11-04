@@ -1,6 +1,7 @@
 package com.controllers;
 
 import com.models.User;
+import com.service.GlobalStatisticsService;
 import com.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,8 @@ public class HomeController
 
     @Autowired
     UsersService usersService;
+    @Autowired
+    private GlobalStatisticsService globalStatisticsService;
 
     @RequestMapping(path = "/")
     public String index()
@@ -40,6 +43,7 @@ public class HomeController
     public String registerPost(@ModelAttribute("user") @Valid User user)
     {
         usersService.add(user);
+        globalStatisticsService.increment(globalStatisticsService.getByTitle("Zarejestrowanych"), 1);
 
         return this.path + "register";
     }

@@ -61,6 +61,24 @@
     </div>
 </div>
 
+<div th:fragment="forumCategoryAddFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group" id="form-add-category">
+                <label for="title">Tytuł:</label>
+                <textarea class="form-control" rows="1" id="title-category" v-model="title"></textarea>
+                <label for="description">Opis:</label>
+                <textarea class="form-control" rows="2" id="description-category" v-model="description"></textarea>
+                <div class="forum-button-container">
+                    <center>
+                        <button @click.prevent="submit" type="button" class="btn btn-default forum-button">Stwórz</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div th:fragment="postsFragment" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="row">
         <div class="col-sm-8">
