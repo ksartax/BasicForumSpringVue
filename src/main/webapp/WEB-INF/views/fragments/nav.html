@@ -53,12 +53,17 @@
                   </div>
                </a>
             </li>
+
             <li>
-               <a th:href="@{/register}">
+               <a th:if="${loginUser == null}" th:href="@{/register}">
                   <div class="green">
                      Rejestracja
                   </div>
                </a>
+
+               <form th:if="${loginUser != null}" method="post" action="#" th:action="@{/logout}">
+                  <button type="submit" class="btn btn-success green">Wyloguj</button>
+               </form>
             </li>
          </ul>
       </div>

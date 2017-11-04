@@ -5,5 +5,12 @@
         </p>
     </div>
     <div th:replace="elements/forumComments :: forumComments" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-    <div th:replace="elements/forumComments :: forumAddComments" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+
+    <span th:if="${loginUser != null}">
+        <div th:replace="elements/forumComments :: forumAddComments" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    </span>
+
+    <span th:if="${loginUser == null}">
+        <div th:replace="elements/forumComments :: forumAddCommentsOffline" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    </span>
 </div>

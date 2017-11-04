@@ -4,5 +4,8 @@
             <b th:text="${category.title}"></b>
         </p>
     </div>
+    <span th:if="${loginUser != null}">
+        <div th:replace="elements/forum :: forumPostsAddFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    </span>
     <div th:replace="elements/forum :: forumPostsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
 </div>

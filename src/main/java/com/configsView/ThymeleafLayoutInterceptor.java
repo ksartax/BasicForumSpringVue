@@ -1,5 +1,6 @@
 package com.configsView;
 
+import com.configurations.Auth;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ public class ThymeleafLayoutInterceptor extends HandlerInterceptorAdapter
             return;
         }
 
+        request.setAttribute("loginUser", (new Auth().getLoginUser()));
         request.setAttribute("body", modelAndView.getViewName());
         modelAndView.setViewName(DEFAULT_TEMPLATE);
     }

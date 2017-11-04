@@ -1,15 +1,26 @@
 package com.controllers;
 
 import com.models.User;
+import com.service.UsersService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping(path = "/")
 public class HomeController
 {
     private String path = "Home/";
+
+    @Autowired
+    UsersService usersService;
 
     @RequestMapping(path = "/")
     public String index()
@@ -18,8 +29,18 @@ public class HomeController
     }
 
     @RequestMapping(path = "/register")
-    public String register()
+    public String register(ModelMap modelMap)
     {
+        modelMap.addAttribute("user", new User());
+
+        return this.path + "register";
+    }
+
+    @RequestMapping(path = "/register", method = RequestMethod.POST)
+    public String registerPost(@ModelAttribute("user") @Valid User user)
+    {
+        usersService.add(user);
+
         return this.path + "register";
     }
 

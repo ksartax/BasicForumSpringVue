@@ -27,4 +27,10 @@ public class UsersDaoImpl extends AbstractDao<Integer, User> implements UsersDao
         return list.get(0);
     }
 
+    public User add(User user) {
+        this.persist(user);
+
+        return user;
+    }
+
 }

@@ -31,4 +31,10 @@ public class CategoriesServiceImpl implements CategoriesService
     public List<Category> getByLevel(int level) {
         return categoriesDao.getByLevel(level);
     }
+
+    public Category incrementPost(Category category, int count) {
+        category.incrementPost(count);
+
+        return categoriesDao.add(category);
+    }
 }

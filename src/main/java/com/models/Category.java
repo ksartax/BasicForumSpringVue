@@ -102,4 +102,9 @@ public class Category implements Serializable
     public void setLevel(int level) {
         this.level = level;
     }
+
+    public void incrementPost(int count)
+    {
+        this.postsCount += count;
+    }
 }

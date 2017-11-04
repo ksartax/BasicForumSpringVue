@@ -8,4 +8,5 @@ public interface CategoriesService
     public List<Category> getAll();
     public Category get(int id);
     public List<Category> getByLevel(int level);
+    public Category incrementPost(Category category, int count);
 }

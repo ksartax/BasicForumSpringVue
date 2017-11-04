@@ -63,4 +63,14 @@ public class Statistic implements Serializable
     public void setFriendsCount(int friendsCount) {
         this.friendsCount = friendsCount;
     }
+
+    public void incrementPostCount(int count)
+    {
+        this.postsCount += count;
+    }
+
+    public void incrementCommentCount(int count)
+    {
+        this.commentsCount += count;
+    }
 }

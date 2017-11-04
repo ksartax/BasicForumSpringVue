@@ -1,5 +1,8 @@
 package com.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -13,11 +16,11 @@ public class Post implements Serializable
     @Column(unique = true)
     private int id;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name="user_id", nullable = true)
     private User user;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name="category_id", nullable = true)
     private Category category;
 
@@ -32,10 +35,12 @@ public class Post implements Serializable
 
     @Column(name = "created_at")
     @Temporal(value = TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date createdAt;
 
     @Column(name = "updated_at")
     @Temporal(value = TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date updatedAt;
 
     public int getId() {
@@ -100,5 +105,10 @@ public class Post implements Serializable
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public void incrementCommentCount(int count)
+    {
+        this.commentCount += count;
     }
 }

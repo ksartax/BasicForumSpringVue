@@ -5,18 +5,18 @@
         </b>
     </span>
     <hr/>
-    <form>
+    <form action="#" th:action="@{/register}" method="post" th:object="${user}">
         <div class="form-group">
             <label for="username">Login:</label>
-            <input type="text" class="form-control" id="username">
+            <input type="text" class="form-control" th:field="*{username}" id="username">
         </div>
         <div class="form-group">
             <label for="pwd">Hasło:</label>
-            <input type="password" class="form-control" id="pwd">
+            <input type="password" class="form-control" th:field="*{password}" id="pwd">
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email">
+            <input type="email" class="form-control" th:field="*{email}" id="email">
         </div>
         <center>
             <div class="forum-button-container">

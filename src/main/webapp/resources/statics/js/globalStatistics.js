@@ -4,7 +4,7 @@ var globalStatisticsElements = null;
 function globalStatisticsSubscribe(frame) {
     console.log('Connected globalStatistic: ' + frame);
     stompClient.subscribe('/globalStatistic', function (data) {
-        globalStatisticsElements = jQuery.parseJSON(data.body);
+        getGlobalStatistics();
     });
 }
 

@@ -31,4 +31,10 @@ public class PostsDaoImpl extends AbstractDao<Integer, Post> implements PostsDao
     public Post get(int id) {
         return getByKey(id);
     }
+
+    public Post add(Post post) {
+        persist(post);
+
+        return post;
+    }
 }

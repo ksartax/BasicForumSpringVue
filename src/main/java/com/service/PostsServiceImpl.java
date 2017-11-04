@@ -1,6 +1,10 @@
 package com.service;
 
+import com.configurations.Auth;
+import com.dao.CategoriesDao;
+import com.dao.GlobalStatisticsDao;
 import com.dao.PostsDao;
+import com.dao.UsersDao;
 import com.models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,6 +20,10 @@ public class PostsServiceImpl implements PostsService
 {
     @Autowired
     private PostsDao postsDao;
+    @Autowired
+    private UsersDao usersDao;
+    @Autowired
+    private CategoriesDao categoriesDao;
 
     public List<Post> getAll() {
         return this.postsDao.getAll();
@@ -31,5 +39,15 @@ public class PostsServiceImpl implements PostsService
 
     public Post get(int id) {
         return postsDao.get(id);
+    }
+
+    public Post add(Post post, int categoryId) {
+        post.setUser(usersDao.findByUserName((new Auth().getLoginUser()).getUsername()));
+        post.getUser().getStatistics().incrementPostCount(1);
+
+        post.setCategory(categoriesDao.get(categoryId));
+        post.getCategory().incrementPost(1);
+
+        return postsDao.add(post);
     }
 }

@@ -9,4 +9,5 @@ public interface PostsDao
     public List<Post> getAllByUserId(int id);
     public List<Post> getAllByCategoryId(int id);
     public Post get(int id);
+    public Post add(Post post);
 }

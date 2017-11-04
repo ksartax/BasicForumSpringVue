@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <div th:replace="fragments/header :: headerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
     </head>
     <body>
         <div class="container-fluid page-wrapper">
-
             <nav th:replace="fragments/nav :: navFragment" xmlns:th="http://www.w3.org/1999/xhtml"></nav>
 
             <div class="row">
@@ -22,8 +21,11 @@
                 </div>
 
                 <div class="col-sm-3">
-                    <div th:replace="elements/login :: loginFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-                    <br/>
+                    <span th:if="${loginUser == null}">
+                        <div th:replace="elements/login :: loginFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                        <br/>
+                    </span>
+
                     <div th:replace="elements/statistics :: statisticsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 </div>
             </div>

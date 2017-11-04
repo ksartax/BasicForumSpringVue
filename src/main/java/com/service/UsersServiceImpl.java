@@ -1,6 +1,8 @@
 package com.service;
 
+import com.dao.StatisticsDao;
 import com.dao.UsersDao;
+import com.models.Statistic;
 import com.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -21,6 +23,8 @@ public class UsersServiceImpl implements UsersService, UserDetailsService {
 
     @Autowired
     private UsersDao usersDao;
+    @Autowired
+    StatisticsDao statisticsDao;
 
     public List<User> getAll(int limit) {
         return usersDao.getAll(limit);
@@ -30,9 +34,20 @@ public class UsersServiceImpl implements UsersService, UserDetailsService {
         return usersDao.get(id);
     }
 
+    public User getByUsername(String username) {
+        return (User) this.loadUserByUsername(username);
+    }
+
+    public User add(User user) {
+        user.setRole("ROLE_USER");
+        user.setPathImg("a.jpg");
+        user.setStatistics(statisticsDao.add(new Statistic()));
+
+        return  usersDao.add(user);
+    }
+
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {
-        System.err.println(username);
         User user = usersDao.findByUserName(username);
         GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_USER");
 

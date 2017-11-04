@@ -26,4 +26,10 @@ public class CategoriesDaoImpl extends AbstractDao<Integer, Category> implements
     public List<Category> getByLevel(int level) {
         return this.createEntityCriteria().add(Restrictions.eq("level", level)).list();
     }
+
+    public Category add(Category category) {
+        persist(category);
+
+        return category;
+    }
 }

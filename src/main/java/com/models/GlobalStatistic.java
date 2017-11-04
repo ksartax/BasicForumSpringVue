@@ -51,4 +51,9 @@ public class GlobalStatistic
     public void setPathImg(String pathImg) {
         this.pathImg = pathImg;
     }
+
+    public void incrementCount(int count)
+    {
+        this.count = this.count + count;
+    }
 }
