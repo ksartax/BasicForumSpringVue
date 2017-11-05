@@ -6,8 +6,8 @@
            </b>
         </div>
 
-        <div class="panel-body"  id="categoriesGeneralComponent" data-i="1">
-            <span v-for="category in categoriesGeneral">
+        <div class="panel-body" id="categoriesGeneralComponent" data-active="1">
+            <span v-for="category in dataArray">
                 <div th:replace="elements/forum :: categoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 <hr/>
             </span>
@@ -23,8 +23,8 @@
             </b>
         </div>
 
-        <div class="panel-body" id="categoriesBasicComponent" data-i="1">
-            <span v-for="category in categoriesBasic">
+        <div class="panel-body" id="categoriesBasicComponent" data-active="1">
+            <span v-for="category in dataArray">
                 <div th:replace="elements/forum :: categoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 <hr/>
             </span>
@@ -34,7 +34,7 @@
 
 <div th:fragment="forumPostsFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
     <div class="panel panel-default">
-        <div class="panel-body" id="postsCategoryComponent" th:attr="data-c=${category.id}">
+        <div class="panel-body" id="postsCategoryComponent" th:attr="category-id=${category.id}" data-active="1">
             <span v-for="post in dataArray">
                 <div th:replace="elements/forum :: postsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 <hr/>

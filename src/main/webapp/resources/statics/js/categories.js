@@ -42,7 +42,6 @@ var categoriesTemplateElements = new Vue({
     }
 });
 
-
 var categoriesGeneralElements = new Vue({
     el: '#categoriesGeneralComponent',
     data: {
@@ -53,12 +52,17 @@ var categoriesGeneralElements = new Vue({
             'Content-Type': 'application/json',
             'Accept-Language': 'application/json'
         },
+        active: '#categoriesGeneralComponent',
         subscribe: '/category/level/1',
         url: 'http://localhost:8080/api/category/generals'
     },
     methods: {
         getData: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             fetch(self.url, {
                 method: self.method,
                 headers: self.headers
@@ -80,13 +84,16 @@ var categoriesGeneralElements = new Vue({
         },
         subscribeSocket: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             stompClient.subscribe(self.subscribe, function (data) {
                 self.getData();
             });
         }
     }
 });
-
 
 var categoriesBasicElements = new Vue({
     el: '#categoriesBasicComponent',
@@ -98,12 +105,17 @@ var categoriesBasicElements = new Vue({
             'Content-Type': 'application/json',
             'Accept-Language': 'application/json'
         },
+        active: '#categoriesGeneralComponent',
         subscribe: '/category/level/0',
         url: 'http://localhost:8080/api/category/basics'
     },
     methods: {
         getData: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             fetch(self.url, {
                 method: self.method,
                 headers: self.headers
@@ -125,13 +137,16 @@ var categoriesBasicElements = new Vue({
         },
         subscribeSocket: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             stompClient.subscribe(self.subscribe, function (data) {
                 self.getData();
             });
         }
     }
 });
-
 
 var formAddCategory = new Vue({
     el: '#form-add-category',

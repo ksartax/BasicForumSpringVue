@@ -42,7 +42,6 @@ var usersTemplateElements = new Vue({
     }
 });
 
-
 var usersMembersElements = new Vue({
     el: '#usersMembersComponent',
     data: {
@@ -53,12 +52,17 @@ var usersMembersElements = new Vue({
             'Content-Type': 'application/json',
             'Accept-Language': 'application/json'
         },
+        active: '#usersMembersComponent',
         subscribe: '/user',
         url: 'http://localhost:8080/api/user/'
     },
     methods: {
         getData: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             fetch(self.url, {
                 method: self.method,
                 headers: self.headers
@@ -80,6 +84,10 @@ var usersMembersElements = new Vue({
         },
         subscribeSocket: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             stompClient.subscribe(self.subscribe, function (data) {
                 self.getData();
             });

@@ -1,10 +1,11 @@
-<div th:fragment="activityUsersFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component activitys">
+<div th:fragment="activityUsersFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component activitys"
+     xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <div class="panel panel-default">
         <div class="panel-heading center">
             Ostatnie Komentarze
         </div>
 
-        <div class="panel-body" id="commentsComponent" data-i="1">
+        <div class="panel-body" id="commentsComponent" data-active="1">
             <span v-for="comment in dataArray">
                 <div th:replace="elements/activityUsers :: activityUserFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 <hr/>

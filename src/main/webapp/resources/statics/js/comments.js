@@ -8,12 +8,17 @@ var commentsElements = new Vue({
             'Content-Type': 'application/json',
             'Accept-Language': 'application/json'
         },
+        active: '#postsComponent',
         subscribe: '/comment',
         url: 'http://localhost:8080/api/comment/'
     },
     methods: {
         getData: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             fetch(self.url, {
                 method: self.method,
                 headers: self.headers
@@ -35,6 +40,10 @@ var commentsElements = new Vue({
         },
         subscribeSocket: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             stompClient.subscribe(self.subscribe, function (data) {
                 self.getData();
             });
@@ -53,13 +62,23 @@ var commentsForumElements = new Vue({
             'Content-Type': 'application/json',
             'Accept-Language': 'application/json'
         },
-        postId: null,
+        active: '#commentsForumComponent',
+        postId: $(this.active).attr("post-id"),
         subscribe: '/post/' + this.postId + '/comments',
         url: 'http://localhost:8080/api/post/' + this.postId + '/comments'
+    },
+    created: function () {
+        this.postId = $(this.active).attr("post-id");
+        this.subscribe = '/post/' + this.postId + '/comments';
+        this.url = 'http://localhost:8080/api/post/' + this.postId + '/comments';
     },
     methods: {
         getData: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             fetch(self.url, {
                 method: self.method,
                 headers: self.headers
@@ -81,6 +100,10 @@ var commentsForumElements = new Vue({
         },
         subscribeSocket: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             stompClient.subscribe(self.subscribe, function (data) {
                 self.getData();
             });
@@ -100,7 +123,7 @@ var formAddComment = new Vue({
             var token = $("meta[name='_csrf']").attr("content");
 
             $.ajax({
-                url: 'http://localhost:8080/api/comment/add/post/' + $("#commentsForumComponent").attr("data-i"),
+                url: 'http://localhost:8080/api/comment/add/post/' + $("#commentsForumComponent").attr("post-id"),
                 type: 'POST',
                 data: JSON.stringify(this.$data),
                 beforeSend: function (xhr) {

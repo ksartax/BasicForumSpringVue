@@ -1,9 +1,10 @@
-<div th:fragment="forumComments" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
+<div th:fragment="forumComments" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element"
+     xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <div class="panel panel-default">
         <div class="panel-heading header-title">
         </div>
 
-        <div class="panel-body" id="commentsForumComponent" th:attr="data-i=${post.id}">
+        <div class="panel-body" id="commentsForumComponent" th:attr="post-id=${post.id}" data-active="1">
             <span v-for="comment in dataArray">
                 <div th:replace="elements/forumComments :: commentFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 <hr/>

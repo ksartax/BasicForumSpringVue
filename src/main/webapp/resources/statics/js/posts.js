@@ -8,12 +8,17 @@ var postsElements = new Vue({
             'Content-Type': 'application/json',
             'Accept-Language': 'application/json'
         },
+        active: '#postsComponent',
         subscribe: '/post',
         url: 'http://localhost:8080/api/post/'
     },
     methods: {
         getData: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             fetch(self.url, {
                 method: self.method,
                 headers: self.headers
@@ -35,13 +40,16 @@ var postsElements = new Vue({
         },
         subscribeSocket: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             stompClient.subscribe(self.subscribe, function (data) {
                 self.getData();
             });
         }
     }
 });
-
 
 var postsCategoryElements = new Vue({
     el: '#postsCategoryComponent',
@@ -53,13 +61,23 @@ var postsCategoryElements = new Vue({
             'Content-Type': 'application/json',
             'Accept-Language': 'application/json'
         },
-        categoryId: null,
+        active: '#postsCategoryComponent',
+        categoryId: 0,
         subscribe: '/category/' + this.categoryId + '/posts',
         url: 'http://localhost:8080/api/category/' + this.categoryId + '/posts'
+    },
+    created: function () {
+        this.categoryId = $(this.active).attr("category-id");
+        this.subscribe = '/category/' + this.categoryId + '/posts';
+        this.url = 'http://localhost:8080/api/category/' + this.categoryId + '/posts';
     },
     methods: {
         getData: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             fetch(self.url, {
                 method: self.method,
                 headers: self.headers
@@ -81,13 +99,16 @@ var postsCategoryElements = new Vue({
         },
         subscribeSocket: function () {
             var self = this;
+            if ($(self.active).attr("data-active") === undefined) {
+                return;
+            }
+
             stompClient.subscribe(self.subscribe, function (data) {
                 self.getData();
             });
         }
     }
 });
-
 
 var formAddPost = new Vue({
     el: '#form-add-post',
@@ -101,7 +122,7 @@ var formAddPost = new Vue({
             var token = $("meta[name='_csrf']").attr("content");
 
             $.ajax({
-                url: 'http://localhost:8080/api/post/add/category/' + $("#postsCategoryComponent").attr("data-c"),
+                url: 'http://localhost:8080/api/post/add/category/' + $("#postsCategoryComponent").attr("category-id"),
                 type: 'POST',
                 data: JSON.stringify(this.$data),
                 beforeSend: function(xhr){
