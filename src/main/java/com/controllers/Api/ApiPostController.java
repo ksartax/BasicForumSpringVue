@@ -46,9 +46,9 @@ public class ApiPostController
         postsService.add(post, id);
         globalStatisticsService.increment(globalStatisticsService.getByTitle("Posty"), 1);
 
-        template.convertAndSend("/category/" + id + "/posts");
-        template.convertAndSend("/post");
-        template.convertAndSend("/globalStatistic");
+        template.convertAndSend("/category/" + id + "/posts", "");
+        template.convertAndSend("/post", "");
+        template.convertAndSend("/globalStatistic", "");
 
         return new ResponseEntity<Post>(HttpStatus.OK);
     }

@@ -33,9 +33,10 @@ public class ApiCommentController
     {
         commentsService.add(comment, id);
         globalStatisticsService.increment(globalStatisticsService.getByTitle("Komentarze"), 1);
-        //template.convertAndSend("/post/" + id + "/comments", comment);
-       // template.convertAndSend("/comment", comment);
-        template.convertAndSend("/globalStatistic", comment);
+
+        template.convertAndSend("/post/" + id + "/comments", "");
+        template.convertAndSend("/comment", "");
+        template.convertAndSend("/globalStatistic", "");
 
         return new ResponseEntity<Comment>(HttpStatus.OK);
     }

@@ -49,7 +49,7 @@ public class HomeController
         usersService.add(user);
         globalStatisticsService.increment(globalStatisticsService.getByTitle("Zarejestrowanych"), 1);
 
-        template.convertAndSend("/user");
+        template.convertAndSend("/user", "");
 
         return this.path + "register";
     }

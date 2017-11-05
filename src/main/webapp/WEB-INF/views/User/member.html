@@ -9,7 +9,7 @@
                                <b th:text="${user.username}"></b>
                            </h2>
                         </div>
-                        <div class="member-active-text" th:text="${user.active == 0 ? 'Offline' : 'Online'}"></div>
+                        <div id="userStatus" data-active="1" th:attr="user-id=${user.id}" class="member-active-text" th:text="${user.active == 0 ? 'Offline' : 'Online'}"></div>
                     </center>
                 </div>
                 <img th:src="${'/resources/img/' + user.pathImg}" class="member-img"/>
