@@ -35,7 +35,7 @@
 <div th:fragment="forumPostsFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
     <div class="panel panel-default">
         <div class="panel-body" id="postsCategoryComponent" th:attr="data-c=${category.id}">
-            <span v-for="post in postsCategory">
+            <span v-for="post in dataArray">
                 <div th:replace="elements/forum :: postsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 <hr/>
             </span>

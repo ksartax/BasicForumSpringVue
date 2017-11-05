@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div th:fragment="memberFragment" xmlns:th="http://www.w3.org/1999/xhtml" v-for="user in users">
+<div th:fragment="memberFragment" xmlns:th="http://www.w3.org/1999/xhtml" v-for="user in dataArray">
     <div class="member-item">
         <img v-bind:src="'/resources/img/' + user.pathImg" class="img-rounded"/>
         <div class="member-text">

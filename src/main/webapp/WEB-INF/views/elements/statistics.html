@@ -7,7 +7,7 @@
     <hr/>
 
     <div id="globalStatisticsComponent">
-        <div class="statistic" v-for="globalStatistic in globalStatistics">
+        <div class="statistic" v-for="globalStatistic in dataArray">
             <span class="glyphicon glyphicon-pencil text-container">
                 <span v-html="globalStatistic.title"></span> <span class="count" v-html="' ' + globalStatistic.count">  </span>
             </span>

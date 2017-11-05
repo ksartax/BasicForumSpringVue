@@ -11,7 +11,7 @@
             <b>Kategorie</b>
 
             <span class="elements" id="categoriesComponent">
-                <div class="element" v-for="category in categories">
+                <div class="element" v-for="category in dataArray">
                     <span v-html="category.title"> </span> <span v-html="'(' + category.postsCount + ')'"> </span>
                 </div>
             </span>

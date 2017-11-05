@@ -1,9 +1,11 @@
 package com.controllers;
 
 import com.models.User;
+import com.service.CategoriesService;
 import com.service.GlobalStatisticsService;
 import com.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +26,8 @@ public class HomeController
     UsersService usersService;
     @Autowired
     private GlobalStatisticsService globalStatisticsService;
+    @Autowired
+    private SimpMessagingTemplate template;
 
     @RequestMapping(path = "/")
     public String index()
@@ -44,6 +48,8 @@ public class HomeController
     {
         usersService.add(user);
         globalStatisticsService.increment(globalStatisticsService.getByTitle("Zarejestrowanych"), 1);
+
+        template.convertAndSend("/user");
 
         return this.path + "register";
     }

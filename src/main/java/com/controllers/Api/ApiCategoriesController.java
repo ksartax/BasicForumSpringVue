@@ -57,7 +57,8 @@ public class ApiCategoriesController
     {
         categoriesService.add(category);
         globalStatisticsService.increment(globalStatisticsService.getByTitle("Kategorie"), 1);
-//        template.convertAndSend("/post/1/comments", comment);
+        template.convertAndSend("/category/level/0");
+        template.convertAndSend("/globalStatistic");
 
         return new ResponseEntity<Category>(HttpStatus.OK);
     }

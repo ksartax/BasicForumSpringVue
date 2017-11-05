@@ -43,7 +43,7 @@ public class CategoriesServiceImpl implements CategoriesService
     }
 
     public Category add(Category category) {
-        category.setLevel(1);
+        category.setLevel(0);
         category.setUser(usersDao.findByUserName((new Auth().getLoginUser()).getUsername()));
 
         return categoriesDao.add(category);

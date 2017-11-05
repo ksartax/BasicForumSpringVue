@@ -5,7 +5,7 @@
         </div>
 
         <div class="panel-body" id="postsComponent" data-i="1">
-            <span v-for="post in posts">
+            <span v-for="post in dataArray">
                 <div th:replace="elements/activityPosts :: activityPostFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 <hr/>
             </span>

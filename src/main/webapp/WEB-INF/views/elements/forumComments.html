@@ -4,7 +4,7 @@
         </div>
 
         <div class="panel-body" id="commentsForumComponent" th:attr="data-i=${post.id}">
-            <span v-for="comment in commentsForum">
+            <span v-for="comment in dataArray">
                 <div th:replace="elements/forumComments :: commentFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 <hr/>
             </span>

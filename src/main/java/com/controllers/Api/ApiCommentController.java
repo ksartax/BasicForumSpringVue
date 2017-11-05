@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -30,9 +31,11 @@ public class ApiCommentController
     @RequestMapping(path = "/add/post/{id}", method = RequestMethod.POST)
     public ResponseEntity<Comment> add(@RequestBody Comment comment, @PathVariable("id") int id)
     {
-          commentsService.add(comment, id);
-          globalStatisticsService.increment(globalStatisticsService.getByTitle("Komentarze"), 1);
-//        template.convertAndSend("/post/1/comments", comment);
+        commentsService.add(comment, id);
+        globalStatisticsService.increment(globalStatisticsService.getByTitle("Komentarze"), 1);
+        //template.convertAndSend("/post/" + id + "/comments", comment);
+       // template.convertAndSend("/comment", comment);
+        template.convertAndSend("/globalStatistic", comment);
 
         return new ResponseEntity<Comment>(HttpStatus.OK);
     }

@@ -26,8 +26,6 @@ public class ApiPostController
     @Autowired
     private CommentsService commentsService;
     @Autowired
-    private CategoriesService categoriesService;
-    @Autowired
     private GlobalStatisticsService globalStatisticsService;
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
@@ -48,8 +46,9 @@ public class ApiPostController
         postsService.add(post, id);
         globalStatisticsService.increment(globalStatisticsService.getByTitle("Posty"), 1);
 
-       // template.convertAndSend("/category/posts", post);
-       // template.convertAndSend("/globalStatistic");
+        template.convertAndSend("/category/" + id + "/posts");
+        template.convertAndSend("/post");
+        template.convertAndSend("/globalStatistic");
 
         return new ResponseEntity<Post>(HttpStatus.OK);
     }

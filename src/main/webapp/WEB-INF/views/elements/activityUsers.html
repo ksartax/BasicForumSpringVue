@@ -5,7 +5,7 @@
         </div>
 
         <div class="panel-body" id="commentsComponent" data-i="1">
-            <span v-for="comment in comments">
+            <span v-for="comment in dataArray">
                 <div th:replace="elements/activityUsers :: activityUserFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 <hr/>
             </span>

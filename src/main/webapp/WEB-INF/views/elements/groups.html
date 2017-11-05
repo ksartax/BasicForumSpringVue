@@ -11,20 +11,20 @@
     </div>
 </div>
 
-<div th:fragment="groupFragment" xmlns:th="http://www.w3.org/1999/xhtml" v-for="group in groups">
-    <div class="group-item">
-        <img v-bind:src="'/resources/img/' + group.pathImg" class="img-rounded img-height-50"/>
-        <div class="group-text">
-            <span>
-                <a v-bind:href="'/group/member/' + group.id" v-html="group.name"> </a>
-            </span>
-            <span>
-               <div class="group-text-friends">
-                   <span v-html="group.memberCount + ' osób'"> </span>
-               </div>
-            </span>
-        </div>
-    </div>
+<div th:fragment="groupFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+    <!--<div class="group-item">-->
+        <!--<img v-bind:src="'/resources/img/' + group.pathImg" class="img-rounded img-height-50"/>-->
+        <!--<div class="group-text">-->
+            <!--<span>-->
+                <!--<a v-bind:href="'/group/member/' + group.id" v-html="group.name"> </a>-->
+            <!--</span>-->
+            <!--<span>-->
+               <!--<div class="group-text-friends">-->
+                   <!--<span v-html="group.memberCount + ' osób'"> </span>-->
+               <!--</div>-->
+            <!--</span>-->
+        <!--</div>-->
+    <!--</div>-->
 </div>
 
 <div th:fragment="group2Fragment" xmlns:th="http://www.w3.org/1999/xhtml" class="group-item">
