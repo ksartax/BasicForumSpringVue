@@ -2,7 +2,6 @@ package com.service;
 
 import com.configurations.Auth;
 import com.dao.CommentsDao;
-import com.dao.GroupsDao;
 import com.dao.PostsDao;
 import com.dao.UsersDao;
 import com.models.Comment;
@@ -24,8 +23,8 @@ public class CommentsServiceImpl implements CommentsService
     @Autowired
     private UsersDao usersDao;
 
-    public List<Comment> getAll() {
-        return commentsDao.getAll();
+    public List<Comment> getAll(int limit) {
+        return commentsDao.getAll(limit);
     }
 
     public List<Comment> getAllByUserId(int id) {

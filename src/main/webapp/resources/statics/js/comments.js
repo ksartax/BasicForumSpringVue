@@ -8,9 +8,9 @@ var commentsElements = new Vue({
             'Content-Type': 'application/json',
             'Accept-Language': 'application/json'
         },
-        active: '#postsComponent',
+        active: '#commentsComponent',
         subscribe: '/comment',
-        url: 'http://localhost:8080/api/comment/'
+        url: 'http://localhost:8080/api/comment/?limit=5'
     },
     methods: {
         getData: function () {

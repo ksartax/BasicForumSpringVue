@@ -40,12 +40,6 @@ public class ApiCategoriesController
         return this.postsService.getAllByCategoryId(id);
     }
 
-    @RequestMapping(path = "/generals", method = RequestMethod.GET)
-    public List<Category> generals()
-    {
-        return this.categoriesService.getByLevel(Category.GENERAL);
-    }
-
     @RequestMapping(path = "/basics", method = RequestMethod.GET)
     public List<Category> basics()
     {

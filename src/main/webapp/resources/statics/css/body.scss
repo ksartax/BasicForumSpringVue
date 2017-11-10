@@ -31,6 +31,24 @@ body {
     text-align: center;
   }
 
+  .display-inline {
+    display: inline-grid;
+  }
+
+  .members-itemDisMar {
+    display: table;
+    margin: auto;
+  }
+
+  .logout-form {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .display-inline-flex {
+    display: inline-flex;
+  }
+
   .forum-button-container {
     padding-top: 2em;
     .forum-button {
@@ -40,12 +58,20 @@ body {
     }
   }
 
+  .div-fix {
+    padding-bottom: 10px;
+  }
+
   .font-size-big {
     font-size: 24px;
   }
 
   .padding-bottom-3p {
     padding-bottom: 3%;
+  }
+
+  .padding-left-10p {
+    padding-left: 10px;
   }
 
   .img-height-100p {

@@ -1,0 +1,10 @@
+<div th:fragment="postsCategoryFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
+    <div class="panel panel-default">
+        <div class="panel-body" id="postsCategoryComponent" th:attr="category-id=${category.id}" data-active="1">
+            <span v-for="post in dataArray">
+                <div th:replace="Post/elements/PostCategory :: postCategoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                <hr/>
+            </span>
+        </div>
+    </div>
+</div>

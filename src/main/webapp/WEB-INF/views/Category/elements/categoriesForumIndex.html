@@ -1,0 +1,15 @@
+<div th:fragment="categoriesForumIndexFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
+    <div class="panel panel-default">
+        <div class="panel-heading header-title">
+            <b>
+                <span>Kategorie</span>
+            </b>
+        </div>
+
+        <div class="panel-body" id="categoriesForumComponent" data-active="1">
+            <span v-for="category in dataArray">
+                <div th:replace="Category/elements/category :: categoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+            </span>
+        </div>
+    </div>
+</div>

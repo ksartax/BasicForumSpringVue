@@ -1,0 +1,15 @@
+<div th:fragment="postCategoryFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="row">
+        <div class="col-sm-8">
+            <p>
+                <b>
+                    <a v-bind:href="'/forum/post/' + post.id"> <span v-html="post.title"></span> </a>
+                </b>
+            </p>
+            <div v-html="post.description"></div>
+        </div>
+        <div class="col-sm-4 center">
+            <div v-html="'Komentarze : ' + post.commentCount"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div th:fragment="postsFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component activitys">
+    <div class="panel panel-default">
+        <div class="panel-heading header-title center">
+            Posty
+        </div>
+
+        <div class="panel-body">
+            <span v-for="post in dataArray">
+                <div th:replace="Post/elements/post :: postFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+            </span>
+        </div>
+    </div>
+</div>

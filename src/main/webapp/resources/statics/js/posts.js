@@ -10,7 +10,7 @@ var postsElements = new Vue({
         },
         active: '#postsComponent',
         subscribe: '/post',
-        url: 'http://localhost:8080/api/post/'
+        url: 'http://localhost:8080/api/post/?limit=5'
     },
     methods: {
         getData: function () {

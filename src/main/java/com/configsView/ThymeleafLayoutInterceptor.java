@@ -17,7 +17,6 @@ public class ThymeleafLayoutInterceptor extends HandlerInterceptorAdapter
             return;
         }
 
-        request.setAttribute("loginUser", (new Auth().getLoginUser()));
         request.setAttribute("role", (new Auth().getRole()));
         request.setAttribute("body", modelAndView.getViewName());
         modelAndView.setViewName(DEFAULT_TEMPLATE);

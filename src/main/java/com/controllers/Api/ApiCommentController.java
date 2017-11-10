@@ -23,9 +23,9 @@ public class ApiCommentController
     private GlobalStatisticsService globalStatisticsService;
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public List<Comment> index()
+    public List<Comment> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit)
     {
-        return this.commentsService.getAll();
+        return this.commentsService.getAll(limit);
     }
 
     @RequestMapping(path = "/add/post/{id}", method = RequestMethod.POST)

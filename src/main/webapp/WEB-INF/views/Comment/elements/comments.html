@@ -1,0 +1,13 @@
+<div th:fragment="commentsFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
+    <div class="panel panel-default">
+        <div class="panel-heading header-title center">
+            Komentarze
+        </div>
+
+        <div class="panel-body" id="commentsFragment">
+            <span v-for="comment in dataArray">
+                <div th:replace="Comment/elements/comment :: commentFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+            </span>
+        </div>
+    </div>
+</div>

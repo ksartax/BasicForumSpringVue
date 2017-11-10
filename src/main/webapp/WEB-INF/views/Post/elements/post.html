@@ -1,0 +1,17 @@
+<div th:fragment="postFragment" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <div class="activity-item">
+        <img v-bind:src="'/resources/img/' + post.user.pathImg" class="img-rounded"/>
+        <div class="text-container">
+            <span>
+                <a v-bind:href="'/user/member/' + post.user.id"> <b v-html="post.user.username"></b> </a>
+                <a v-bind:href="'/forum/post/' + post.id">
+                    <span v-html="'Temat: ' + post.title"></span>
+                </a>
+            </span>
+            <span>
+                <div v-html="post.description"></div>
+            </span>
+        </div>
+    </div>
+    <hr/>
+</div>

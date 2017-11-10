@@ -42,8 +42,8 @@ var categoriesTemplateElements = new Vue({
     }
 });
 
-var categoriesGeneralElements = new Vue({
-    el: '#categoriesGeneralComponent',
+var categoriesForumElements = new Vue({
+    el: '#categoriesForumComponent',
     data: {
         dataArray: [],
         method: "GET",
@@ -52,60 +52,7 @@ var categoriesGeneralElements = new Vue({
             'Content-Type': 'application/json',
             'Accept-Language': 'application/json'
         },
-        active: '#categoriesGeneralComponent',
-        subscribe: '/category/level/1',
-        url: 'http://localhost:8080/api/category/generals'
-    },
-    methods: {
-        getData: function () {
-            var self = this;
-            if ($(self.active).attr("data-active") === undefined) {
-                return;
-            }
-
-            fetch(self.url, {
-                method: self.method,
-                headers: self.headers
-            })
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (response) {
-                    self.reloadData(response);
-                });
-        },
-        reloadData: function (data) {
-            while (this.dataArray.length > 0) {
-                this.dataArray.pop();
-            }
-            for (var i = 0; i < data.length; i++) {
-                this.dataArray.push(data[i]);
-            }
-        },
-        subscribeSocket: function () {
-            var self = this;
-            if ($(self.active).attr("data-active") === undefined) {
-                return;
-            }
-
-            stompClient.subscribe(self.subscribe, function (data) {
-                self.getData();
-            });
-        }
-    }
-});
-
-var categoriesBasicElements = new Vue({
-    el: '#categoriesBasicComponent',
-    data: {
-        dataArray: [],
-        method: "GET",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Accept-Language': 'application/json'
-        },
-        active: '#categoriesGeneralComponent',
+        active: '#categoriesForumComponent',
         subscribe: '/category/level/0',
         url: 'http://localhost:8080/api/category/basics'
     },

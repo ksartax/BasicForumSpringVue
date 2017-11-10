@@ -4,13 +4,16 @@
             <b th:text="${post.title}"></b>
         </p>
     </div>
-    <div th:replace="elements/forumComments :: forumComments" xmlns:th="http://www.w3.org/1999/xhtml"></div>
 
-    <span th:if="${loginUser != null}">
-        <div th:replace="elements/forumComments :: forumAddComments" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <span id="commentsForumComponent" th:attr="post-id=${post.id}" data-active="1">
+        <div th:replace="Comment/elements/comments :: commentsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
     </span>
 
-    <span th:if="${loginUser == null}">
-        <div th:replace="elements/forumComments :: forumAddCommentsOffline" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <span th:if="${role != null}">
+        <div th:replace="Comment/elements/formAddComment :: formAddCommentFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    </span>
+
+    <span th:if="${role == null}">
+        <div th:replace="Comment/elements/offlineFormAddComment :: offlineFormAddCommentFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
     </span>
 </div>

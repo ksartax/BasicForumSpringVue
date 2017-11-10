@@ -1,7 +1,15 @@
 <div th:fragment="bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml">
-    <div th:replace="elements/slider :: sliderFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <div th:replace="Slider/slider :: sliderFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+
     <br/>
-    <div th:replace="elements/activityUsers :: activityUsersFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+
+    <span id="commentsComponent" data-active="1">
+        <div th:replace="Comment/elements/comments :: commentsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    </span>
+
     <br/>
-    <div th:replace="elements/activityPosts :: activityPostsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+
+    <span id="postsComponent" data-active="1">
+        <div th:replace="Post/elements/posts :: postsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    </span>
 </div>

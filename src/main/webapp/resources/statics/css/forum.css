@@ -1,5 +1,7 @@
 .forum .forum-element .header-title {
   background-color: #33363c !important;
   color: white; }
+.forum .forum-element hr {
+  margin-top: 0; }
 
 /*# sourceMappingURL=forum.css.map */

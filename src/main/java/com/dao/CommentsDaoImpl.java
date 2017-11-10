@@ -11,9 +11,9 @@ import java.util.List;
 public class CommentsDaoImpl extends AbstractDao<Integer, Comment> implements CommentsDao
 {
     @SuppressWarnings("unchecked")
-    public List<Comment> getAll()
+    public List<Comment> getAll(int limit)
     {
-        return (List<Comment>) this.createEntityCriteria().list();
+        return (List<Comment>) this.createEntityCriteria().setMaxResults(limit).list();
     }
 
     @SuppressWarnings("unchecked")

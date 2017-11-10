@@ -11,9 +11,9 @@ import java.util.List;
 public class PostsDaoImpl extends AbstractDao<Integer, Post> implements PostsDao
 {
     @SuppressWarnings("unchecked")
-    public List<Post> getAll()
+    public List<Post> getAll(int limit)
     {
-        return (List<Post>) this.createEntityCriteria().list();
+        return (List<Post>) this.createEntityCriteria().setMaxResults(limit).list();
     }
 
     @SuppressWarnings("unchecked")

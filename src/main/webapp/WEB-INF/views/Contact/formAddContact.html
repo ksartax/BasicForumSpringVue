@@ -1,0 +1,21 @@
+<form th:fragment="formAddContactFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component">
+    <div class="form-group">
+        <label for="username">Twoje imie:</label>
+        <input type="text" class="form-control" id="username">
+    </div>
+    <div class="form-group">
+        <label for="email">Twój email:</label>
+        <input type="email" class="form-control" id="email">
+    </div>
+    <div class="form-group">
+        <label for="subject">Twój temat:</label>
+        <input type="text" class="form-control" id="subject">
+    </div>
+    <label for="comment">Twoja wiadomość:</label>
+    <textarea class="form-control" rows="5" id="comment"></textarea>
+    <center>
+        <div class="forum-button-container">
+            <button type="submit" class="btn btn-default forum-button">Wyślij</button>
+        </div>
+    </center>
+</form>

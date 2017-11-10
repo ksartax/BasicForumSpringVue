@@ -1,0 +1,16 @@
+<div th:fragment="userFragment" xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <div class="member-item">
+        <img v-bind:src="'/resources/img/' + user.pathImg" class="img-rounded"/>
+        <div class="member-text">
+                <span>
+                    <a v-bind:href="'/user/member/' + user.id" v-html="user.username"> </a>
+                </span>
+            <span>
+                <div class="member-text-friends">
+                    <span v-html="user.statistics.friendsCount + ' przyjaciuł'"> </span>
+                </div>
+            </span>
+        </div>
+    </div>
+</div>

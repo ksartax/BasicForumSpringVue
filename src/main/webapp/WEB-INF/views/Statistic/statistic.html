@@ -1,0 +1,5 @@
+<div th:fragment="statisticFragment" class="statistic" xmlns:th="http://www.w3.org/1999/xhtml">
+    <span class="glyphicon glyphicon-pencil text-container">
+        <span v-html="globalStatistic.title"></span> <span class="count" v-html="' ' + globalStatistic.count">  </span>
+    </span>
+</div>

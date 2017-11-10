@@ -3,30 +3,31 @@
     <head>
         <div th:replace="fragments/header :: headerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
     </head>
+
     <body id="body-main">
         <div class="container-fluid page-wrapper">
+
             <nav th:replace="fragments/nav :: navFragment" xmlns:th="http://www.w3.org/1999/xhtml"></nav>
 
             <div class="row">
-                <div class="col-sm-3">
-                    <div th:replace="elements/search :: searchFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                <div class="col-sm-3 div-fix">
+                    <div th:replace="Search/search :: searchFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                     <br/>
-                    <div th:replace="elements/members :: membersFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-                    <!--<br/>-->
-                    <!--<div th:replace="elements/groups :: groupsFragment (groups=${groups})" xmlns:th="http://www.w3.org/1999/xhtml"></div>-->
+                    <div th:replace="User/elements/users :: usersFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-6 div-fix">
                     <div th:replace="${body} :: bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                 </div>
 
-                <div class="col-sm-3">
-                    <span th:if="${loginUser == null}">
-                        <div th:replace="elements/login :: loginFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                <div class="col-sm-3 div-fix">
+                    <span th:if="${role == 'ROLE_ANONYMOUS'}">
+                        <div th:replace="Login/login :: loginFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
                         <br/>
                     </span>
 
-                    <div th:replace="elements/statistics :: statisticsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                    <div th:replace="Statistic/statistics :: statisticsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+
                 </div>
             </div>
 

@@ -5,19 +5,18 @@
         </b>
     </span>
 
-    <!--<span th:replace="elements/lists :: listElementCountFragment" xmlns:th="http://www.w3.org/1999/xhtml"></span>-->
-
     <hr/>
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="member-container" id="usersMembersComponent" data-active="1">
 
-                <div th:replace="elements/members :: memberFragment" xmlns:th="http://www.w3.org/1999/xhtml">
-                    <hr/>
-                </div>
-
-                <!--<div th:replace="elements/lists :: listElementPagerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>-->
+    <div class="member-container members-itemDisMar" id="usersMembersComponent" data-active="1">
+        <div class="member-container">
+            <div class="row">
+                <span v-for="(user, key) in dataArray">
+                    <div class="col-sm-6">
+                        <div th:replace="User/elements/user :: userFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+                    </div>
+                </span>
             </div>
         </div>
     </div>
+
 </div>
