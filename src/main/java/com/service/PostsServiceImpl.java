@@ -25,23 +25,28 @@ public class PostsServiceImpl implements PostsService
     @Autowired
     private CategoriesDao categoriesDao;
 
-    public List<Post> getAll(int limit) {
+    public List<Post> getAll(int limit)
+    {
         return this.postsDao.getAll(limit);
     }
 
-    public List<Post> getAllByUserId(int id) {
+    public List<Post> getAllByUserId(int id)
+    {
         return postsDao.getAllByUserId(id);
     }
 
-    public List<Post> getAllByCategoryId(int id) {
+    public List<Post> getAllByCategoryId(int id)
+    {
         return postsDao.getAllByCategoryId(id);
     }
 
-    public Post get(int id) {
+    public Post get(int id)
+    {
         return postsDao.get(id);
     }
 
-    public Post add(Post post, int categoryId) {
+    public Post add(Post post, int categoryId)
+    {
         post.setUser(usersDao.findByUserName((new Auth().getLoginUser()).getUsername()));
         post.getUser().getStatistics().incrementPostCount(1);
 

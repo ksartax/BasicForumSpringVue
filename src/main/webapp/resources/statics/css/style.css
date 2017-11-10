@@ -1,7 +1,14 @@
-.activitys .activity-item {
-  display: flex; }
-  .activitys .activity-item .text-container {
-    padding-left: 10px; }
+@media screen and (max-width: 480px) {
+  .activitys .activity-item .date-float {
+    text-align: center; } }
+@media screen and (min-width: 480px) {
+  .activitys .activity-item .date-float {
+    float: right; } }
+.activitys .activity-item .text-container {
+  padding-left: 10px; }
+  @media screen and (max-width: 480px) {
+    .activitys .activity-item .text-container {
+      text-align: center; } }
 
 body {
   background: #f0f0ed; }
@@ -49,6 +56,8 @@ body {
     padding-left: 10px; }
   body .img-height-100p {
     max-height: 100%; }
+  body .width-100 {
+    width: 100%; }
 
 footer .icon {
   font-size: 5em; }

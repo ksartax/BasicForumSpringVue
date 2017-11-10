@@ -9,11 +9,11 @@
         <div th:replace="Comment/elements/comments :: commentsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
     </span>
 
-    <span th:if="${role != null}">
+    <span th:if="${role == 'ROLE_USER'}">
         <div th:replace="Comment/elements/formAddComment :: formAddCommentFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
     </span>
 
-    <span th:if="${role == null}">
+    <span th:if="${role == 'ROLE_ANONYMOUS'}">
         <div th:replace="Comment/elements/offlineFormAddComment :: offlineFormAddCommentFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
     </span>
 </div>

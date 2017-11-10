@@ -14,6 +14,9 @@ public class FriendsDaoImpl extends AbstractDao<Integer, Friend> implements Frie
     public List<Friend> getAllByUser(int id)
     {
         return (List<Friend>) createEntityCriteria()
-                .add(Restrictions.eq("myUser.id", id)).list();
+                .add(
+                        Restrictions.eq("myUser.id", id)
+                )
+                .list();
     }
 }

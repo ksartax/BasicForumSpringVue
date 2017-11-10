@@ -1,17 +1,12 @@
 package com.controllers.Api;
 
-import com.configurations.Auth;
-import com.models.Category;
 import com.models.Comment;
 import com.models.Post;
-import com.models.User;
 import com.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -34,7 +29,7 @@ public class ApiPostController
         return this.postsService.getAll(limit);
     }
 
-    @RequestMapping(path = "/{id}/comments")
+    @RequestMapping(path = "/{id}/comments", method = RequestMethod.GET)
     public List<Comment> posts(@PathVariable("id") int id)
     {
         return this.commentsService.getAllByPostId(id);

@@ -8,11 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
-@RestController
 @RequestMapping(path = "/api/comment")
+@RestController
 public class ApiCommentController
 {
     @Autowired
@@ -29,7 +28,7 @@ public class ApiCommentController
     }
 
     @RequestMapping(path = "/add/post/{id}", method = RequestMethod.POST)
-    public ResponseEntity<Comment> add(@RequestBody Comment comment, @PathVariable("id") int id)
+    public ResponseEntity add(@RequestBody Comment comment, @PathVariable("id") int id)
     {
         commentsService.add(comment, id);
         globalStatisticsService.increment(globalStatisticsService.getByTitle("Komentarze"), 1);
@@ -38,6 +37,6 @@ public class ApiCommentController
         template.convertAndSend("/comment", "");
         template.convertAndSend("/globalStatistic", "");
 
-        return new ResponseEntity<Comment>(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

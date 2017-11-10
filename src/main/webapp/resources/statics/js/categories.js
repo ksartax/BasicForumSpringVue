@@ -54,7 +54,7 @@ var categoriesForumElements = new Vue({
         },
         active: '#categoriesForumComponent',
         subscribe: '/category/level/0',
-        url: 'http://localhost:8080/api/category/basics'
+        url: 'http://localhost:8080/api/category/'
     },
     methods: {
         getData: function () {

@@ -7,6 +7,5 @@ public interface CategoriesDao
 {
     public List<Category> getAll();
     public Category get(int id);
-    public List<Category> getByLevel(int level);
     public Category add(Category category);
 }

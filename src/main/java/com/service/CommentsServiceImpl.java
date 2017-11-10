@@ -19,23 +19,27 @@ public class CommentsServiceImpl implements CommentsService
     @Autowired
     private CommentsDao commentsDao;
     @Autowired
-    PostsDao postsDao;
+    private PostsDao postsDao;
     @Autowired
     private UsersDao usersDao;
 
-    public List<Comment> getAll(int limit) {
+    public List<Comment> getAll(int limit)
+    {
         return commentsDao.getAll(limit);
     }
 
-    public List<Comment> getAllByUserId(int id) {
+    public List<Comment> getAllByUserId(int id)
+    {
         return commentsDao.getAllByUserId(id);
     }
 
-    public List<Comment> getAllByPostId(int postId) {
+    public List<Comment> getAllByPostId(int postId)
+    {
         return commentsDao.getAllByPostId(postId);
     }
 
-    public Comment add(Comment comment, int postId) {
+    public Comment add(Comment comment, int postId)
+    {
         comment.setUser(usersDao.findByUserName((new Auth().getLoginUser()).getUsername()));
         comment.getUser().getStatistics().incrementCommentCount(1);
 

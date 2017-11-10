@@ -17,22 +17,32 @@ public class PostsDaoImpl extends AbstractDao<Integer, Post> implements PostsDao
     }
 
     @SuppressWarnings("unchecked")
-    public List<Post> getAllByUserId(int id) {
+    public List<Post> getAllByUserId(int id)
+    {
         return (List<Post>) createEntityCriteria()
-                .add(Restrictions.eq("user.id", id)).list();
+                .add(
+                        Restrictions.eq("user.id", id)
+                )
+                .list();
     }
 
     @SuppressWarnings("unchecked")
-    public List<Post> getAllByCategoryId(int id) {
+    public List<Post> getAllByCategoryId(int id)
+    {
         return (List<Post>) createEntityCriteria()
-                .add(Restrictions.eq("category.id", id)).list();
+                .add(
+                        Restrictions.eq("category.id", id)
+                )
+                .list();
     }
 
-    public Post get(int id) {
+    public Post get(int id)
+    {
         return getByKey(id);
     }
 
-    public Post add(Post post) {
+    public Post add(Post post)
+    {
         persist(post);
 
         return post;

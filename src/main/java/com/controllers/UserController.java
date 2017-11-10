@@ -7,8 +7,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping(path = "/members")
 @Controller
-@RequestMapping(path = "/user")
 public class UserController
 {
     private String path = "User/";
@@ -19,6 +19,12 @@ public class UserController
     CommentsService commentsService;
     @Autowired
     FriendsService friendsService;
+
+    @RequestMapping(path = "")
+    public String index()
+    {
+        return this.path + "index";
+    }
 
     @RequestMapping(path = "/member/{id}")
     public String member(@PathVariable("id") int id, ModelMap modelMap)

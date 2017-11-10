@@ -16,21 +16,24 @@ public class UsersDaoImpl extends AbstractDao<Integer, User> implements UsersDao
         return (List<User>) createEntityCriteria().setMaxResults(limit).list();
     }
 
-    public User get(int id) {
+    public User get(int id)
+    {
         return this.getByKey(id);
     }
 
-    public User findByUserName(String username) {
-        List<User> list = (List<User>) createEntityCriteria()
-                .add(Restrictions.eq("username", username)).list();
-
-        return list.get(0);
+    public User findByUserName(String username)
+    {
+        return (User) createEntityCriteria()
+                .add(
+                        Restrictions.eq("username", username)
+                )
+                .uniqueResult();
     }
 
-    public User add(User user) {
+    public User add(User user)
+    {
         this.persist(user);
 
         return user;
     }
-
 }

@@ -1,10 +1,8 @@
 package com.controllers.Api;
 
 import com.models.Category;
-import com.models.Comment;
 import com.models.Post;
 import com.service.CategoriesService;
-import com.service.CommentsService;
 import com.service.GlobalStatisticsService;
 import com.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/category")
-public class ApiCategoriesController
+public class ApiCategoryController
 {
     @Autowired
     private SimpMessagingTemplate template;
@@ -28,7 +25,7 @@ public class ApiCategoriesController
     @Autowired
     private GlobalStatisticsService globalStatisticsService;
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @RequestMapping(path = "", method = RequestMethod.GET)
     public List<Category> index()
     {
         return this.categoriesService.getAll();
@@ -40,21 +37,15 @@ public class ApiCategoriesController
         return this.postsService.getAllByCategoryId(id);
     }
 
-    @RequestMapping(path = "/basics", method = RequestMethod.GET)
-    public List<Category> basics()
-    {
-        return this.categoriesService.getByLevel(Category.BASIC);
-    }
-
     @RequestMapping(path = "/add", method = RequestMethod.POST)
-    public ResponseEntity<Category> add(@RequestBody Category category)
+    public ResponseEntity add(@RequestBody Category category)
     {
         categoriesService.add(category);
         globalStatisticsService.increment(globalStatisticsService.getByTitle("Kategorie"), 1);
 
-        template.convertAndSend("/category/level/0", "");
+        template.convertAndSend("/category", "");
         template.convertAndSend("/globalStatistic", "");
 
-        return new ResponseEntity<Category>(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

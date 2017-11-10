@@ -8,7 +8,8 @@ import javax.transaction.Transactional;
 @Transactional
 public class StatisticsDaoImpl extends AbstractDao<Integer, Statistic> implements StatisticsDao
 {
-    public Statistic add(Statistic statistic) {
+    public Statistic add(Statistic statistic)
+    {
         int key = (Integer) getSession().save(statistic);
 
         return this.getByKey(key);

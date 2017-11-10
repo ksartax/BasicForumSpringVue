@@ -4,7 +4,7 @@
             Posty
         </div>
 
-        <div class="panel-body">
+        <div class="panel-body" style="overflow: scroll; max-height: 500px; overflow-x:hidden;">
             <span v-for="post in dataArray">
                 <div th:replace="Post/elements/post :: postFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
             </span>

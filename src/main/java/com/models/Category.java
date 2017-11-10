@@ -33,7 +33,7 @@ public class Category implements Serializable
     private User user;
 
     @Column(name = "level")
-    private int level;
+    private int level = BASIC;
 
     @Column(name = "created_at")
     @Temporal(value = TemporalType.TIMESTAMP)

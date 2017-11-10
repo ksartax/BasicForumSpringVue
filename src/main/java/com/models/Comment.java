@@ -21,7 +21,7 @@ public class Comment implements Serializable
     @JoinColumn(name="post_id", nullable = true)
     private Post post;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="user_id", nullable = true)
     private User user;
 

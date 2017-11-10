@@ -4,8 +4,8 @@
             <b th:text="${category.title}"></b>
         </p>
     </div>
-    <span th:if="${role != null}">
+    <span th:if="${role == 'ROLE_USER'}">
         <div th:replace="Post/elements/formAddPost :: formAddPostFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
     </span>
     <div th:replace="Post/elements/postsCategory :: postsCategoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-</div>
+</div>  

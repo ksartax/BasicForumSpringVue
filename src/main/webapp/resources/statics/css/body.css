@@ -44,3 +44,5 @@ body {
     padding-left: 10px; }
   body .img-height-100p {
     max-height: 100%; }
+  body .width-100 {
+    width: 100%; }

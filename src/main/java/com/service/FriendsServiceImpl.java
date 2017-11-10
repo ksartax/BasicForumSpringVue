@@ -1,8 +1,6 @@
 package com.service;
 
-import com.dao.CommentsDao;
 import com.dao.FriendsDao;
-import com.models.Comment;
 import com.models.Friend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,7 +17,8 @@ public class FriendsServiceImpl implements FriendsService
     @Autowired
     private FriendsDao friendsDao;
 
-    public List<Friend> getAllByUser(int id) {
+    public List<Friend> getAllByUser(int id)
+    {
         return friendsDao.getAllByUser(id);
     }
 }

@@ -2,6 +2,8 @@ package com.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
 @Table(name = "Users")

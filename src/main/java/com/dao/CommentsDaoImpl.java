@@ -13,22 +13,33 @@ public class CommentsDaoImpl extends AbstractDao<Integer, Comment> implements Co
     @SuppressWarnings("unchecked")
     public List<Comment> getAll(int limit)
     {
-        return (List<Comment>) this.createEntityCriteria().setMaxResults(limit).list();
+        return (List<Comment>) this.createEntityCriteria()
+                .setMaxResults(limit)
+                .list();
     }
 
     @SuppressWarnings("unchecked")
-    public List<Comment> getAllByUserId(int id) {
+    public List<Comment> getAllByUserId(int id)
+    {
         return (List<Comment>) createEntityCriteria()
-                .add(Restrictions.eq("user.id", id)).list();
+                .add(
+                        Restrictions.eq("user.id", id)
+                )
+                .list();
     }
 
     @SuppressWarnings("unchecked")
-    public List<Comment> getAllByPostId(int postId) {
+    public List<Comment> getAllByPostId(int postId)
+    {
         return (List<Comment>) createEntityCriteria()
-                .add(Restrictions.eq("post.id", postId)).list();
+                .add(
+                        Restrictions.eq("post.id", postId)
+                )
+                .list();
     }
 
-    public Comment add(Comment comment) {
+    public Comment add(Comment comment)
+    {
         this.persist(comment);
 
         return comment;
