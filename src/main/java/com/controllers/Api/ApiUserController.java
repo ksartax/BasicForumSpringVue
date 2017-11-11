@@ -7,18 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
 @RestController()
 @RequestMapping(path = "/api/user")
-public class ApiUserController
-{
+public class ApiUserController {
     @Autowired
     UsersService usersService;
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public List<User> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit)
-    {
+    public List<User> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
         return this.usersService.getAll(limit);
     }
 }

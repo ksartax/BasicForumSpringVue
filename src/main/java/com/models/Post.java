@@ -1,33 +1,41 @@
 package com.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
-@Table(name = "Posts")
-public class Post implements Serializable
-{
+@Table(name = "Posts", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
+public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true)
     private int id;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name="user_id", nullable = true)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name="category_id", nullable = true)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "category_id")
     private Category category;
 
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private Set<Comment> comments;
+
     @Column(name = "title")
+    @NotBlank
     private String title;
 
     @Column(name = "description")
+    @NotBlank
     private String description;
 
     @Column(name = "comment_count")
@@ -107,8 +115,19 @@ public class Post implements Serializable
         this.updatedAt = updatedAt;
     }
 
-    public void incrementCommentCount(int count)
-    {
+    public void incrementCommentCount(int count) {
         this.commentCount += count;
+    }
+
+    public void decrementCommentCount(int count) {
+        this.commentCount -= count;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

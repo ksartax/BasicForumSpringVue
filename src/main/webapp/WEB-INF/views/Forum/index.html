@@ -1,4 +1,4 @@
-<div th:fragment="bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="forum component">
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="bodyFragment" class="forum component">
     <span class="font-size-big">
         <b>
             Forum
@@ -8,7 +8,9 @@
     <hr/>
 
     <span th:if="${role == 'ROLE_ADMIN'}">
-        <div th:replace="Category/elements/formAddCategory :: formAddCategoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+        <div xmlns:th="http://www.w3.org/1999/xhtml"
+             th:replace="Category/elements/formAddCategory :: formAddCategoryFragment"></div>
     </span>
-    <div th:replace="Category/elements/categoriesForumIndex :: categoriesForumIndexFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <div xmlns:th="http://www.w3.org/1999/xhtml"
+         th:replace="Category/elements/categoriesForumIndex :: categoriesForumIndexFragment"></div>
 </div>

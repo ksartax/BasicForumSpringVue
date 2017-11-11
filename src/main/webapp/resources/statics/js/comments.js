@@ -107,6 +107,28 @@ var commentsForumElements = new Vue({
             stompClient.subscribe(self.subscribe, function (data) {
                 self.getData();
             });
+        },
+        remove: function (id) {
+            var header = $("meta[name='_csrf_header']").attr("content");
+            var token = $("meta[name='_csrf']").attr("content");
+            var self = this;
+
+            $.ajax({
+                url: 'http://localhost:8080/api/comment/remove/' + id + '/post/' + self.postId,
+                type: 'DELETE',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(header, token);
+                    xhr.setRequestHeader('Accept', 'application/json');
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.setRequestHeader('Accept-Language', 'application/json');
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status + ": " + thrownError);
+                }
+            });
         }
     }
 });

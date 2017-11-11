@@ -1,4 +1,4 @@
-<div th:fragment="postFragment" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<div xmlns:th="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml" th:fragment="postFragment">
     <div class="activity-item row">
         <div class="col-sm-2">
             <center>
@@ -17,9 +17,6 @@
                     <div v-html="post.description"></div>
                 </span>
             </div>
-            <span th:if="${role == 'ROLE_ADMIN'}">
-                <button type="button" class="btn btn-danger">Wykasuj</button>
-            </span>
         </div>
     </div>
     <hr/>

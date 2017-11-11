@@ -1,4 +1,4 @@
-<div th:fragment="usersFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component members">
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="usersFragment" class="component members">
     <span>
         <b>
             Użytkownicy
@@ -9,7 +9,7 @@
 
     <div class="member-container" id="usersComponent">
         <span v-for="user in dataArray">
-            <div th:replace="User/elements/user :: userFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+            <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="User/elements/user :: userFragment"></div>
         </span>
     </div>
 </div>

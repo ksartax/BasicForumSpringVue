@@ -1,21 +1,24 @@
-<footer th:fragment="footerFragment" class="container-fluid" xmlns:th="http://www.w3.org/1999/xhtml">
+<footer xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="footerFragment" class="container-fluid">
     <div class="row component center">
         <div class="col-sm-4">
-            <span th:replace="fragments/footer/logo :: logoFooterFragment" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+            <span xmlns:th="http://www.w3.org/1999/xhtml"
+                  th:replace="fragments/footer/logo :: logoFooterFragment"></span>
         </div>
 
         <div class="col-sm-4">
-            <span th:replace="Category/elements/categoriesFooter :: categoriesFooterFragment" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+            <span xmlns:th="http://www.w3.org/1999/xhtml"
+                  th:replace="Category/elements/categoriesFooter :: categoriesFooterFragment"></span>
         </div>
 
         <div class="col-sm-4">
-            <span th:replace="fragments/footer/descriptionForum :: descriptionForumFooterFragment" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+            <span xmlns:th="http://www.w3.org/1999/xhtml"
+                  th:replace="fragments/footer/descriptionForum :: descriptionForumFooterFragment"></span>
         </div>
     </div>
 
     <hr/>
 
-    <span th:replace="fragments/footer/created :: createdFooterFragment" xmlns:th="http://www.w3.org/1999/xhtml"></span>
+    <span xmlns:th="http://www.w3.org/1999/xhtml" th:replace="fragments/footer/created :: createdFooterFragment"></span>
 
     <!-- scrip -->
     <script type="application/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>

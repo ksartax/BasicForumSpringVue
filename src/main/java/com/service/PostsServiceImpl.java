@@ -2,7 +2,6 @@ package com.service;
 
 import com.configurations.Auth;
 import com.dao.CategoriesDao;
-import com.dao.GlobalStatisticsDao;
 import com.dao.PostsDao;
 import com.dao.UsersDao;
 import com.models.Post;
@@ -16,8 +15,7 @@ import java.util.List;
 @Service("postsService")
 @ComponentScan(value = "spring.dao")
 @Transactional
-public class PostsServiceImpl implements PostsService
-{
+public class PostsServiceImpl implements PostsService {
     @Autowired
     private PostsDao postsDao;
     @Autowired
@@ -25,28 +23,23 @@ public class PostsServiceImpl implements PostsService
     @Autowired
     private CategoriesDao categoriesDao;
 
-    public List<Post> getAll(int limit)
-    {
+    public List<Post> getAll(int limit) {
         return this.postsDao.getAll(limit);
     }
 
-    public List<Post> getAllByUserId(int id)
-    {
+    public List<Post> getAllByUserId(int id) {
         return postsDao.getAllByUserId(id);
     }
 
-    public List<Post> getAllByCategoryId(int id)
-    {
+    public List<Post> getAllByCategoryId(int id) {
         return postsDao.getAllByCategoryId(id);
     }
 
-    public Post get(int id)
-    {
+    public Post get(int id) {
         return postsDao.get(id);
     }
 
-    public Post add(Post post, int categoryId)
-    {
+    public Post add(Post post, int categoryId) {
         post.setUser(usersDao.findByUserName((new Auth().getLoginUser()).getUsername()));
         post.getUser().getStatistics().incrementPostCount(1);
 
@@ -56,8 +49,12 @@ public class PostsServiceImpl implements PostsService
         return postsDao.add(post);
     }
 
-    public void remove(int id)
-    {
-        postsDao.remove(id);
+    public void remove(int id) {
+        Post post = postsDao.get(id);
+
+        post.getUser().getStatistics().decrementPostCount(1);
+        post.getCategory().decrementPost(1);
+
+        postsDao.remove(post);
     }
 }

@@ -1,36 +1,44 @@
 package com.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
-@Table(name = "Categories")
-public class Category implements Serializable
-{
-    public static int GENERAL = 1;
-    public static int BASIC = 0;
+@Table(name = "Categories", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
+public class Category implements Serializable {
+    public final static int GENERAL = 1;
+    public final static int BASIC = 0;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true)
+    @Column(name = "id", unique = true)
     private int id;
 
     @Column(name = "title")
+    @NotBlank
     private String title;
 
     @Column(name = "description")
+    @NotBlank
     private String description;
 
     @Column(name = "posts_count")
     private int postsCount;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name="user_id", nullable = true)
+    @JoinColumn(name = "user_id")
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private User user;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @JsonBackReference
+    private Set<Post> posts;
 
     @Column(name = "level")
     private int level = BASIC;
@@ -109,8 +117,19 @@ public class Category implements Serializable
         this.level = level;
     }
 
-    public void incrementPost(int count)
-    {
+    public void incrementPost(int count) {
         this.postsCount += count;
+    }
+
+    public void decrementPost(int count) {
+        this.postsCount -= count;
+    }
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
     }
 }

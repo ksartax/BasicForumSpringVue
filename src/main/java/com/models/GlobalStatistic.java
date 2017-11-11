@@ -4,8 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "global_statistics")
-public class GlobalStatistic
-{
+public class GlobalStatistic {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true)
@@ -52,13 +51,11 @@ public class GlobalStatistic
         this.pathImg = pathImg;
     }
 
-    public void incrementCount(int count)
-    {
+    public void incrementCount(int count) {
         this.count = this.count + count;
     }
 
-    public void decrementCount(int count)
-    {
+    public void decrementCount(int count) {
         this.count = this.count - count;
     }
 }

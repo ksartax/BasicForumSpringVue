@@ -1,4 +1,4 @@
-<div th:fragment="statisticsFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component statistics">
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="statisticsFragment" class="component statistics">
     <span>
         <b>
             Statystyki
@@ -8,7 +8,7 @@
 
     <div id="globalStatisticsComponent">
         <span v-for="globalStatistic in dataArray">
-            <div th:replace="Statistic/statistic :: statisticFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+            <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="Statistic/statistic :: statisticFragment"></div>
         </span>
     </div>
 </div>

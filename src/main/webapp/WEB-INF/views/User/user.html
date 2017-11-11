@@ -1,15 +1,16 @@
-<div th:fragment="bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component member">
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="bodyFragment" class="component member">
     <div class="row">
         <div class="col-sm-12">
             <div class="header-member-title">
                 <div>
                     <center>
                         <div class="member-title-text">
-                           <h2>
-                               <b th:text="${user.username}"></b>
-                           </h2>
+                            <h2>
+                                <b th:text="${user.username}"></b>
+                            </h2>
                         </div>
-                        <div id="userStatus" data-active="1" th:attr="user-id=${user.id}" class="member-active-text" th:text="${user.active == 0 ? 'Offline' : 'Online'}"></div>
+                        <div id="userStatus" data-active="1" th:attr="user-id=${user.id}" class="member-active-text"
+                             th:text="${user.active == 0 ? 'Offline' : 'Online'}"></div>
                     </center>
                 </div>
                 <img th:src="${'/resources/img/' + user.pathImg}" class="member-img"/>
@@ -22,9 +23,9 @@
             <div>
                 <div>
                     <center>
-                        <a class="btn btn-default margin-1p activity-element-button active" role="button" onclick="activeA()">Aktywność</a>
+                        <a class="btn btn-default margin-1p activity-element-button active" role="button"
+                           onclick="activeA()">Aktywność</a>
                         <a class="btn btn-default margin-1p profil-element-button" role="button" onclick="activeB()">Profil </a>
-                        <a class="btn btn-default margin-1p friend-element-button" role="button" onclick="activeC()">Przyjaciele <span class="count"> <span class="count-margin" th:text="${user.statistics.friendsCount}">  </span> </span></a>
                     </center>
                 </div>
             </div>
@@ -33,24 +34,19 @@
     <hr/>
     <div style="display: inline" class="row activity-element">
         <div class="col-sm-12">
-            <div th:replace="User/user :: activityCommentMemberFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+            <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="User/user :: activityCommentMemberFragment"></div>
         </div>
     </div>
     <div style="display: none" class="row profil-element">
         <div class="col-sm-12">
-            <div th:replace="User/user :: activityProfileFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-        </div>
-    </div>
-    <div style="display: none" class="row friend-element">
-        <div class="col-sm-12">
-            <div th:replace="User/user :: friendsProfileFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+            <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="User/user :: activityProfileFragment"></div>
         </div>
     </div>
 </div>
 
 <div th:fragment="activityCommentMemberFragment" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="forum">
-        <span th:each="comment : ${comments}">
+        <span th:each="comment : ${user.comments}">
             <div>
             <div class="row">
                 <div class="col-sm-12">
@@ -66,8 +62,10 @@
                         <span>
                             <img th:src="${'/resources/img/' + user.pathImg}" class="img-rounded"/>
                             <p> <b th:text="${user.username}"></b> </p>
-                            <p> <a th:href="${'/forum/category/' + comment.post.category.id}"> <span th:text="${'Kategoria :' + comment.post.category.title}"></span> </a> </p>
-                            <p> <a th:href="${'/forum/post/' + comment.post.id}"> <span th:text="${'Post : ' + comment.post.title}"></span> </a> </p>
+                            <p> <a th:href="${'/forum/category/' + comment.post.category.id}"> <span
+                                    th:text="${'Kategoria :' + comment.post.category.title}"></span> </a> </p>
+                            <p> <a th:href="${'/forum/post/' + comment.post.id}"> <span
+                                    th:text="${'Post : ' + comment.post.title}"></span> </a> </p>
                         </span>
                     </div>
                 </div>
@@ -85,9 +83,12 @@
 
 <div th:fragment="activityProfileFragment" xmlns:th="http://www.w3.org/1999/xhtml">
     <table class="width-100p table">
-        <tr th:replace="User/user :: activityProfileElementFragment (title='Email', data=${user.email})" xmlns:th="http://www.w3.org/1999/xhtml"></tr>
-        <tr th:replace="User/user :: activityProfileElementFragment (title='Ilość postów', data=${user.statistics.commentsCount})" xmlns:th="http://www.w3.org/1999/xhtml"></tr>
-        <tr th:replace="User/user :: activityProfileElementFragment (title='Ilosc komentarzy', data=${user.statistics.postsCount})" xmlns:th="http://www.w3.org/1999/xhtml"></tr>
+        <tr th:replace="User/user :: activityProfileElementFragment (title='Email', data=${user.email})"
+            xmlns:th="http://www.w3.org/1999/xhtml"></tr>
+        <tr th:replace="User/user :: activityProfileElementFragment (title='Ilość postów', data=${user.statistics.commentsCount})"
+            xmlns:th="http://www.w3.org/1999/xhtml"></tr>
+        <tr th:replace="User/user :: activityProfileElementFragment (title='Ilosc komentarzy', data=${user.statistics.postsCount})"
+            xmlns:th="http://www.w3.org/1999/xhtml"></tr>
     </table>
 </div>
 
@@ -103,24 +104,3 @@
         <p th:text="${data}"></p>
     </td>
 </tr>
-
-<div th:fragment="friendsProfileFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="members">
-    <div class="member-container">
-        <span th:each="friend : ${friends}">
-            <div class="member-item">
-                <img th:src="${'/resources/img/' + friend.otherUser.pathImg}" class="img-rounded"/>
-                <div class="member-text">
-                    <span>
-                        <a th:href="${'/members/member/' + friend.otherUser.id}" th:text="${friend.otherUser.username}"> </a>
-                    </span>
-                    <span>
-                    <div class="member-text-friends">
-                        <span th:text="${friend.otherUser.statistics.friendsCount + ' przyjaciuł'}"> </span>
-                    </div>
-                </span>
-                </div>
-            </div>
-            <hr/>
-        </span>
-    </div>
-</div>

@@ -1,7 +1,9 @@
 {
-"version": 3,
-"mappings": "AAEI,mCAAc;EACZ,gBAAgB,EAAE,kBAAkB;EACpC,KAAK,EAAE,KAAK;AAGd,wBAAG;EACD,UAAU,EAAE,CAAC",
-"sources": ["forum.scss"],
-"names": [],
-"file": "forum.css"
+  "version": 3,
+  "mappings": "AAEI,mCAAc;EACZ,gBAAgB,EAAE,kBAAkB;EACpC,KAAK,EAAE,KAAK;AAGd,wBAAG;EACD,UAAU,EAAE,CAAC",
+  "sources": [
+    "forum.scss"
+  ],
+  "names": [],
+  "file": "forum.css"
 }

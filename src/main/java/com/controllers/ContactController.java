@@ -5,13 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping(path = "/contact")
 @Controller
-public class ContactController
-{
+public class ContactController {
     private String path = "Contact/";
 
     @RequestMapping(path = "")
-    public String index()
-    {
-        return this.path + "contact";
+    public String index() {
+        return this.path + "index";
     }
 }

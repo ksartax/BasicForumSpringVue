@@ -1,4 +1,4 @@
-<div th:fragment="formAddPostFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="formAddPostFragment" class="component forum-element">
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="form-group" id="form-add-post">
@@ -8,7 +8,8 @@
                 <textarea class="form-control" rows="2" id="description" v-model="description"></textarea>
                 <div class="forum-button-container">
                     <center>
-                        <button @click.prevent="submit" type="button" class="btn btn-default forum-button">Stwórz</button>
+                        <button @click.prevent="submit" type="button" class="btn btn-default forum-button">Stwórz
+                        </button>
                     </center>
                 </div>
             </div>

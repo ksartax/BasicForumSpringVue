@@ -1,11 +1,13 @@
-<div th:fragment="bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="forum component">
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="bodyFragment" class="forum component">
     <div>
         <p>
             <b th:text="${category.title}"></b>
         </p>
     </div>
-    <span th:if="${role == 'ROLE_USER'}">
-        <div th:replace="Post/elements/formAddPost :: formAddPostFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <span th:if="${role == 'ROLE_USER' || role == 'ROLE_ADMIN'}">
+        <div xmlns:th="http://www.w3.org/1999/xhtml"
+             th:replace="Post/elements/formAddPost :: formAddPostFragment"></div>
     </span>
-    <div th:replace="Post/elements/postsCategory :: postsCategoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <div xmlns:th="http://www.w3.org/1999/xhtml"
+         th:replace="Post/elements/postsCategory :: postsCategoryFragment"></div>
 </div>  

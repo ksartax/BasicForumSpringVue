@@ -1,4 +1,4 @@
-<form th:fragment="formAddContactFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component">
+<form xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="formAddContactFragment" class="component">
     <div class="form-group">
         <label for="username">Twoje imie:</label>
         <input type="text" class="form-control" id="username">
@@ -17,5 +17,13 @@
         <div class="forum-button-container">
             <button type="submit" class="btn btn-default forum-button">Wyślij</button>
         </div>
+
+        <div class="errors" th:if="${#fields.hasErrors('*')}">
+            <hr/>
+            <div class="alert alert-danger" th:each="err : ${#fields.errors('*')}" th:text="${err}">
+                Uzupełnij poprawnie formularz!
+            </div>
+        </div>
+
     </center>
 </form>

@@ -9,7 +9,7 @@ $().ready(function () {
 });
 
 function disconnect() {
-    if(stompClient) {
+    if (stompClient) {
         stompClient.disconnect();
     }
 }

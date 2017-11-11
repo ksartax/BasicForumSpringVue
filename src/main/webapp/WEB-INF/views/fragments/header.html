@@ -1,13 +1,13 @@
-<head th:fragment="headerFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+<head xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="headerFragment">
     <title> Layout Generic Title </title>
 
     <!-- metas -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="_csrf_parameter" content="_csrf" />
-    <meta name="_csrf_header" content="X-CSRF-TOKEN" />
-    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_parameter" content="_csrf"/>
+    <meta name="_csrf_header" content="X-CSRF-TOKEN"/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
     <!-- link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/resources/css/style.css}">

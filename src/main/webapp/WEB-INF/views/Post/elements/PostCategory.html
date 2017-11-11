@@ -1,4 +1,4 @@
-<div th:fragment="postCategoryFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="postCategoryFragment">
     <div class="row">
         <div class="col-sm-8">
             <p>
@@ -12,4 +12,13 @@
             <div v-html="'Komentarze : ' + post.commentCount"></div>
         </div>
     </div>
+    <span th:if="${role == 'ROLE_ADMIN'}">
+        <div class="form-group">
+            <div class="forum-button-container">
+                <button @click="remove(post.id)" type="button"
+                        class="btn btn-default forum-button">Wykasuj
+                </button>
+            </div>
+        </div>
+    </span>
 </div>

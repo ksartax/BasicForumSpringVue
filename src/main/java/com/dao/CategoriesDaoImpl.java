@@ -1,34 +1,35 @@
 package com.dao;
 
 import com.models.Category;
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.springframework.stereotype.Repository;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository("CategoriesDao")
 @Transactional
-public class CategoriesDaoImpl extends AbstractDao<Integer, Category> implements CategoriesDao
-{
+public class CategoriesDaoImpl extends AbstractDao<Integer, Category> implements CategoriesDao {
     @SuppressWarnings("unchecked")
-    public List<Category> getAll()
-    {
-        return (List<Category>) this.createEntityCriteria().list();
+    public List<Category> getAll() {
+        return (List<Category>) this.createEntityCriteria()
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+                .setFetchMode("posts", FetchMode.JOIN)
+                .list();
     }
 
-    public Category get(int id)
-    {
+    public Category get(int id) {
         return this.getByKey(id);
     }
 
-    public Category add(Category category)
-    {
+    public Category add(Category category) {
         persist(category);
 
         return category;
     }
 
-    public void remove(int id)
-    {
-        delete(this.get(id));
+    public void remove(Category category) {
+        delete(category);
     }
 }

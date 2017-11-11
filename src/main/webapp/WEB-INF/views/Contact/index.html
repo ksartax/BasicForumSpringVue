@@ -1,4 +1,4 @@
-<div th:fragment="bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component">
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="bodyFragment" class="component">
     <span class="font-size-big">
         <b>
             Kontakt
@@ -7,5 +7,6 @@
 
     <hr/>
 
-    <form th:replace="Contact/elements/formAddContact :: formAddContactFragment" xmlns:th="http://www.w3.org/1999/xhtml"></form>
+    <form xmlns:th="http://www.w3.org/1999/xhtml"
+          th:replace="Contact/elements/formAddContact :: formAddContactFragment"></form>
 </div>

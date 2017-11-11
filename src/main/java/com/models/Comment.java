@@ -4,28 +4,29 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
-@Table(name = "Comments")
-public class Comment implements Serializable
-{
+@Table(name = "Comments", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
+public class Comment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true)
     private int id;
 
-    @OneToOne
-    @JoinColumn(name="post_id", nullable = true)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "post_id")
     private Post post;
 
-    @ManyToOne
-    @JoinColumn(name="user_id", nullable = true)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "description")
+    @NotBlank
     private String description;
 
     @Column(name = "created_at")

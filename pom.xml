@@ -1,178 +1,184 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>ProjektPlatformy</groupId>
-  <artifactId>ProjektPlatformy</artifactId>
-  <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>ProjektPlatformy Maven Webapp</name>
-  <url>http://maven.apache.org</url>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ProjektPlatformy</groupId>
+    <artifactId>ProjektPlatformy</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>ProjektPlatformy Maven Webapp</name>
+    <url>http://maven.apache.org</url>
 
-  <properties>
-    <springframework.version>4.3.1.RELEASE</springframework.version>
-    <mysql.connector.version>5.1.31</mysql.connector.version>
-    <hibernate.version>4.3.6.Final</hibernate.version>
-    <javax-servlet-api.version>3.0.1</javax-servlet-api.version>
-    <jackson.version>2.7.5</jackson.version>
-    <thymeleaf.version>3.0.8.RELEASE</thymeleaf.version>
-    <boostrap.version>4.0.0-beta-1</boostrap.version>
-    <vue.version>2.5.2</vue.version>
-    <jquery.version>3.2.1</jquery.version>
-    <popper.version>1.12.5</popper.version>
-    <spring.security.version>4.2.3.RELEASE</spring.security.version>
-  </properties>
+    <properties>
+        <springframework.version>4.3.1.RELEASE</springframework.version>
+        <mysql.connector.version>5.1.31</mysql.connector.version>
+        <hibernate.version>4.3.6.Final</hibernate.version>
+        <javax-servlet-api.version>3.0.1</javax-servlet-api.version>
+        <jackson.version>2.7.5</jackson.version>
+        <thymeleaf.version>3.0.8.RELEASE</thymeleaf.version>
+        <boostrap.version>4.0.0-beta-1</boostrap.version>
+        <vue.version>2.5.2</vue.version>
+        <validation.version>2.0.0.Final</validation.version>
+        <jquery.version>3.2.1</jquery.version>
+        <popper.version>1.12.5</popper.version>
+        <spring.security.version>4.2.3.RELEASE</spring.security.version>
+    </properties>
 
-  <dependencies>
-    <!-- Spring -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-orm</artifactId>
-      <version>${springframework.version}</version>
-    </dependency>
+    <dependencies>
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
 
-    <!-- Servlet -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>${javax-servlet-api.version}</version>
-      <scope>provided</scope>
-    </dependency>
+        <!-- Servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax-servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
-    <!-- Test -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+        <!-- Test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
 
-    <dependency>
-      <groupId>javax.validation</groupId>
-      <artifactId>validation-api</artifactId>
-      <version>1.0.0.GA</version>
-    </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.0.0.GA</version>
+        </dependency>
 
-    <!-- Base -->
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>${mysql.connector.version}</version>
-    </dependency>
+        <!-- Base -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
+        </dependency>
 
-    <!-- Hibernate -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>${hibernate.version}</version>
-    </dependency>
+        <!-- Hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
 
-    <!-- Jackson -->
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>${jackson.version}</version>
-    </dependency>
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-core</artifactId>
-      <version>2.7.3</version>
-    </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.7.3</version>
+        </dependency>
 
-    <!-- Template -->
-    <dependency>
-      <groupId>org.thymeleaf</groupId>
-      <artifactId>thymeleaf-spring4</artifactId>
-      <version>${thymeleaf.version}</version>
-    </dependency>
+        <!-- Template -->
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring4</artifactId>
+            <version>${thymeleaf.version}</version>
+        </dependency>
 
-    <!-- WebJars -->
+        <!-- WebJars -->
 
-    <!-- Boostrap -->
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>bootstrap</artifactId>
-      <version>${boostrap.version}</version>
-    </dependency>
+        <!-- Boostrap -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${boostrap.version}</version>
+        </dependency>
 
-    <!-- Vue -->
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>vue</artifactId>
-      <version>${vue.version}</version>
-    </dependency>
+        <!-- Vue -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>vue</artifactId>
+            <version>${vue.version}</version>
+        </dependency>
 
-    <!-- Jquery -->
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>jquery</artifactId>
-      <version>${jquery.version}</version>
-    </dependency>
+        <!-- Jquery -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>${jquery.version}</version>
+        </dependency>
 
-    <!-- Popper -->
-    <dependency>
-      <groupId>org.webjars.bower</groupId>
-      <artifactId>popper.js</artifactId>
-      <version>${popper.version}</version>
-    </dependency>
+        <!-- Popper -->
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>popper.js</artifactId>
+            <version>${popper.version}</version>
+        </dependency>
 
-    <!-- Fetch -->
-    <dependency>
-      <groupId>org.webjars.npm</groupId>
-      <artifactId>whatwg-fetch</artifactId>
-      <version>2.0.3</version>
-    </dependency>
+        <!-- Fetch -->
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>whatwg-fetch</artifactId>
+            <version>2.0.3</version>
+        </dependency>
 
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-websocket</artifactId>
-      <version>4.2.4.RELEASE</version>
-    </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>4.2.4.RELEASE</version>
+        </dependency>
 
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-messaging</artifactId>
-      <version>4.2.4.RELEASE</version>
-    </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+            <version>4.2.4.RELEASE</version>
+        </dependency>
 
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>sockjs-client</artifactId>
-      <version>1.0.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>stomp-websocket</artifactId>
-      <version>2.3.3</version>
-    </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>sockjs-client</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>stomp-websocket</artifactId>
+            <version>2.3.3</version>
+        </dependency>
 
-    <!-- Spring Security -->
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-web</artifactId>
-      <version>${spring.security.version}</version>
-    </dependency>
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
 
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-config</artifactId>
-      <version>${spring.security.version}</version>
-    </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
 
-    <!-- Spring Security JSP Taglib -->
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-taglibs</artifactId>
-      <version>${spring.security.version}</version>
-    </dependency>
-  </dependencies>
+        <!-- Spring Security JSP Taglib -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.0.Final</version>
+        </dependency>
+    </dependencies>
 
-  <build>
-    <finalName>ProjektPlatformy</finalName>
-  </build>
+    <build>
+        <finalName>ProjektPlatformy</finalName>
+    </build>
 </project>

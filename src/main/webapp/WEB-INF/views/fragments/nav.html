@@ -1,64 +1,65 @@
-<nav th:fragment="navFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="navbar navbar-inverse">
-   <div class="container-fluid">
-      <div class="navbar-header">
-         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-         </button>
-         <a class="navbar-brand" th:href="@{/}">
-            <div>
+<nav xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="navFragment" class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/}">
+                <div>
                <span class="glyphicon glyphicon-comment">
                   <span class="brand-text">
                      Buddy
                   </span>
                </span>
-            </div>
-         </a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-         <ul class="nav navbar-nav navbar-right">
-            <li>
-               <a th:href="@{/}">
-                  <div>
-                     Strona Główna
-                  </div>
-               </a>
-            </li>
-            <li>
-               <a th:href="@{/forum}">
-                  <div>
-                     Forum
-                  </div>
-               </a>
-            </li>
-            <li>
-               <a th:href="@{/members}">
-                  <div>
-                     Użytkownicy
-                  </div>
-               </a>
-            </li>
-            <li>
-               <a th:href="@{/contact}">
-                  <div>
-                     Kontakt
-                  </div>
-               </a>
-            </li>
+                </div>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a th:href="@{/}">
+                        <div>
+                            Strona Główna
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/forum}">
+                        <div>
+                            Forum
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/members}">
+                        <div>
+                            Użytkownicy
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/contact}">
+                        <div>
+                            Kontakt
+                        </div>
+                    </a>
+                </li>
 
-            <li>
-               <a th:if="${role == 'ROLE_ANONYMOUS'}" th:href="@{/register}">
-                  <div class="green">
-                     Rejestracja
-                  </div>
-               </a>
+                <li>
+                    <a th:if="${role == 'ROLE_ANONYMOUS'}" th:href="@{/register}">
+                        <div class="green">
+                            Rejestracja
+                        </div>
+                    </a>
 
-               <form class="logout-form" th:if="${role != 'ROLE_ANONYMOUS'}" method="post" action="#" th:action="@{/logout}">
-                  <button type="submit" class="btn btn-success green">Wyloguj</button>
-               </form>
-            </li>
-         </ul>
-      </div>
-   </div>
+                    <form class="logout-form" th:if="${role != 'ROLE_ANONYMOUS'}" method="post" action="#"
+                          th:action="@{/logout}">
+                        <button type="submit" class="btn btn-success green">Wyloguj</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>

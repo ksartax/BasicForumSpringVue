@@ -1,11 +1,11 @@
-<div th:fragment="postsCategoryFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="component forum-element">
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="postsCategoryFragment" class="component forum-element">
     <div class="panel panel-default">
-        <div class="panel-body" id="postsCategoryComponent" style="overflow: scroll; max-height: 500px; overflow-x:hidden;" th:attr="category-id=${category.id}" data-active="1">
+        <div class="panel-body" id="postsCategoryComponent"
+             style="overflow: scroll; max-height: 500px; overflow-x:hidden;" th:attr="category-id=${category.id}"
+             data-active="1">
             <span v-for="post in dataArray">
-                <div th:replace="Post/elements/PostCategory :: postCategoryFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-                <span th:if="${role == 'ROLE_ADMIN'}">
-                    <button type="button" class="btn btn-danger">Wykasuj</button>
-               </span>
+                <div xmlns:th="http://www.w3.org/1999/xhtml"
+                     th:replace="Post/elements/PostCategory :: postCategoryFragment"></div>
                 <hr/>
             </span>
         </div>
