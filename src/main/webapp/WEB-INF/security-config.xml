@@ -11,12 +11,12 @@
 
         <form-login
                 login-page="/"
-                authentication-failure-url="/?login=0"
+                authentication-failure-url="/?logine"
                 username-parameter="username"
                 password-parameter="password"
-                default-target-url="/"
+                default-target-url="/?logins"
         />
-        <logout logout-success-url="/"/>
+        <logout logout-success-url="/?logouts"/>
 
         <csrf/>
     </http>
