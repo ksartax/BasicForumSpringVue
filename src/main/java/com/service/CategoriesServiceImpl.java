@@ -44,4 +44,9 @@ public class CategoriesServiceImpl implements CategoriesService
 
         return categoriesDao.add(category);
     }
+
+    public void remove(int id)
+    {
+        this.categoriesDao.remove(id);
+    }
 }

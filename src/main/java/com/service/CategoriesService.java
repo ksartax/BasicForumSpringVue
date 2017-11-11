@@ -9,4 +9,5 @@ public interface CategoriesService
     public Category get(int id);
     public Category incrementPost(Category category, int count);
     public Category add(Category category);
+    public void remove(int id);
 }

@@ -48,4 +48,16 @@ public class ApiCategoryController
 
         return new ResponseEntity(HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/remove/{categoryId}")
+    public ResponseEntity remove(@PathVariable("categoryId") int categoryId)
+    {
+        this.categoriesService.remove(categoryId);
+        globalStatisticsService.decrement(globalStatisticsService.getByTitle("Kategorie"), 1);
+
+        template.convertAndSend("/category", "");
+        template.convertAndSend("/globalStatistic", "");
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

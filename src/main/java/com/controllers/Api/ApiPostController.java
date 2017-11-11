@@ -47,4 +47,16 @@ public class ApiPostController
 
         return new ResponseEntity<Post>(HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/remove/{postId}/category/{categoryId}")
+    public ResponseEntity remove(@PathVariable("postId") int postId, @PathVariable("categoryId") int categoryId)
+    {
+        this.postsService.remove(postId);
+        globalStatisticsService.decrement(globalStatisticsService.getByTitle("Posty"), 1);
+
+        template.convertAndSend("/category/" + categoryId + "/posts", "");
+        template.convertAndSend("/globalStatistic", "");
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

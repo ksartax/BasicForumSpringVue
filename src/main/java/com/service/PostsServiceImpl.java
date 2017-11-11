@@ -55,4 +55,9 @@ public class PostsServiceImpl implements PostsService
 
         return postsDao.add(post);
     }
+
+    public void remove(int id)
+    {
+        postsDao.remove(id);
+    }
 }

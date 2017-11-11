@@ -47,4 +47,9 @@ public class PostsDaoImpl extends AbstractDao<Integer, Post> implements PostsDao
 
         return post;
     }
+
+    public void remove(int id)
+    {
+        delete(get(id));
+    }
 }

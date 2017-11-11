@@ -26,4 +26,9 @@ public class CategoriesDaoImpl extends AbstractDao<Integer, Category> implements
 
         return category;
     }
+
+    public void remove(int id)
+    {
+        delete(this.get(id));
+    }
 }

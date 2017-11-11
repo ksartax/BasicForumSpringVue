@@ -44,4 +44,9 @@ public class CommentsDaoImpl extends AbstractDao<Integer, Comment> implements Co
 
         return comment;
     }
+
+    public void remove(int id)
+    {
+        delete(getByKey(id));
+    }
 }

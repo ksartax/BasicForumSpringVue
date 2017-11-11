@@ -30,6 +30,14 @@ public class GlobalStatisticsServiceImpl implements GlobalStatisticsService
         return globalStatistic;
     }
 
+    public GlobalStatistic decrement(GlobalStatistic globalStatistic, int count)
+    {
+        globalStatistic.decrementCount(count);
+        globalStatisticsDao.add(globalStatistic);
+
+        return globalStatistic;
+    }
+
     public GlobalStatistic getByTitle(String title)
     {
         return globalStatisticsDao.getByTitle(title);

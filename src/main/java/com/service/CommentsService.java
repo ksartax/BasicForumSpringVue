@@ -9,4 +9,5 @@ public interface CommentsService
     public List<Comment> getAllByUserId(int id);
     public List<Comment> getAllByPostId(int postId);
     public Comment add(Comment comment, int postId);
+    public void remove(int id);
 }

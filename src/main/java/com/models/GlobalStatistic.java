@@ -56,4 +56,9 @@ public class GlobalStatistic
     {
         this.count = this.count + count;
     }
+
+    public void decrementCount(int count)
+    {
+        this.count = this.count - count;
+    }
 }

@@ -48,4 +48,9 @@ public class CommentsServiceImpl implements CommentsService
 
         return this.commentsDao.add(comment);
     }
+
+    public void remove(int id)
+    {
+        this.commentsDao.remove(id);
+    }
 }

@@ -39,4 +39,16 @@ public class ApiCommentController
 
         return new ResponseEntity(HttpStatus.OK);
     }
+
+    @RequestMapping(path = "/{commentId}/remove/post/{postId}")
+    public ResponseEntity remove(@PathVariable("postId") int postId, @PathVariable("commentId") int commentId)
+    {
+        this.commentsService.remove(commentId);
+        globalStatisticsService.decrement(globalStatisticsService.getByTitle("Komentarze"), 1);
+
+        template.convertAndSend("/globalStatistic", "");
+        template.convertAndSend("/post/" + postId + "/comments", "");
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

@@ -8,4 +8,5 @@ public interface CategoriesDao
     public List<Category> getAll();
     public Category get(int id);
     public Category add(Category category);
+    public void remove(int id);
 }
