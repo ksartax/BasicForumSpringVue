@@ -13,9 +13,6 @@ import java.util.Set;
 @Entity
 @Table(name = "Categories", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
 public class Category implements Serializable {
-    public final static int GENERAL = 1;
-    public final static int BASIC = 0;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true)
@@ -36,12 +33,9 @@ public class Category implements Serializable {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private User user;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonBackReference
     private Set<Post> posts;
-
-    @Column(name = "level")
-    private int level = BASIC;
 
     @Column(name = "created_at")
     @Temporal(value = TemporalType.TIMESTAMP)
@@ -109,14 +103,6 @@ public class Category implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
     public void incrementPost(int count) {
         this.postsCount += count;
     }
@@ -131,5 +117,15 @@ public class Category implements Serializable {
 
     public void setPosts(Set<Post> posts) {
         this.posts = posts;
+    }
+
+    public int getPostsCommentsCount() {
+        int count = 0;
+
+        for (Post post : this.posts) {
+            count += post.getCommentCount();
+        }
+
+        return count;
     }
 }

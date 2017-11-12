@@ -6,12 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(path = "/")
 @Controller
 public class HomeController {
-    private String path = "Home/";
+    private static final String DEFAULT_TEMPLATE = "Home/";
 
     @RequestMapping(path = "/")
     public String index() {
-        return this.path + "index";
+        return HomeController.DEFAULT_TEMPLATE + "index";
     }
-
-
 }

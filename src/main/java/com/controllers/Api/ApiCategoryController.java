@@ -4,7 +4,6 @@ import com.models.Category;
 import com.models.Post;
 import com.service.CategoriesService;
 import com.service.GlobalStatisticsService;
-import com.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,18 +11,25 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/api/category")
 public class ApiCategoryController {
-    @Autowired
     private SimpMessagingTemplate template;
-    @Autowired
     private CategoriesService categoriesService;
-    @Autowired
-    private PostsService postsService;
-    @Autowired
     private GlobalStatisticsService globalStatisticsService;
+
+    @Autowired
+    public ApiCategoryController(
+            SimpMessagingTemplate template,
+            CategoriesService categoriesService,
+            GlobalStatisticsService globalStatisticsService
+    ) {
+        this.categoriesService = categoriesService;
+        this.template = template;
+        this.globalStatisticsService = globalStatisticsService;
+    }
 
     @RequestMapping(path = "", method = RequestMethod.GET)
     public List<Category> index() {
@@ -31,14 +37,14 @@ public class ApiCategoryController {
     }
 
     @RequestMapping(path = "/{id}/posts", method = RequestMethod.GET)
-    public List<Post> posts(@PathVariable("id") int id) {
-        return this.postsService.getAllByCategoryId(id);
+    public Set<Post> posts(@PathVariable("id") int id) {
+        return this.categoriesService.get(id).getPosts();
     }
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public ResponseEntity add(@RequestBody Category category) {
         categoriesService.add(category);
-        globalStatisticsService.increment(globalStatisticsService.getByTitle("Kategorie"), 1);
+        globalStatisticsService.incrementCategory(1);
 
         template.convertAndSend("/category/level/0", "");
         template.convertAndSend("/globalStatistic", "");
@@ -49,7 +55,7 @@ public class ApiCategoryController {
     @RequestMapping(path = "/remove/{categoryId}", method = RequestMethod.DELETE)
     public ResponseEntity remove(@PathVariable("categoryId") int categoryId) {
         this.categoriesService.remove(categoryId);
-        globalStatisticsService.decrement(globalStatisticsService.getByTitle("Kategorie"), 1);
+        globalStatisticsService.decrementCategory(categoryId, 1);
 
         template.convertAndSend("/category/level/0", "");
         template.convertAndSend("/globalStatistic", "");

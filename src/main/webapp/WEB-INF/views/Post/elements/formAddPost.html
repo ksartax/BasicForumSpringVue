@@ -4,8 +4,10 @@
             <div class="form-group" id="form-add-post">
                 <label for="title">Tytuł:</label>
                 <textarea class="form-control" rows="1" id="title" v-model="title"></textarea>
+                <p id="f-a-p-t-e" style="color: red; display: none">Pole nie może być puste</p>
                 <label for="description">Opis:</label>
                 <textarea class="form-control" rows="2" id="description" v-model="description"></textarea>
+                <p id="f-a-p-d-e" style="color: red; display: none">Pole nie może być puste</p>
                 <div class="forum-button-container">
                     <center>
                         <button @click.prevent="submit" type="button" class="btn btn-default forum-button">Stwórz

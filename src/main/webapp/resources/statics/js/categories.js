@@ -126,6 +126,10 @@ new Vue({
     },
     methods: {
         submit: function () {
+            if (!this.validate()) {
+                return false;
+            }
+
             var header = $("meta[name='_csrf_header']").attr("content");
             var token = $("meta[name='_csrf']").attr("content");
 
@@ -146,6 +150,27 @@ new Vue({
                     console.log(xhr.status + ": " + thrownError);
                 }
             });
+        },
+        validate: function () {
+            var element1 = $("#f-a-c-t-e");
+            var element2 = $("#f-a-c-d-e");
+
+            element1.hide();
+            element2.hide();
+
+            if (this.title === "") {
+                element1.show();
+
+                return false;
+            }
+
+            if (this.description === "") {
+                element2.show();
+
+                return false;
+            }
+
+            return true;
         }
     }
 });

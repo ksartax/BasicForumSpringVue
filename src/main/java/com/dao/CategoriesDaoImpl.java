@@ -15,7 +15,6 @@ public class CategoriesDaoImpl extends AbstractDao<Integer, Category> implements
     public List<Category> getAll() {
         return (List<Category>) this.createEntityCriteria()
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
-                .setFetchMode("posts", FetchMode.JOIN)
                 .list();
     }
 

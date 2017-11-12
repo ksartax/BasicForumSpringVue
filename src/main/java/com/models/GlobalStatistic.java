@@ -16,9 +16,6 @@ public class GlobalStatistic {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "path_img", nullable = true)
-    private String pathImg;
-
     public int getId() {
         return id;
     }
@@ -41,14 +38,6 @@ public class GlobalStatistic {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getPathImg() {
-        return pathImg;
-    }
-
-    public void setPathImg(String pathImg) {
-        this.pathImg = pathImg;
     }
 
     public void incrementCount(int count) {

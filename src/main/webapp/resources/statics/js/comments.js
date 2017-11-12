@@ -141,6 +141,10 @@ var formAddComment = new Vue({
     },
     methods: {
         submit: function () {
+            if (!this.validate()) {
+                return false;
+            }
+
             var header = $("meta[name='_csrf_header']").attr("content");
             var token = $("meta[name='_csrf']").attr("content");
 
@@ -161,6 +165,19 @@ var formAddComment = new Vue({
                     console.log(xhr.status + ": " + thrownError);
                 }
             });
+        },
+        validate: function () {
+            var element1 = $("#f-a-co-d-e");
+
+            element1.hide();
+
+            if (this.description === "") {
+                element1.show();
+
+                return false;
+            }
+
+            return true;
         }
     }
 });

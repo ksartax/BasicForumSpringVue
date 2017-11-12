@@ -10,19 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(path = "/members")
 @Controller
 public class UserController {
+    private static final String DEFAULT_TEMPLATE = "User/";
+
+    private UsersService usersService;
+
     @Autowired
-    UsersService usersService;
-    private String path = "User/";
+    public UserController(
+            UsersService usersService
+    ) {
+        this.usersService = usersService;
+    }
 
     @RequestMapping(path = "")
     public String index() {
-        return this.path + "index";
+        return UserController.DEFAULT_TEMPLATE + "index";
     }
 
     @RequestMapping(path = "/member/{id}")
     public String member(@PathVariable("id") int id, ModelMap modelMap) {
         modelMap.addAttribute("user", usersService.get(id));
 
-        return this.path + "user";
+        return UserController.DEFAULT_TEMPLATE + "user";
     }
 }

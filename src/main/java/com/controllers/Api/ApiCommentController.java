@@ -14,12 +14,20 @@ import java.util.List;
 @RequestMapping(path = "/api/comment")
 @RestController
 public class ApiCommentController {
-    @Autowired
     private SimpMessagingTemplate template;
-    @Autowired
     private CommentsService commentsService;
-    @Autowired
     private GlobalStatisticsService globalStatisticsService;
+
+    @Autowired
+    public ApiCommentController(
+            SimpMessagingTemplate template,
+            CommentsService commentsService,
+            GlobalStatisticsService globalStatisticsService
+    ) {
+        this.commentsService = commentsService;
+        this.template = template;
+        this.globalStatisticsService = globalStatisticsService;
+    }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<Comment> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
@@ -29,7 +37,7 @@ public class ApiCommentController {
     @RequestMapping(path = "/add/post/{id}", method = RequestMethod.POST)
     public ResponseEntity add(@RequestBody Comment comment, @PathVariable("id") int id) {
         commentsService.add(comment, id);
-        globalStatisticsService.increment(globalStatisticsService.getByTitle("Komentarze"), 1);
+        globalStatisticsService.incrementComments(1);
 
         template.convertAndSend("/post/" + id + "/comments", "");
         template.convertAndSend("/comment", "");
@@ -41,7 +49,7 @@ public class ApiCommentController {
     @RequestMapping(path = "/remove/{commentId}/post/{postId}", method = RequestMethod.DELETE)
     public ResponseEntity remove(@PathVariable("postId") int postId, @PathVariable("commentId") int commentId) {
         this.commentsService.remove(commentId);
-        globalStatisticsService.decrement(globalStatisticsService.getByTitle("Komentarze"), 1);
+        globalStatisticsService.decrementComments(1);
 
         template.convertAndSend("/globalStatistic", "");
         template.convertAndSend("/post/" + postId + "/comments", "");

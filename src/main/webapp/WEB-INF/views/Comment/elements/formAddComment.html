@@ -5,6 +5,7 @@
                 <div class="form-group" id="form-add-comment">
                     <label for="description">Komentarz:</label>
                     <textarea class="form-control" rows="5" id="description" v-model="description"></textarea>
+                    <p id="f-a-co-d-e" style="color: red; display: none">Pole nie może być puste</p>
                     <div class="forum-button-container">
                         <center>
                             <button @click.prevent="submit" type="button" class="btn btn-default forum-button">Wyślij

@@ -12,8 +12,14 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/api/global-statistic")
 public class ApiGlobalStatisticController {
-    @Autowired
     private GlobalStatisticsService globalStatisticsService;
+
+    @Autowired
+    public ApiGlobalStatisticController(
+            GlobalStatisticsService globalStatisticsService
+    ) {
+        this.globalStatisticsService = globalStatisticsService;
+    }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<GlobalStatistic> index() {

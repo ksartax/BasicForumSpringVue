@@ -13,8 +13,14 @@ import java.util.List;
 @RestController()
 @RequestMapping(path = "/api/user")
 public class ApiUserController {
+    private UsersService usersService;
+
     @Autowired
-    UsersService usersService;
+    public ApiUserController(
+            UsersService usersService
+    ) {
+        this.usersService = usersService;
+    }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<User> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
