@@ -55,6 +55,10 @@ public class PostsServiceImpl implements PostsService {
         post.getUser().getStatistics().decrementPostCount(1);
         post.getCategory().decrementPost(1);
 
-        postsDao.remove(post);
+        try {
+            postsDao.remove(post);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

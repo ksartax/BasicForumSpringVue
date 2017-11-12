@@ -43,8 +43,8 @@ public class ApiCategoryController {
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public ResponseEntity add(@RequestBody Category category) {
-        categoriesService.add(category);
         globalStatisticsService.incrementCategory(1);
+        categoriesService.add(category);
 
         template.convertAndSend("/category/level/0", "");
         template.convertAndSend("/globalStatistic", "");
@@ -54,8 +54,8 @@ public class ApiCategoryController {
 
     @RequestMapping(path = "/remove/{categoryId}", method = RequestMethod.DELETE)
     public ResponseEntity remove(@PathVariable("categoryId") int categoryId) {
-        this.categoriesService.remove(categoryId);
         globalStatisticsService.decrementCategory(categoryId, 1);
+        categoriesService.remove(categoryId);
 
         template.convertAndSend("/category/level/0", "");
         template.convertAndSend("/globalStatistic", "");

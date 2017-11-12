@@ -52,6 +52,7 @@ public class HibernateConfiguration {
         properties.put(AvailableSettings.DIALECT, environment.getRequiredProperty("hibernate.dialect"));
         properties.put(AvailableSettings.SHOW_SQL, environment.getRequiredProperty("hibernate.show_sql"));
         properties.put(AvailableSettings.FORMAT_SQL, environment.getRequiredProperty("hibernate.format_sql"));
+        properties.put(AvailableSettings.ENABLE_LAZY_LOAD_NO_TRANS, environment.getRequiredProperty("hibernate.enable_lazy_load_no_trans"));
 
         return properties;
     }

@@ -33,7 +33,8 @@ public class Category implements Serializable {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private User user;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     @JsonBackReference
     private Set<Post> posts;
 
@@ -122,7 +123,7 @@ public class Category implements Serializable {
     public int getPostsCommentsCount() {
         int count = 0;
 
-        for (Post post : this.posts) {
+        for (Post post : this.getPosts()) {
             count += post.getCommentCount();
         }
 

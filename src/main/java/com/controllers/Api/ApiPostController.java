@@ -43,8 +43,8 @@ public class ApiPostController {
 
     @RequestMapping(path = "/add/category/{id}", method = RequestMethod.POST)
     public ResponseEntity add(@RequestBody Post post, @PathVariable("id") int id) {
-        postsService.add(post, id);
         globalStatisticsService.incrementPosts(1);
+        postsService.add(post, id);
 
         template.convertAndSend("/category/" + id + "/posts", "");
         template.convertAndSend("/post", "");
@@ -55,8 +55,8 @@ public class ApiPostController {
 
     @RequestMapping(path = "/remove/{postId}/category/{categoryId}", method = RequestMethod.DELETE)
     public ResponseEntity remove(@PathVariable("postId") int postId, @PathVariable("categoryId") int categoryId) {
-        postsService.remove(postId);
         globalStatisticsService.decrementPosts(postId, 1);
+        postsService.remove(postId);
 
         template.convertAndSend("/category/" + categoryId + "/posts", "");
         template.convertAndSend("/globalStatistic", "");

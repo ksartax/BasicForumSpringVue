@@ -36,8 +36,8 @@ public class ApiCommentController {
 
     @RequestMapping(path = "/add/post/{id}", method = RequestMethod.POST)
     public ResponseEntity add(@RequestBody Comment comment, @PathVariable("id") int id) {
-        commentsService.add(comment, id);
         globalStatisticsService.incrementComments(1);
+        commentsService.add(comment, id);
 
         template.convertAndSend("/post/" + id + "/comments", "");
         template.convertAndSend("/comment", "");
@@ -48,8 +48,8 @@ public class ApiCommentController {
 
     @RequestMapping(path = "/remove/{commentId}/post/{postId}", method = RequestMethod.DELETE)
     public ResponseEntity remove(@PathVariable("postId") int postId, @PathVariable("commentId") int commentId) {
-        this.commentsService.remove(commentId);
         globalStatisticsService.decrementComments(1);
+        commentsService.remove(commentId);
 
         template.convertAndSend("/globalStatistic", "");
         template.convertAndSend("/post/" + postId + "/comments", "");
