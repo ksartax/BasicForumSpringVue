@@ -2,8 +2,6 @@ package com.dao;
 
 import com.models.Category;
 import org.hibernate.Criteria;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;

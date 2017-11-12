@@ -10,6 +10,6 @@ public class ContactController {
 
     @RequestMapping(path = "")
     public String index() {
-       return ContactController.DEFAULT_TEMPLATE + "index";
+        return ContactController.DEFAULT_TEMPLATE + "index";
     }
 }
