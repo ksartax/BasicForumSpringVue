@@ -11,33 +11,49 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
 @RequestMapping(path = "/api/comment")
-public class ApiCommentController
-{
-    @Autowired
+@RestController
+public class ApiCommentController {
     private SimpMessagingTemplate template;
-    @Autowired
     private CommentsService commentsService;
-    @Autowired
     private GlobalStatisticsService globalStatisticsService;
 
+    @Autowired
+    public ApiCommentController(
+            SimpMessagingTemplate template,
+            CommentsService commentsService,
+            GlobalStatisticsService globalStatisticsService
+    ) {
+        this.commentsService = commentsService;
+        this.template = template;
+        this.globalStatisticsService = globalStatisticsService;
+    }
+
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public List<Comment> index()
-    {
-        return this.commentsService.getAll();
+    public List<Comment> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
+        return this.commentsService.getAll(limit);
     }
 
     @RequestMapping(path = "/add/post/{id}", method = RequestMethod.POST)
-    public ResponseEntity<Comment> add(@RequestBody Comment comment, @PathVariable("id") int id)
-    {
+    public ResponseEntity add(@RequestBody Comment comment, @PathVariable("id") int id) {
+        globalStatisticsService.incrementComments(1);
         commentsService.add(comment, id);
-        globalStatisticsService.increment(globalStatisticsService.getByTitle("Komentarze"), 1);
 
         template.convertAndSend("/post/" + id + "/comments", "");
         template.convertAndSend("/comment", "");
         template.convertAndSend("/globalStatistic", "");
 
-        return new ResponseEntity<Comment>(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/remove/{commentId}/post/{postId}", method = RequestMethod.DELETE)
+    public ResponseEntity remove(@PathVariable("postId") int postId, @PathVariable("commentId") int commentId) {
+        globalStatisticsService.decrementComments(1);
+        commentsService.remove(commentId);
+
+        template.convertAndSend("/globalStatistic", "");
+        template.convertAndSend("/post/" + postId + "/comments", "");
+
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

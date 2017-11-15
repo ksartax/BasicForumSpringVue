@@ -1,39 +1,42 @@
 package com.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
-@Table(name = "Categories")
-public class Category implements Serializable
-{
-    public static int GENERAL = 1;
-    public static int BASIC = 0;
-
+@Table(name = "Categories", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
+public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true)
+    @Column(name = "id", unique = true)
     private int id;
 
     @Column(name = "title")
+    @NotBlank
     private String title;
 
     @Column(name = "description")
+    @NotBlank
     private String description;
 
     @Column(name = "posts_count")
     private int postsCount;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name="user_id", nullable = true)
+    @JoinColumn(name = "user_id")
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private User user;
 
-    @Column(name = "level")
-    private int level;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    @JsonBackReference
+    private Set<Post> posts;
 
     @Column(name = "created_at")
     @Temporal(value = TemporalType.TIMESTAMP)
@@ -101,16 +104,29 @@ public class Category implements Serializable
         this.updatedAt = updatedAt;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public void incrementPost(int count)
-    {
+    public void incrementPost(int count) {
         this.postsCount += count;
+    }
+
+    public void decrementPost(int count) {
+        this.postsCount -= count;
+    }
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
+    }
+
+    public int getPostsCommentsCount() {
+        int count = 0;
+
+        for (Post post : this.getPosts()) {
+            count += post.getCommentCount();
+        }
+
+        return count;
     }
 }

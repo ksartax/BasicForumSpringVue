@@ -9,7 +9,7 @@ $().ready(function () {
 });
 
 function disconnect() {
-    if(stompClient) {
+    if (stompClient) {
         stompClient.disconnect();
     }
 }
@@ -26,12 +26,10 @@ function connectSubscribes() {
         usersTemplateElements.subscribeSocket();
         postsElements.subscribeSocket();
         commentsElements.subscribeSocket();
-        categoriesGeneralElements.subscribeSocket();
-        categoriesBasicElements.subscribeSocket();
+        categoriesForumElements.subscribeSocket();
         usersMembersElements.subscribeSocket();
         postsCategoryElements.subscribeSocket();
         commentsForumElements.subscribeSocket();
-
     });
 }
 
@@ -41,12 +39,10 @@ function initData() {
     usersTemplateElements.getData();
     postsElements.getData();
     commentsElements.getData();
-    categoriesGeneralElements.getData();
-    categoriesBasicElements.getData();
+    categoriesForumElements.getData();
     usersMembersElements.getData();
     postsCategoryElements.getData();
     commentsForumElements.getData();
-
 }
 
 

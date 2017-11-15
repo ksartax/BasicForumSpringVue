@@ -19,6 +19,10 @@ body {
     border-radius: 10px;
   }
 
+  .component-error {
+    padding: 20px;
+  }
+
   .right {
     float: right;
   }
@@ -31,6 +35,24 @@ body {
     text-align: center;
   }
 
+  .display-inline {
+    display: inline-grid;
+  }
+
+  .members-itemDisMar {
+    display: table;
+    margin: auto;
+  }
+
+  .logout-form {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .display-inline-flex {
+    display: inline-flex;
+  }
+
   .forum-button-container {
     padding-top: 2em;
     .forum-button {
@@ -38,6 +60,10 @@ body {
       color: white;
       border-radius: 10px;
     }
+  }
+
+  .div-fix {
+    padding-bottom: 10px;
   }
 
   .font-size-big {
@@ -48,7 +74,15 @@ body {
     padding-bottom: 3%;
   }
 
+  .padding-left-10p {
+    padding-left: 10px;
+  }
+
   .img-height-100p {
     max-height: 100%;
+  }
+
+  .width-100 {
+    width: 100%;
   }
 }

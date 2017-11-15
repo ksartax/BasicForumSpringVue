@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
@@ -20,11 +21,10 @@ import java.util.List;
 @ComponentScan(value = "spring.dao")
 @Transactional
 public class UsersServiceImpl implements UsersService, UserDetailsService {
-
     @Autowired
     private UsersDao usersDao;
     @Autowired
-    StatisticsDao statisticsDao;
+    private StatisticsDao statisticsDao;
 
     public List<User> getAll(int limit) {
         return usersDao.getAll(limit);
@@ -43,11 +43,10 @@ public class UsersServiceImpl implements UsersService, UserDetailsService {
         user.setPathImg("a.jpg");
         user.setStatistics(statisticsDao.add(new Statistic()));
 
-        return  usersDao.add(user);
+        return usersDao.add(user);
     }
 
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
-    {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = usersDao.findByUserName(username);
 
         GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());

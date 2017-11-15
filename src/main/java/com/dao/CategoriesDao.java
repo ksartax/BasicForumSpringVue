@@ -1,12 +1,15 @@
 package com.dao;
 
 import com.models.Category;
+
 import java.util.List;
 
-public interface CategoriesDao
-{
+public interface CategoriesDao {
     public List<Category> getAll();
+
     public Category get(int id);
-    public List<Category> getByLevel(int level);
+
     public Category add(Category category);
+
+    public void remove(Category category);
 }

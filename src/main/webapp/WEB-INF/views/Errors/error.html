@@ -1,0 +1,21 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="errorFragment" class="component-error">
+
+    <div class="row" th:if="${param.logine}" onclick="this.style.display = 'none'">
+        <div class="col-sm-12 div-fix alert alert-danger center">
+            Login, bądź hasło, nieprawidłowe!
+        </div>
+    </div>
+
+    <div class="row" th:if="${param.logouts}" onclick="this.style.display = 'none'">
+        <div class="col-sm-12 div-fix alert alert-success center">
+            Pomyślnie wylogowano!
+        </div>
+    </div>
+
+    <div class="row" th:if="${param.logins}" onclick="this.style.display = 'none'">
+        <div class="col-sm-12 div-fix alert alert-success center">
+            Pomyślnie zalogowano!
+        </div>
+    </div>
+
+</div>

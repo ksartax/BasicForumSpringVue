@@ -15,9 +15,9 @@ var globalStatisticsElements = new Vue({
         getData: function () {
             var self = this;
             fetch(self.url, {
-                    method: self.method,
-                    headers: self.headers
-                })
+                method: self.method,
+                headers: self.headers
+            })
                 .then(function (response) {
                     return response.json();
                 })

@@ -1,7 +1,9 @@
 {
-"version": 3,
-"mappings": "AACE,yBAAe;EACb,OAAO,EAAE,IAAI;EACb,yCAAgB;IACd,YAAY,EAAE,IAAI",
-"sources": ["activity.scss"],
-"names": [],
-"file": "activity.css"
+  "version": 3,
+  "mappings": "AACE,yBAAe;EAIb,OAAO,EAAE,IAAI;EAHb,qCAAY;IACV,KAAK,EAAE,KAAK;EAGd,yCAAgB;IACd,YAAY,EAAE,IAAI",
+  "sources": [
+    "activity.scss"
+  ],
+  "names": [],
+  "file": "activity.css"
 }

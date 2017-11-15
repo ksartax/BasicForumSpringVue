@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-    <head>
-        <div th:replace="fragments/header :: headerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-    </head>
-    <body id="body-main">
-        <div class="container-fluid page-wrapper">
-            <nav th:replace="fragments/nav :: navFragment" xmlns:th="http://www.w3.org/1999/xhtml"></nav>
+<head>
+    <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="fragments/header :: headerFragment"></div>
+</head>
 
-            <div class="row">
-                <div class="col-sm-3">
-                    <div th:replace="elements/search :: searchFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-                    <br/>
-                    <div th:replace="elements/members :: membersFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-                    <!--<br/>-->
-                    <!--<div th:replace="elements/groups :: groupsFragment (groups=${groups})" xmlns:th="http://www.w3.org/1999/xhtml"></div>-->
-                </div>
+<body id="body-main">
+<div class="container-fluid page-wrapper">
 
-                <div class="col-sm-6">
-                    <div th:replace="${body} :: bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-                </div>
+    <nav xmlns:th="http://www.w3.org/1999/xhtml" th:replace="fragments/nav :: navFragment"></nav>
 
-                <div class="col-sm-3">
-                    <span th:if="${loginUser == null}">
-                        <div th:replace="elements/login :: loginFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="Errors/error :: errorFragment"></div>
+
+    <div class="row">
+        <div class="col-sm-3 div-fix">
+            <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="Search/search :: searchFragment"></div>
+            <br/>
+            <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="User/elements/users :: usersFragment"></div>
+        </div>
+
+        <div class="col-sm-6 div-fix">
+            <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="${body} :: bodyFragment"></div>
+        </div>
+
+        <div class="col-sm-3 div-fix">
+                    <span th:if="${role == 'ROLE_ANONYMOUS'}">
+                        <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="Login/login :: loginFragment"></div>
                         <br/>
                     </span>
 
-                    <div th:replace="elements/statistics :: statisticsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-                </div>
-            </div>
-
-            <hr/>
-
-            <footer th:replace="fragments/footer :: footerFragment" xmlns:th="http://www.w3.org/1999/xhtml"></footer>
+            <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="Statistic/statistics :: statisticsFragment"></div>
 
         </div>
-    </body>
+    </div>
+
+    <hr/>
+
+    <footer xmlns:th="http://www.w3.org/1999/xhtml" th:replace="fragments/footer :: footerFragment"></footer>
+
+</div>
+</body>
 </html>

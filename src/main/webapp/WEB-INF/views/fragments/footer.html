@@ -1,35 +1,24 @@
-<footer th:fragment="footerFragment" class="container-fluid" xmlns:th="http://www.w3.org/1999/xhtml">
+<footer xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="footerFragment" class="container-fluid">
     <div class="row component center">
         <div class="col-sm-4">
-            <span class="glyphicon glyphicon-comment icon">
-                  <span class="brand-text">
-                     Buddy
-                  </span>
-            </span>
+            <span xmlns:th="http://www.w3.org/1999/xhtml"
+                  th:replace="fragments/footer/logo :: logoFooterFragment"></span>
         </div>
-        <div class="col-sm-4">
-            <b>Kategorie</b>
 
-            <span class="elements" id="categoriesComponent">
-                <div class="element" v-for="category in dataArray">
-                    <span v-html="category.title"> </span> <span v-html="'(' + category.postsCount + ')'"> </span>
-                </div>
-            </span>
+        <div class="col-sm-4">
+            <span xmlns:th="http://www.w3.org/1999/xhtml"
+                  th:replace="Category/elements/categoriesFooter :: categoriesFooterFragment"></span>
         </div>
-        <div class="col-sm-4">
-            <b>O forum</b>
 
-            <div class="elements">
-                Collaboratively orchestrate intermandated human
-                capital with cross-platform infrastructures.
-                Appropriately monetize innovative catalysts for change for front-end niches.
-            </div>
+        <div class="col-sm-4">
+            <span xmlns:th="http://www.w3.org/1999/xhtml"
+                  th:replace="fragments/footer/descriptionForum :: descriptionForumFooterFragment"></span>
         </div>
     </div>
+
     <hr/>
-    <center>
-        <p>@Created By Damian Stępniak 2017</p>
-    </center>
+
+    <span xmlns:th="http://www.w3.org/1999/xhtml" th:replace="fragments/footer/created :: createdFooterFragment"></span>
 
     <!-- scrip -->
     <script type="application/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>

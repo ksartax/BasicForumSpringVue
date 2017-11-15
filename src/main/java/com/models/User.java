@@ -1,33 +1,42 @@
 package com.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
-public class User implements Serializable
-{
+public class User implements Serializable {
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonBackReference
+    public Set<Comment> comments;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true)
     private int id;
-
     @Column(name = "active", nullable = false)
     private int active;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, unique = true)
+    @NotBlank
     private String username;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = false, unique = true)
+    @NotBlank
     private String password;
 
     @Column(name = "email", unique = true, nullable = false)
+    @NotBlank
     private String email;
 
+    @Column(name = "role")
     private String role;
 
     @OneToOne
-    @JoinColumn(name="statistics_id", nullable = true)
+    @JoinColumn(name = "statistics_id", nullable = true)
     private Statistic statistics;
 
     @Column(name = "path_img", nullable = true)
@@ -36,6 +45,7 @@ public class User implements Serializable
     public String getRole() {
         return role;
     }
+
     public void setRole(String role) {
         this.role = role;
     }
@@ -94,5 +104,13 @@ public class User implements Serializable
 
     public void setStatistics(Statistic statistics) {
         this.statistics = statistics;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

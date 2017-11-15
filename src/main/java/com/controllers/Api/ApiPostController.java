@@ -1,55 +1,66 @@
 package com.controllers.Api;
 
-import com.configurations.Auth;
-import com.models.Category;
 import com.models.Comment;
 import com.models.Post;
-import com.models.User;
-import com.service.*;
+import com.service.GlobalStatisticsService;
+import com.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/api/post")
-public class ApiPostController
-{
-    @Autowired
+public class ApiPostController {
     private SimpMessagingTemplate template;
-    @Autowired
     private PostsService postsService;
-    @Autowired
-    private CommentsService commentsService;
-    @Autowired
     private GlobalStatisticsService globalStatisticsService;
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
-    public List<Post> index()
-    {
-        return this.postsService.getAll();
+    @Autowired
+    public ApiPostController(
+            SimpMessagingTemplate template,
+            PostsService postsService,
+            GlobalStatisticsService globalStatisticsService
+    ) {
+        this.template = template;
+        this.postsService = postsService;
+        this.globalStatisticsService = globalStatisticsService;
     }
 
-    @RequestMapping(path = "/{id}/comments")
-    public List<Comment> posts(@PathVariable("id") int id)
-    {
-        return this.commentsService.getAllByPostId(id);
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public List<Post> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
+        return this.postsService.getAll(limit);
+    }
+
+    @RequestMapping(path = "/{id}/comments", method = RequestMethod.GET)
+    public Set<Comment> posts(@PathVariable("id") int id) {
+        return this.postsService.get(id).getComments();
     }
 
     @RequestMapping(path = "/add/category/{id}", method = RequestMethod.POST)
-    public ResponseEntity<Post> add(@RequestBody Post post, @PathVariable("id") int id)
-    {
+    public ResponseEntity add(@RequestBody Post post, @PathVariable("id") int id) {
+        globalStatisticsService.incrementPosts(1);
         postsService.add(post, id);
-        globalStatisticsService.increment(globalStatisticsService.getByTitle("Posty"), 1);
 
         template.convertAndSend("/category/" + id + "/posts", "");
         template.convertAndSend("/post", "");
         template.convertAndSend("/globalStatistic", "");
 
-        return new ResponseEntity<Post>(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/remove/{postId}/category/{categoryId}", method = RequestMethod.DELETE)
+    public ResponseEntity remove(@PathVariable("postId") int postId, @PathVariable("categoryId") int categoryId) {
+        globalStatisticsService.decrementPosts(postId, 1);
+        postsService.remove(postId);
+
+        template.convertAndSend("/category/" + categoryId + "/posts", "");
+        template.convertAndSend("/globalStatistic", "");
+
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

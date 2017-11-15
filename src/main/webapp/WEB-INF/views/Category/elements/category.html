@@ -1,0 +1,28 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml" th:fragment="categoryFragment"
+>
+    <div class="row">
+        <div class="col-sm-8">
+            <p>
+                <b>
+                    <a v-bind:href="'/forum/category/' + category.id"> <span v-html="category.title"></span> </a>
+                </b>
+            </p>
+            <div v-html="category.description"></div>
+        </div>
+        <div class="col-sm-4 center">
+            <div v-html="'Posty : ' + category.postsCount"></div>
+        </div>
+    </div>
+
+    <span th:if="${role == 'ROLE_ADMIN'}">
+        <div class="form-group">
+            <div class="forum-button-container">
+                <button @click="remove(category.id)" type="button"
+                        class="btn btn-default forum-button">Wykasuj
+                </button>
+            </div>
+        </div>
+    </span>
+
+    <hr/>
+</div>

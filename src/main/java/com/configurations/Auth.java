@@ -8,24 +8,20 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class Auth
-{
+public class Auth {
     private Authentication auth;
 
-    private void setAuth()
-    {
+    public Auth() {
+        setAuth();
+    }
+
+    private void setAuth() {
         auth = SecurityContextHolder
                 .getContext()
                 .getAuthentication();
     }
 
-    public Auth()
-    {
-        setAuth();
-    }
-
-    public UserDetails getLoginUser()
-    {
+    public UserDetails getLoginUser() {
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             try {
                 return (UserDetails) auth.getPrincipal();
