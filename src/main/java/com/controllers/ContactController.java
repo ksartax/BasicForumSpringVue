@@ -53,6 +53,6 @@ public class ContactController {
             e.printStackTrace();
         }
 
-        return "redirect:/";
+        return ContactController.DEFAULT_TEMPLATE + "success";
     }
 }
