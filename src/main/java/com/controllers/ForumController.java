@@ -1,6 +1,7 @@
 package com.controllers;
 
 import com.service.CategoriesService;
+import com.service.MailService;
 import com.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,14 +16,17 @@ public class ForumController {
 
     private CategoriesService categoriesService;
     private PostsService postsService;
+    private MailService mailService;
 
     @Autowired
     public ForumController(
             CategoriesService categoriesService,
-            PostsService postsService
+            PostsService postsService,
+            MailService mailService
     ) {
         this.categoriesService = categoriesService;
         this.postsService = postsService;
+        this.mailService = mailService;
     }
 
     @RequestMapping(path = "")

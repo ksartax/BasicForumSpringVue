@@ -1,29 +1,23 @@
-<form xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="formAddContactFragment" class="component">
-    <div class="form-group">
-        <label for="username">Twoje imie:</label>
-        <input required="true" type="text" class="form-control" id="username">
-    </div>
-    <div class="form-group">
-        <label for="email">Twój email:</label>
-        <input required="true" type="email" class="form-control" id="email">
-    </div>
-    <div class="form-group">
-        <label for="subject">Twój temat:</label>
-        <input required="true" type="text" class="form-control" id="subject">
-    </div>
-    <label for="comment">Twoja wiadomość:</label>
-    <textarea required="true" class="form-control" rows="5" id="comment"></textarea>
-    <center>
-        <div class="forum-button-container">
-            <button type="submit" class="btn btn-default forum-button">Wyślij</button>
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="formAddContactFragment" class="component">
+    <form th:object="${contact}" class="component" th:action="@{/contact/send}" method="post">
+        <div class="form-group">
+            <label for="username">Twoje imie:</label>
+            <input th:field="*{firstName}" required="true" type="text" class="form-control" id="username">
         </div>
-
-        <!--<div class="errors" th:if="${#fields.hasErrors('*')}">-->
-            <!--<hr/>-->
-            <!--<div class="alert alert-danger" th:each="err : ${#fields.errors('*')}" th:text="${err}">-->
-                <!--Uzupełnij poprawnie formularz!-->
-            <!--</div>-->
-        <!--</div>-->
-
-    </center>
-</form>
+        <div class="form-group">
+            <label for="email">Twój email:</label>
+            <input th:field="*{email}" required="true" type="email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+            <label for="subject">Twój temat:</label>
+            <input th:field="*{title}" required="true" type="text" class="form-control" id="subject">
+        </div>
+        <label for="comment">Twoja wiadomość:</label>
+        <textarea th:field="*{description}" required="true" class="form-control" rows="5" id="comment"></textarea>
+        <center>
+            <div class="forum-button-container">
+                <button type="submit" class="btn btn-default forum-button">Wyślij</button>
+            </div>
+        </center>
+    </form>
+</div>
