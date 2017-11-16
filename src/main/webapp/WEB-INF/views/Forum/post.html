@@ -1,4 +1,8 @@
-<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="bodyFragment" class="forum component">
+<div
+        xmlns:th="http://www.w3.org/1999/xhtml"
+        th:fragment="bodyFragment"
+        class="forum component"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
     <div>
         <p>
             <b th:text="${post.title}"></b>
@@ -10,12 +14,12 @@
              th:replace="Comment/elements/comments :: commentsFragment (activeRemove='1')"></div>
     </span>
 
-    <span th:if="${role == 'ROLE_USER' || role == 'ROLE_ADMIN'}">
+    <span sec:authorize="isAuthenticated()">
         <div xmlns:th="http://www.w3.org/1999/xhtml"
              th:replace="Comment/elements/formAddComment :: formAddCommentFragment"></div>
     </span>
 
-    <span th:if="${role == 'ROLE_ANONYMOUS'}">
+    <span sec:authorize="!isAuthenticated()">
         <div xmlns:th="http://www.w3.org/1999/xhtml"
              th:replace="Comment/elements/offlineFormAddComment :: offlineFormAddCommentFragment"></div>
     </span>

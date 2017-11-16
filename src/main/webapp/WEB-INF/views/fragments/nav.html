@@ -1,4 +1,7 @@
-<nav xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="navFragment" class="navbar navbar-inverse">
+<nav xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+     th:fragment="navFragment"
+     class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -46,18 +49,26 @@
                         </div>
                     </a>
                 </li>
-
-                <li>
-                    <a th:if="${role == 'ROLE_ANONYMOUS'}" th:href="@{/register}">
+                <li sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/register}">
                         <div class="green">
                             Rejestracja
                         </div>
                     </a>
-
-                    <form class="logout-form" th:if="${role != 'ROLE_ANONYMOUS'}" method="post" action="#"
-                          th:action="@{/logout}">
-                        <button type="submit" class="btn btn-success green">Wyloguj</button>
-                    </form>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/profile}">
+                        <div class="green">
+                            Profil
+                        </div>
+                    </a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/logout}">
+                        <div class="green">
+                            Wyloguj
+                        </div>
+                    </a>
                 </li>
             </ul>
         </div>
