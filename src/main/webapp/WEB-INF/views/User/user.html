@@ -1,4 +1,7 @@
-<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="bodyFragment" class="component member">
+<div
+        xmlns:th="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+        th:fragment="bodyFragment" class="component member">
     <div class="row">
         <div class="col-sm-12">
             <div class="header-member-title">
@@ -13,7 +16,7 @@
                              th:text="${user.active == 0 ? 'Offline' : 'Online'}"></div>
                     </center>
                 </div>
-                <img th:src="${'/resources/img/' + user.pathImg}" class="member-img"/>
+                <img th:src="${'/resources/img/' + user.pathImg}" style="max-width: 90px" class="member-img"/>
             </div>
         </div>
     </div>

@@ -95,7 +95,7 @@ public class User implements Serializable {
     }
 
     public void setPathImg(String pathImg) {
-        this.pathImg = pathImg;
+        this.pathImg = getId() + "/" + pathImg;
     }
 
     public Statistic getStatistics() {

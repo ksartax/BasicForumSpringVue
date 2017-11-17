@@ -1,8 +1,8 @@
 package com.controllers;
 
 import com.models.Contact;
-import com.service.MailContext;
-import com.service.MailService;
+import com.component.mail.MailContext;
+import com.component.mail.MailComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,11 +17,11 @@ import javax.mail.MessagingException;
 public class ContactController {
     private static final String DEFAULT_TEMPLATE = "Contact/";
 
-    private MailService mailService;
+    private MailComponent mailService;
 
     @Autowired
     public ContactController(
-            MailService mailService
+            MailComponent mailService
     ) {
         this.mailService = mailService;
     }

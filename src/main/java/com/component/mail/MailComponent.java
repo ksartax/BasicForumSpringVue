@@ -1,7 +1,7 @@
-package com.service;
+package com.component.mail;
 
 import javax.mail.MessagingException;
 
-public interface MailService {
+public interface MailComponent {
     public void sendMail(String subject, MailContext mailContext) throws MessagingException;
 }
