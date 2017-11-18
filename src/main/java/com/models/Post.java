@@ -1,5 +1,6 @@
 package com.models;
 
+import com.component.Search.SearchInfection;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -12,7 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Posts", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
-public class Post implements Serializable {
+public class Post implements Serializable, SearchInfection {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true)
@@ -129,5 +130,13 @@ public class Post implements Serializable {
 
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
+    }
+
+    public String getUrl() {
+        return "/forum/post/" + this.getId();
+    }
+
+    public String getDescrypton() {
+        return this.getTitle() + " : " + this.getDescription();
     }
 }

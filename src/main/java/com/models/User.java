@@ -1,5 +1,6 @@
 package com.models;
 
+import com.component.Search.SearchInfection;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
@@ -9,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Users")
-public class User implements Serializable {
+public class User implements Serializable, SearchInfection {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     @JsonBackReference
     public Set<Comment> comments;
@@ -112,5 +113,13 @@ public class User implements Serializable {
 
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
+    }
+
+    public String getUrl() {
+        return "/members/member/" + this.getId();
+    }
+
+    public String getDescrypton() {
+        return this.getUsername() + " : " + this.getEmail();
     }
 }

@@ -1,5 +1,6 @@
 package com.models;
 
+import com.component.Search.SearchInfection;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -12,7 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Categories", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
-public class Category implements Serializable {
+public class Category implements Serializable, SearchInfection {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true)
@@ -128,5 +129,13 @@ public class Category implements Serializable {
         }
 
         return count;
+    }
+
+    public String getUrl() {
+        return "/forum/category/" + this.getId();
+    }
+
+    public String getDescrypton() {
+        return this.getTitle() + " : " + this.getDescription();
     }
 }
