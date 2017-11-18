@@ -6,7 +6,8 @@ public class Contact {
     private String email;
     private String description;
 
-    public Contact() {}
+    public Contact() {
+    }
 
     public String getFirstName() {
         return firstName;

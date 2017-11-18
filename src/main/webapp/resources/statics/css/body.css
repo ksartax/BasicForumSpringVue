@@ -1,50 +1,89 @@
 body {
-  background: #f0f0ed; }
-  body a {
-    text-decoration: none; }
-  body .page-wrapper {
+    background: #f0f0ed;
+}
+
+body a {
+    text-decoration: none;
+}
+
+body .page-wrapper {
     position: relative;
     text-align: left;
     max-width: 1200px;
     margin: 0 auto;
-    overflow: hidden; }
-  body .component {
+    overflow: hidden;
+}
+
+body .component {
     background-color: white;
     padding: 20px;
-    border-radius: 10px; }
-  body .component-error {
-    padding: 20px; }
-  body .right {
-    float: right; }
-  body .left {
-    float: left; }
-  body .center {
-    text-align: center; }
-  body .display-inline {
-    display: inline-grid; }
-  body .members-itemDisMar {
+    border-radius: 10px;
+}
+
+body .component-error {
+    padding: 20px;
+}
+
+body .right {
+    float: right;
+}
+
+body .left {
+    float: left;
+}
+
+body .center {
+    text-align: center;
+}
+
+body .display-inline {
+    display: inline-grid;
+}
+
+body .members-itemDisMar {
     display: table;
-    margin: auto; }
-  body .logout-form {
+    margin: auto;
+}
+
+body .logout-form {
     padding-top: 15px;
-    padding-bottom: 15px; }
-  body .display-inline-flex {
-    display: inline-flex; }
-  body .forum-button-container {
-    padding-top: 2em; }
-    body .forum-button-container .forum-button {
-      background-color: #77AF2B;
-      color: white;
-      border-radius: 10px; }
-  body .div-fix {
-    padding-bottom: 10px; }
-  body .font-size-big {
-    font-size: 24px; }
-  body .padding-bottom-3p {
-    padding-bottom: 3%; }
-  body .padding-left-10p {
-    padding-left: 10px; }
-  body .img-height-100p {
-    max-height: 100%; }
-  body .width-100 {
-    width: 100%; }
+    padding-bottom: 15px;
+}
+
+body .display-inline-flex {
+    display: inline-flex;
+}
+
+body .forum-button-container {
+    padding-top: 2em;
+}
+
+body .forum-button-container .forum-button {
+    background-color: #77AF2B;
+    color: white;
+    border-radius: 10px;
+}
+
+body .div-fix {
+    padding-bottom: 10px;
+}
+
+body .font-size-big {
+    font-size: 24px;
+}
+
+body .padding-bottom-3p {
+    padding-bottom: 3%;
+}
+
+body .padding-left-10p {
+    padding-left: 10px;
+}
+
+body .img-height-100p {
+    max-height: 100%;
+}
+
+body .width-100 {
+    width: 100%;
+}

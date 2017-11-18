@@ -1,8 +1,8 @@
 package com.controllers;
 
-import com.models.Contact;
-import com.component.mail.MailContext;
 import com.component.mail.MailComponent;
+import com.component.mail.MailContext;
+import com.models.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

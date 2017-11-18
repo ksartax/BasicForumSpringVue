@@ -8,12 +8,12 @@
     </center>
     <table class="table table-bordered">
         <tbody>
-            <tr th:each="result : ${results}">
-                <td>
-                    <a th:href="${result.url}"> <span
-                            th:text="${result.descrypton}"></span> </a>
-                </td>
-            </tr>
+        <tr th:each="result : ${results}">
+            <td>
+                <a th:href="${result.url}"> <span
+                        th:text="${result.descrypton}"></span> </a>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>

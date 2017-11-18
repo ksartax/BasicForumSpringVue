@@ -43,8 +43,9 @@
     <div style="display: none" class="row profil-element">
         <div class="col-sm-12">
 
-            <div sec:authorize="isAuthenticated()" th:replace="Profile/index :: activityProfileElementAddImgFormFragment"
-                 xmlns:th="http://www.w3.org/1999/xhtml"></div>
+            <div xmlns:th="http://www.w3.org/1999/xhtml"
+                 sec:authorize="isAuthenticated()"
+                 th:replace="Profile/index :: activityProfileElementAddImgFormFragment"></div>
 
             <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="User/user :: activityProfileFragment"></div>
         </div>
@@ -55,7 +56,8 @@
     <form action="#" enctype="multipart/form-data" id="formAddUserImage" method="post">
         <div class="form-group">
             <label for="files">Zdjęcie</label>
-            <input type="file" id="files" name="file" class="form-control-file" accept="image" aria-describedby="fileHelp">
+            <input type="file" id="files" name="file" class="form-control-file" accept="image"
+                   aria-describedby="fileHelp">
         </div>
         <input type="button" onclick="sendImage()" class="btn btn-default" value="Ustaw zdjęcie">
     </form>
