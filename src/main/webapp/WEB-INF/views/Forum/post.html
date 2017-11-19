@@ -22,6 +22,8 @@
              th:replace="Comment/elements/comments :: commentsFragment (activeRemove='1')"></div>
     </span>
 
+    <hr/>
+
     <span sec:authorize="isAuthenticated()">
         <div xmlns:th="http://www.w3.org/1999/xhtml"
              th:replace="Comment/elements/formAddComment :: formAddCommentFragment"></div>

@@ -22,6 +22,7 @@ body {
     background-color: rgba(255, 255, 255, 0.5);
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 5px 5px 0px 5px #000;
   }
 
   .component-error {
@@ -129,4 +130,8 @@ body {
   .back-to-top-title {
     line-height: 20px;
   }
+}
+
+a {
+  color: black !important;
 }

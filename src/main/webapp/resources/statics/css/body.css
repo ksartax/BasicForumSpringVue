@@ -16,7 +16,8 @@ body {
   body .component {
     background-color: rgba(255, 255, 255, 0.5);
     padding: 20px;
-    border-radius: 10px; }
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px 5px #000; }
   body .component-error {
     padding: 20px; }
   body .right {
@@ -84,3 +85,6 @@ body {
     line-height: 10px; }
   .back-to-top .back-to-top-title {
     line-height: 20px; }
+
+a {
+  color: black !important; }
