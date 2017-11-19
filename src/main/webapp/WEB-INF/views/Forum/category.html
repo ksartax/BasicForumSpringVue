@@ -5,7 +5,9 @@
         class="forum component">
     <div>
         <p>
-            <b th:text="${category.title}"></b>
+            <a th:href="@{/forum}">
+                <b>Kategorie</b>
+            </a> / <b th:text="${category.title}"></b>
         </p>
     </div>
     <span sec:authorize="isAuthenticated()">

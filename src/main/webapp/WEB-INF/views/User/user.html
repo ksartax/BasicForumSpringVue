@@ -62,7 +62,8 @@
                 <div class="col-sm-3">
                     <div class="member-text center panel-heading">
                         <span>
-                            <img th:src="${'/resources/img/' + user.pathImg}" class="img-rounded" style="max-width: 50px;"/>
+                            <img th:src="${'/resources/img/' + user.pathImg}" class="img-rounded"
+                                 style="max-width: 50px;"/>
                             <p> <b th:text="${user.username}"></b> </p>
                             <p> <a th:href="${'/forum/category/' + comment.post.category.id}"> <span
                                     th:text="${'Kategoria :' + comment.post.category.title}"></span> </a> </p>

@@ -20,6 +20,8 @@ body {
     float: left; }
   body .center {
     text-align: center; }
+  body .active-nav {
+    background-color: dimgrey !important; }
   body .display-inline {
     display: inline-grid; }
   body .members-itemDisMar {

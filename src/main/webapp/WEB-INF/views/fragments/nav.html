@@ -22,42 +22,42 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a th:href="@{/}">
+                    <a th:href="@{/}" th:classappend="${body == 'Home/index'} ? active-nav : ''">
                         <div>
                             Strona Główna
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/forum}">
+                    <a th:href="@{/forum}" th:classappend="${body == 'Forum/index'} ? active-nav : ''">
                         <div>
                             Forum
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/members}">
+                    <a th:href="@{/members}" th:classappend="${body == 'User/index'} ? active-nav : ''">
                         <div>
                             Użytkownicy
                         </div>
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/contact}">
+                    <a th:href="@{/contact}" th:classappend="${body == 'Contact/index'} ? active-nav : ''">
                         <div>
                             Kontakt
                         </div>
                     </a>
                 </li>
                 <li sec:authorize="!isAuthenticated()">
-                    <a th:href="@{/register}">
+                    <a th:href="@{/register}" th:classappend="${body == 'Register/index'} ? active-nav : ''">
                         <div class="green">
                             Rejestracja
                         </div>
                     </a>
                 </li>
                 <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/profile}">
+                    <a th:href="@{/profile}" th:classappend="${body == 'Profile/index'} ? active-nav : ''">
                         <div>
                             Profil
                         </div>

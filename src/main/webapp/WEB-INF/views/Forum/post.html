@@ -5,6 +5,14 @@
         class="forum component">
     <div>
         <p>
+            <a th:href="@{/forum}">
+                <b>Kategorie</b>
+            </a>
+            /
+            <a th:href="${'/forum/category/' + post.category.id}">
+                <b th:text="${post.category.title}"></b>
+            </a>
+            /
             <b th:text="${post.title}"></b>
         </p>
     </div>
