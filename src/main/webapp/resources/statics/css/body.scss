@@ -1,8 +1,8 @@
 body {
-  font-family: arial,sans-serif;
+  font-family: arial, sans-serif;
   font-size: 1.5em;
   line-height: 1.4em;
-  text-shadow: 1px 1px 0 rgba(255,255,255,0.45);
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.45);
   background: url('../img/abcd.jpeg') no-repeat fixed;
   background-size: cover;
 
@@ -19,7 +19,7 @@ body {
   }
 
   .component {
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     padding: 20px;
     border-radius: 10px;
   }
@@ -102,7 +102,7 @@ body {
   position: fixed;
   right: 0px;
   bottom: 45px;
-  display:none;
+  display: none;
   color: #fff;
   margin-bottom: 46px;
   z-index: 5;
@@ -114,19 +114,19 @@ body {
     bottom: 80px;
     margin-bottom: 15px !important;
   }
-  &:hover{
+  &:hover {
     color: #fff;
-    text-decoration:none;
+    text-decoration: none;
     background-color: #333;
     transition: background-color .3s ease-in-out;
   }
-  &:focus{
+  &:focus {
     color: #fff;
   }
-  .back-to-top-chevron-up{
-    line-height:10px;
+  .back-to-top-chevron-up {
+    line-height: 10px;
   }
-  .back-to-top-title{
-    line-height:20px;
+  .back-to-top-title {
+    line-height: 20px;
   }
 }
