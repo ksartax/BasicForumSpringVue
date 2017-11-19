@@ -16,6 +16,8 @@ public class SearchComponentImpl implements SearchComponent {
     private final static String categoryQuery = "FROM Category WHERE lower(title) LIKE lower(:search) OR lower(description) LIKE lower(:search)";
     private final static String postQuery = "FROM Post WHERE lower(title) LIKE lower(:search) OR lower(description) LIKE lower(:search)";
 
+    private final static int maxResult = 25;
+
     private SessionFactory sessionFactory;
     private List<SearchInfection> searchObjects;
 
@@ -48,6 +50,7 @@ public class SearchComponentImpl implements SearchComponent {
                 .createQuery(
                         query
                 )
+                .setMaxResults(SearchComponentImpl.maxResult)
                 .setParameter("search", "%" + search + "%")
                 .list();
     }

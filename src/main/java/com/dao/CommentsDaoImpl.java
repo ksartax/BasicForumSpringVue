@@ -2,6 +2,7 @@ package com.dao;
 
 import com.models.Comment;
 import org.hibernate.criterion.CriteriaSpecification;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +17,7 @@ public class CommentsDaoImpl extends AbstractDao<Integer, Comment> implements Co
         return (List<Comment>) this.createEntityCriteria()
                 .setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY)
                 .setMaxResults(limit)
+                .addOrder(Order.desc("id"))
                 .list();
     }
 

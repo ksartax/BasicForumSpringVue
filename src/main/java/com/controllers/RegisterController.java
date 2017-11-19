@@ -39,6 +39,14 @@ public class RegisterController {
     @RequestMapping(path = "", method = RequestMethod.POST)
     public String registerPost(@Valid User user, Errors errors) {
 
+        if (!usersService.checkEmail(user.getEmail())) {
+            errors.rejectValue("email", "email", "Email juz istnieje w systemie");
+        }
+
+        if (!usersService.checkUsername(user.getUsername())) {
+            errors.rejectValue("username", "username", "Username juz istnieje w systemie");
+        }
+
         if (errors.hasErrors()) {
             return RegisterController.DEFAULT_TEMPLATE + "index";
         }
@@ -46,6 +54,6 @@ public class RegisterController {
         usersService.add(user);
         template.convertAndSend("/user", "");
 
-        return RegisterController.DEFAULT_TEMPLATE + "index";
+        return RegisterController.DEFAULT_TEMPLATE + "success";
     }
 }

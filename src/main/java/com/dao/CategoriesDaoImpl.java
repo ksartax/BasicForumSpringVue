@@ -2,6 +2,7 @@ package com.dao;
 
 import com.models.Category;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -15,6 +16,8 @@ public class CategoriesDaoImpl extends AbstractDao<Integer, Category> implements
         return (List<Category>) this.createEntityCriteria()
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
                 .setMaxResults(limit)
+                .addOrder(Order.asc("postsCount"))
+                .addOrder(Order.desc("id"))
                 .list();
     }
 

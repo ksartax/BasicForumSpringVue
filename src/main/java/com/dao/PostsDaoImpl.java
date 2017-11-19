@@ -2,6 +2,7 @@ package com.dao;
 
 import com.models.Post;
 import org.hibernate.criterion.CriteriaSpecification;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +16,8 @@ public class PostsDaoImpl extends AbstractDao<Integer, Post> implements PostsDao
     public List<Post> getAll(int limit) {
         return (List<Post>) this.createEntityCriteria()
                 .setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY)
-                .setMaxResults(1)
+                .setMaxResults(limit)
+                .addOrder(Order.desc("id"))
                 .list();
     }
 

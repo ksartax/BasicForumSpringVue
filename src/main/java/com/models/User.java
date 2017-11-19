@@ -4,28 +4,35 @@ import com.component.Search.SearchInfection;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "Users")
 public class User implements Serializable, SearchInfection {
+
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     @JsonBackReference
     public Set<Comment> comments;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true)
     private int id;
+
     @Column(name = "active", nullable = false)
     private int active;
 
     @Column(name = "username", nullable = false, unique = true)
     @NotBlank
+    @Size(max = 100, min = 5, message = "Pole musi zawierać min 5 znaków")
     private String username;
 
-    @Column(name = "password", nullable = false, unique = true)
+    @Column(name = "password", nullable = false)
+    @Size(max = 100, min = 5, message = "Pole musi zawierać min 5 znaków")
     @NotBlank
     private String password;
 

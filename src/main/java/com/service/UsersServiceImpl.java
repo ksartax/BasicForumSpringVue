@@ -74,4 +74,12 @@ public class UsersServiceImpl implements UsersService, UserDetailsService {
         user.setPathImg(fileComponent.getFileName());
         usersDao.add(user);
     }
+
+    public boolean checkEmail(String email) {
+        return usersDao.checkEmail(email);
+    }
+
+    public boolean checkUsername(String username) {
+        return usersDao.checkUsername(username);
+    }
 }

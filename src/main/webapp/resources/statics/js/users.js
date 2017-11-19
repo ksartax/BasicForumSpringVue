@@ -9,7 +9,7 @@ var usersTemplateElements = new Vue({
             'Accept-Language': 'application/json'
         },
         subscribe: '/user',
-        url: 'http://localhost:8080/api/user/?limit=5'
+        url: 'http://localhost:8080/api/user/?limit=15'
     },
     methods: {
         getData: function () {

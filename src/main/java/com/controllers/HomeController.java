@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping(path = "/")
 @Controller
 public class HomeController {
-    private static final String DEFAULT_TEMPLATE = "Home/";
+    public static final String DEFAULT_TEMPLATE = "Home/";
 
     @RequestMapping(path = "/")
     public String index() {

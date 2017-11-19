@@ -35,6 +35,7 @@ public class Category implements Serializable, SearchInfection {
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OrderBy("commentCount DESC, id ASC")
     @JoinColumn(name = "category_id")
     @JsonBackReference
     private Set<Post> posts;

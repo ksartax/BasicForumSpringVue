@@ -29,6 +29,7 @@ public class Post implements Serializable, SearchInfection {
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonBackReference
+    @OrderBy("id ASC")
     private Set<Comment> comments;
 
     @Column(name = "title")

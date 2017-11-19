@@ -12,4 +12,8 @@ public interface UsersDao {
     public User findByUserName(String username);
 
     public User add(User user);
+
+    public boolean checkEmail(String email);
+
+    public boolean checkUsername(String username);
 }

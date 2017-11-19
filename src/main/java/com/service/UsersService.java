@@ -16,4 +16,8 @@ public interface UsersService {
     public User add(User user);
 
     public void importImage(@RequestParam("file") MultipartFile file);
+
+    public boolean checkEmail(String email);
+
+    public boolean checkUsername(String username);
 }
