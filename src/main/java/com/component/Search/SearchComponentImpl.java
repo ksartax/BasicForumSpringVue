@@ -24,7 +24,7 @@ public class SearchComponentImpl implements SearchComponent {
         this.sessionFactory = sessionFactory;
     }
 
-    public List search(String search) {
+    public List search(String search, int limit) {
         searchObjects = new ArrayList<SearchInfection>();
 
         searchObjects.addAll(

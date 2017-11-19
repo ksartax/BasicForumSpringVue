@@ -97,6 +97,7 @@ var commentsForumElements = new Vue({
             for (var i = 0; i < data.length; i++) {
                 this.dataArray.push(data[i]);
             }
+            $( "#commentsFragment" ).stop().animate({scrollTop:999999999}, 500, 'swing', function() {});
         },
         subscribeSocket: function () {
             var self = this;

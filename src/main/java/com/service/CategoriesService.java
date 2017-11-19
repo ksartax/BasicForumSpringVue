@@ -5,7 +5,7 @@ import com.models.Category;
 import java.util.List;
 
 public interface CategoriesService {
-    public List<Category> getAll();
+    public List<Category> getAll(int limit);
 
     public Category get(int id);
 

@@ -20,8 +20,8 @@ public class CategoriesServiceImpl implements CategoriesService {
     @Autowired
     private UsersDao usersDao;
 
-    public List<Category> getAll() {
-        return categoriesDao.getAll();
+    public List<Category> getAll(int limit) {
+        return categoriesDao.getAll(limit);
     }
 
     public Category get(int id) {

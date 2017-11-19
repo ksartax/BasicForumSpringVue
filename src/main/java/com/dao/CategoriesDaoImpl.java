@@ -11,9 +11,10 @@ import java.util.List;
 @Transactional
 public class CategoriesDaoImpl extends AbstractDao<Integer, Category> implements CategoriesDao {
     @SuppressWarnings("unchecked")
-    public List<Category> getAll() {
+    public List<Category> getAll(int limit) {
         return (List<Category>) this.createEntityCriteria()
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+                .setMaxResults(limit)
                 .list();
     }
 

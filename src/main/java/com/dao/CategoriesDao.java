@@ -5,7 +5,7 @@ import com.models.Category;
 import java.util.List;
 
 public interface CategoriesDao {
-    public List<Category> getAll();
+    public List<Category> getAll(int limit);
 
     public Category get(int id);
 

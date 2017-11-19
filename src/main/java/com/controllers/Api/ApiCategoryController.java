@@ -32,8 +32,8 @@ public class ApiCategoryController {
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public List<Category> index() {
-        return this.categoriesService.getAll();
+    public List<Category> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
+        return this.categoriesService.getAll(limit);
     }
 
     @RequestMapping(path = "/{id}/posts", method = RequestMethod.GET)

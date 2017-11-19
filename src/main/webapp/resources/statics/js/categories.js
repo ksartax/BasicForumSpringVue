@@ -9,7 +9,7 @@ var categoriesTemplateElements = new Vue({
             'Accept-Language': 'application/json'
         },
         subscribe: '/category',
-        url: 'http://localhost:8080/api/category/'
+        url: 'http://localhost:8080/api/category/?limit=5'
     },
     methods: {
         getData: function () {
@@ -54,7 +54,7 @@ var categoriesForumElements = new Vue({
         },
         active: '#categoriesForumComponent',
         subscribe: '/category/level/0',
-        url: 'http://localhost:8080/api/category/',
+        url: 'http://localhost:8080/api/category/'
     },
     methods: {
         getData: function () {
@@ -81,6 +81,8 @@ var categoriesForumElements = new Vue({
             for (var i = 0; i < data.length; i++) {
                 this.dataArray.push(data[i]);
             }
+
+            $( this.active ).stop().animate({scrollTop:999999999}, 500, 'swing', function() {});
         },
         subscribeSocket: function () {
             var self = this;

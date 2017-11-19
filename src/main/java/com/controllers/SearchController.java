@@ -25,7 +25,7 @@ public class SearchController {
 
     @RequestMapping(path = "", method = RequestMethod.GET)
     public String profile(ModelMap modelMap, @RequestParam("search") String search) {
-        modelMap.addAttribute("results", searchComponent.search(search));
+        modelMap.addAttribute("results", searchComponent.search(search, 10));
 
         return SearchController.DEFAULT_TEMPLATE + "index";
     }
