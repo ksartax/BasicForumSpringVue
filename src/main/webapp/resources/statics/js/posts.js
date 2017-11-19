@@ -1,3 +1,14 @@
+var postDescriptionInput = null;
+
+$().ready(function () {
+    postDescriptionInput = $('#post-description-input');
+
+    postDescriptionInput.summernote({
+        tabsize: 2,
+        height: 100
+    });
+});
+
 var postsElements = new Vue({
     el: '#postsComponent',
     data: {
@@ -173,13 +184,15 @@ var formAddPost = new Vue({
             element1.hide();
             element2.hide();
 
+            this.description = postDescriptionInput.summernote('code');
+
             if (this.title === "") {
                 element1.show();
 
                 return false;
             }
 
-            if (this.description === "") {
+            if (postDescriptionInput.summernote('isEmpty')) {
                 element2.show();
 
                 return false;

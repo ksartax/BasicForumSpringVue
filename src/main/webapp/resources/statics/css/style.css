@@ -35,7 +35,6 @@ body {
   body .display-inline {
     display: inline-grid; }
   body .members-itemDisMar {
-    display: table;
     margin: auto; }
   body .logout-form {
     padding-top: 15px;

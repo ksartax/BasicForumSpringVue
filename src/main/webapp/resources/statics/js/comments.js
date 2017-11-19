@@ -1,3 +1,14 @@
+var commentInput = null;
+
+$().ready(function () {
+    commentInput = $('#comment-input');
+
+    commentInput.summernote({
+        tabsize: 2,
+        height: 100
+    });
+});
+
 var commentsElements = new Vue({
     el: '#commentsComponent',
     data: {
@@ -97,7 +108,8 @@ var commentsForumElements = new Vue({
             for (var i = 0; i < data.length; i++) {
                 this.dataArray.push(data[i]);
             }
-            $( "#commentsFragment" ).stop().animate({scrollTop:999999999}, 500, 'swing', function() {});
+            $("#commentsFragment").stop().animate({scrollTop: 999999999}, 500, 'swing', function () {
+            });
         },
         subscribeSocket: function () {
             var self = this;
@@ -172,7 +184,9 @@ var formAddComment = new Vue({
 
             element1.hide();
 
-            if (this.description === "") {
+            this.description = commentInput.summernote('code');
+
+            if (commentInput.summernote('isEmpty')) {
                 element1.show();
 
                 return false;

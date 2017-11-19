@@ -96,7 +96,11 @@ public class User implements Serializable, SearchInfection {
     }
 
     public void setPathImg(String pathImg) {
-        this.pathImg = getId() + "/" + pathImg;
+        if (pathImg.equals("a.jpg")) {
+            this.pathImg = pathImg;
+        } else {
+            this.pathImg = getId() + "/" + pathImg;
+        }
     }
 
     public Statistic getStatistics() {

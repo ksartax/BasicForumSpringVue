@@ -1,3 +1,14 @@
+var categoryDescriptionInput = null;
+
+$().ready(function () {
+    categoryDescriptionInput = $('#category-description-input');
+
+    categoryDescriptionInput.summernote({
+        tabsize: 2,
+        height: 100
+    });
+});
+
 var categoriesTemplateElements = new Vue({
     el: '#categoriesComponent',
     data: {
@@ -160,13 +171,15 @@ new Vue({
             element1.hide();
             element2.hide();
 
+            this.description = categoryDescriptionInput.summernote('code');
+
             if (this.title === "") {
                 element1.show();
 
                 return false;
             }
 
-            if (this.description === "") {
+            if (categoryDescriptionInput.summernote('isEmpty')) {
                 element2.show();
 
                 return false;

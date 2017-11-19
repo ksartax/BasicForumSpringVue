@@ -11,7 +11,7 @@
         <tr th:each="result : ${results}">
             <td>
                 <a th:href="${result.url}"> <span
-                        th:text="${result.descrypton}"></span> </a>
+                        th:utext="${result.descrypton}"></span> </a>
             </td>
         </tr>
         </tbody>

@@ -21,12 +21,12 @@ public class HomeController {
     }
 
     @RequestMapping(path = "/logout")
-    public ModelAndView logoutPage(HttpServletRequest request, HttpServletResponse response) {
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
 
-        return new ModelAndView("redirect:/");
+        return HomeController.DEFAULT_TEMPLATE + "index";
     }
 }
