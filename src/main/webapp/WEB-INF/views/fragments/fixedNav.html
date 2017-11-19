@@ -1,8 +1,10 @@
 <nav xmlns:th="http://www.w3.org/1999/xhtml"
      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
-     th:fragment="navFragment"
+     th:fragment="fixedNavFragment"
      class="navbar navbar-inverse"
-     id="nav-handle">
+     id="fixed-nav-handle"
+     style="position: fixed; width: 100%; z-index: 10; display: none">
+
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">

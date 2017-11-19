@@ -4,7 +4,10 @@
     <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="fragments/header :: headerFragment"></div>
 </head>
 
-<body id="body-main">
+<body id="body-main" >
+
+<nav xmlns:th="http://www.w3.org/1999/xhtml" th:replace="fragments/fixedNav :: fixedNavFragment"></nav>
+
 <div class="container-fluid page-wrapper">
 
     <nav xmlns:th="http://www.w3.org/1999/xhtml" th:replace="fragments/nav :: navFragment"></nav>
@@ -39,4 +42,10 @@
 
 </div>
 </body>
+
+<a href="#" class="back-to-top" role="button" data-placement="left">
+    <div class="back-to-top-chevron-up text-center"><i class="glyphicon glyphicon-arrow-up" aria-hidden="true"></i></div>
+    <div class="back-to-top-title">W górę</div>
+</a>
+
 </html>
