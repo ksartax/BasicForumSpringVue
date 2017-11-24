@@ -13,7 +13,7 @@ import java.util.Set;
 @Table(name = "Users")
 public class User implements Serializable, SearchInfection {
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user")
     @JsonBackReference
     public Set<Comment> comments;
 

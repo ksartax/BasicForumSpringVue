@@ -32,18 +32,4 @@ public class Auth {
 
         return null;
     }
-
-    public String getRole() {
-        try {
-            Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>)
-                    SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-
-            for (GrantedAuthority authority : authorities) {
-                return authority.getAuthority();
-            }
-            return null;
-        } catch (NullPointerException e) {
-            return null;
-        }
-    }
 }

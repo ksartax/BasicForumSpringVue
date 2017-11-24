@@ -1,6 +1,8 @@
 package com.service;
 
+import com.dao.CategoriesDao;
 import com.dao.GlobalStatisticsDao;
+import com.dao.PostsDao;
 import com.models.Category;
 import com.models.GlobalStatistic;
 import com.models.Post;
@@ -17,18 +19,18 @@ import java.util.List;
 public class GlobalStatisticsServiceImpl implements GlobalStatisticsService {
 
     private GlobalStatisticsDao globalStatisticsDao;
-    private CategoriesService categoriesService;
-    private PostsService postsService;
+    private CategoriesDao categoriesDao;
+    private PostsDao postsDao;
 
     @Autowired
     public GlobalStatisticsServiceImpl(
             GlobalStatisticsDao globalStatisticsDao,
-            CategoriesService categoriesService,
-            PostsService postsService
+            CategoriesDao categoriesDao,
+            PostsDao postsDao
     ) {
         this.globalStatisticsDao = globalStatisticsDao;
-        this.categoriesService = categoriesService;
-        this.postsService = postsService;
+        this.categoriesDao = categoriesDao;
+        this.postsDao = postsDao;
     }
 
     public List<GlobalStatistic> getAll() {
@@ -36,7 +38,7 @@ public class GlobalStatisticsServiceImpl implements GlobalStatisticsService {
     }
 
     public void decrementCategory(int categoryId, int count) {
-        Category category = this.categoriesService.get(categoryId);
+        Category category = this.categoriesDao.get(categoryId);
 
         decrementCategory(1);
         decrementComments(category.getPostsCommentsCount());
@@ -58,7 +60,7 @@ public class GlobalStatisticsServiceImpl implements GlobalStatisticsService {
     }
 
     public void decrementPosts(int postId, int count) {
-        Post post = this.postsService.get(postId);
+        Post post = this.postsDao.get(postId);
 
         decrementPosts(1);
         decrementComments(post.getCommentCount());

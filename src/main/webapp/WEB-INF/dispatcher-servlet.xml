@@ -14,6 +14,6 @@
     <mvc:resources location="/resources/statics/" mapping="/resources/**"/>
     <mvc:resources mapping="/webjars/**" location="/webjars/"/>
     <mvc:interceptors>
-        <bean class="com.configsView.ThymeleafLayoutInterceptor"/>
+        <bean class="com.configurations.ThymeleafLayoutInterceptor"/>
     </mvc:interceptors>
 </beans>

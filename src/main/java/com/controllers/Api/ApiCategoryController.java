@@ -1,7 +1,8 @@
 package com.controllers.Api;
 
+import com.dvo.CategoryView;
+import com.dvo.PostView;
 import com.models.Category;
-import com.models.Post;
 import com.service.CategoriesService;
 import com.service.GlobalStatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,11 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/api/category")
 public class ApiCategoryController {
+
     private SimpMessagingTemplate template;
     private CategoriesService categoriesService;
     private GlobalStatisticsService globalStatisticsService;
@@ -32,13 +33,13 @@ public class ApiCategoryController {
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public List<Category> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
+    public List<CategoryView> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
         return this.categoriesService.getAll(limit);
     }
 
     @RequestMapping(path = "/{id}/posts", method = RequestMethod.GET)
-    public Set<Post> posts(@PathVariable("id") int id) {
-        return this.categoriesService.get(id).getPosts();
+    public List<PostView> posts(@PathVariable("id") int id) {
+        return this.categoriesService.getPostsByCategoryId(id);
     }
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)

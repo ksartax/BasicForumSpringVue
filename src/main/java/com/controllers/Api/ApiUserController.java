@@ -1,6 +1,6 @@
 package com.controllers.Api;
 
-import com.models.User;
+import com.dvo.UserView;
 import com.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +26,7 @@ public class ApiUserController {
     }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public List<User> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
+    public List<UserView> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
         return this.usersService.getAll(limit);
     }
 

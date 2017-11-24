@@ -6,17 +6,17 @@
     <div class="activity-item row">
         <div class="col-sm-2">
             <center>
-                <img v-bind:src="'/resources/img/' + comment.user.pathImg" style="max-width: 50px;"
+                <img v-bind:src="'/resources/img/' + comment.userView.pathImg" style="max-width: 50px;"
                      class="img-rounded"/>
             </center>
         </div>
         <div class="col-sm-10">
             <div class="text-container width-100">
                 <div>
-                    <a v-bind:href="'/members/member/' + comment.post.user.id"> <b v-html="comment.user.username"></b>
+                    <a v-bind:href="'/members/member/' + comment.postView.userView.id"> <b v-html="comment.userView.username"></b>
                     </a>
-                    <a v-bind:href="'/forum/post/' + comment.post.id">
-                        <span v-html="'Post: ' + comment.post.title"></span>
+                    <a v-bind:href="'/forum/post/' + comment.postView.id">
+                        <span v-html="'Post: ' + comment.postView.title"></span>
                     </a>
                     <span class="date-float" v-html="comment.createdAt"></span>
                 </div>

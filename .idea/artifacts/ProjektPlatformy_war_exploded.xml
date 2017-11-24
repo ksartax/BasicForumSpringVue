@@ -64,6 +64,11 @@
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:4.2.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:4.2.3.RELEASE" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.0.Final" />
+          <element id="library" level="project" name="Maven: net.sf.dozer:dozer:5.5.1" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.9.1" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.2.1" />
+          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.5" />
         </element>
       </element>
       <element id="directory" name="META-INF">
