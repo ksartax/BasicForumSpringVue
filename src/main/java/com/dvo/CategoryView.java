@@ -1,7 +1,5 @@
 package com.dvo;
 
-import java.util.Set;
-
 public class CategoryView {
 
     private int id;

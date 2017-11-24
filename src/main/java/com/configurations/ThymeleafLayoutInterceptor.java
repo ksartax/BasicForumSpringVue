@@ -1,6 +1,5 @@
 package com.configurations;
 
-import com.configurations.Auth;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 

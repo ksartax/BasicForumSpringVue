@@ -10,7 +10,6 @@ import com.models.Post;
 import com.models.User;
 import org.dozer.DozerBeanMapper;
 import org.dozer.loader.api.BeanMappingBuilder;
-import org.dozer.loader.api.TypeMappingOptions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
