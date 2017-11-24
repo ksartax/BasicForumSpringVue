@@ -42,6 +42,9 @@ public class User implements Serializable, SearchInfection {
     @Column(name = "role")
     private String role;
 
+    @Transient
+    private String confirmPassword;
+
     @OneToOne
     @JoinColumn(name = "statistics_id", nullable = true)
     private Statistic statistics;
@@ -131,5 +134,13 @@ public class User implements Serializable, SearchInfection {
 
     public String getDescrypton() {
         return this.getUsername() + " : " + this.getEmail();
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

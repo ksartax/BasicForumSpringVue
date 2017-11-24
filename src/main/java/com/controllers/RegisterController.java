@@ -2,11 +2,14 @@ package com.controllers;
 
 import com.models.User;
 import com.service.UsersService;
+import com.validator.PasswordValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,14 +22,22 @@ public class RegisterController {
 
     private UsersService usersService;
     private SimpMessagingTemplate template;
+    private PasswordValidator passwordValidator;
 
     @Autowired
     public RegisterController(
             UsersService usersService,
-            SimpMessagingTemplate template
+            SimpMessagingTemplate template,
+            PasswordValidator passwordValidator
     ) {
         this.usersService = usersService;
         this.template = template;
+        this.passwordValidator = passwordValidator;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.addValidators(passwordValidator);
     }
 
     @RequestMapping(path = "")
