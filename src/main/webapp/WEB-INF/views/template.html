@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="fragments/header :: headerFragment"></div>
 </head>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="col-sm-3 div-fix">
-                    <span th:if="${role == 'ROLE_ANONYMOUS'}">
+                    <span sec:authorize="!isAuthenticated()">
                         <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="Login/login :: loginFragment"></div>
                         <br/>
                     </span>

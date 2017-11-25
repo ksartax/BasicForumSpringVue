@@ -18,17 +18,19 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({Config.CONFIGURATIONS_PATH})
-@PropertySource(value = {Config.APPLICATION_PROPERTIES_PATH})
+@ComponentScan({GlobalPath.CONFIGURATIONS_PATH})
+@PropertySource(value = {GlobalPath.APPLICATION_PROPERTIES_PATH})
 public class HibernateConfiguration {
+
     @Autowired
     private Environment environment;
 
     @Bean
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+
         sessionFactory.setDataSource(getDataSource());
-        sessionFactory.setPackagesToScan(Config.MODELS_PATH);
+        sessionFactory.setPackagesToScan(GlobalPath.MODELS_PATH);
         sessionFactory.setHibernateProperties(getHibernateProperties());
 
         return sessionFactory;
@@ -53,10 +55,6 @@ public class HibernateConfiguration {
         properties.put(AvailableSettings.SHOW_SQL, environment.getRequiredProperty("hibernate.show_sql"));
         properties.put(AvailableSettings.FORMAT_SQL, environment.getRequiredProperty("hibernate.format_sql"));
         properties.put(AvailableSettings.ENABLE_LAZY_LOAD_NO_TRANS, environment.getRequiredProperty("hibernate.enable_lazy_load_no_trans"));
-
-        properties.put("hibernate.connection.CharSet", "utf8");
-        properties.put("hibernate.connection.characterEncoding", "utf8");
-        properties.put("hibernate.connection.useUnicode", true);
 
         return properties;
     }

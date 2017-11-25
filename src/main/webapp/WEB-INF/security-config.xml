@@ -6,6 +6,9 @@
      http://www.springframework.org/schema/security
      http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
+    <beans:bean id="encoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
     <http auto-config="true" use-expressions="true">
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
 
@@ -20,7 +23,9 @@
     </http>
 
     <authentication-manager>
-        <authentication-provider user-service-ref="usersService"/>
+        <authentication-provider user-service-ref="usersService">
+            <password-encoder ref="encoder" />
+        </authentication-provider>
     </authentication-manager>
 
 </beans:beans>

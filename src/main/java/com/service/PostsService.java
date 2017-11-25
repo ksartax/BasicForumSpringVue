@@ -1,11 +1,13 @@
 package com.service;
 
+import com.dvo.CommentView;
+import com.dvo.PostView;
 import com.models.Post;
 
 import java.util.List;
 
 public interface PostsService {
-    public List<Post> getAll(int limit);
+    public List<PostView> getAll(int limit);
 
     public List<Post> getAllByUserId(int id);
 
@@ -16,4 +18,6 @@ public interface PostsService {
     public Post add(Post post, int categoryId);
 
     public void remove(int id);
+
+    public List<CommentView> getCommentByPostId(int id);
 }

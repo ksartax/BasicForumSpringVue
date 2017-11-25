@@ -47,7 +47,7 @@
 </div>
 
 <div th:fragment="activityCommentMemberFragment" xmlns:th="http://www.w3.org/1999/xhtml">
-    <div class="forum">
+    <div class="forum component">
         <span th:each="comment : ${user.comments}">
             <div>
             <div class="row">
@@ -85,7 +85,7 @@
 </div>
 
 <div th:fragment="activityProfileFragment" xmlns:th="http://www.w3.org/1999/xhtml">
-    <table class="width-100p table">
+    <table class="width-100p table component">
         <tr th:replace="User/user :: activityProfileElementFragment (title='Email', data=${user.email})"
             xmlns:th="http://www.w3.org/1999/xhtml"></tr>
         <tr th:replace="User/user :: activityProfileElementFragment (title='Ilość postów', data=${user.statistics.commentsCount})"

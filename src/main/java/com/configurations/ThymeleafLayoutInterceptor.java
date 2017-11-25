@@ -1,6 +1,5 @@
-package com.configsView;
+package com.configurations;
 
-import com.configurations.Auth;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -16,7 +15,6 @@ public class ThymeleafLayoutInterceptor extends HandlerInterceptorAdapter {
             return;
         }
 
-        request.setAttribute("role", (new Auth().getRole()));
         request.setAttribute("body", modelAndView.getViewName());
         modelAndView.setViewName(DEFAULT_TEMPLATE);
     }

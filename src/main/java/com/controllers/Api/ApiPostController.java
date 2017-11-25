@@ -1,6 +1,7 @@
 package com.controllers.Api;
 
-import com.models.Comment;
+import com.dvo.CommentView;
+import com.dvo.PostView;
 import com.models.Post;
 import com.service.GlobalStatisticsService;
 import com.service.PostsService;
@@ -11,11 +12,11 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/api/post")
 public class ApiPostController {
+
     private SimpMessagingTemplate template;
     private PostsService postsService;
     private GlobalStatisticsService globalStatisticsService;
@@ -32,13 +33,13 @@ public class ApiPostController {
     }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public List<Post> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
+    public List<PostView> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
         return this.postsService.getAll(limit);
     }
 
     @RequestMapping(path = "/{id}/comments", method = RequestMethod.GET)
-    public Set<Comment> posts(@PathVariable("id") int id) {
-        return this.postsService.get(id).getComments();
+    public List<CommentView> posts(@PathVariable("id") int id) {
+        return this.postsService.getCommentByPostId(id);
     }
 
     @RequestMapping(path = "/add/category/{id}", method = RequestMethod.POST)

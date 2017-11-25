@@ -1,5 +1,6 @@
 package com.controllers.Api;
 
+import com.dvo.CommentView;
 import com.models.Comment;
 import com.service.CommentsService;
 import com.service.GlobalStatisticsService;
@@ -30,7 +31,7 @@ public class ApiCommentController {
     }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public List<Comment> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
+    public List<CommentView> index(@RequestParam(value = "limit", required = false, defaultValue = "999999") int limit) {
         return this.commentsService.getAll(limit);
     }
 

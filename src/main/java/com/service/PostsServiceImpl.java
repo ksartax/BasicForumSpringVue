@@ -4,27 +4,47 @@ import com.configurations.Auth;
 import com.dao.CategoriesDao;
 import com.dao.PostsDao;
 import com.dao.UsersDao;
+import com.dvo.CommentView;
+import com.dvo.PostView;
 import com.models.Post;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service("postsService")
 @ComponentScan(value = "spring.dao")
 @Transactional
 public class PostsServiceImpl implements PostsService {
-    @Autowired
-    private PostsDao postsDao;
-    @Autowired
-    private UsersDao usersDao;
-    @Autowired
-    private CategoriesDao categoriesDao;
 
-    public List<Post> getAll(int limit) {
-        return this.postsDao.getAll(limit);
+    private PostsDao postsDao;
+    private UsersDao usersDao;
+    private CategoriesDao categoriesDao;
+    private DozerBeanMapper beanMapper;
+
+    @Autowired
+    public PostsServiceImpl(
+            PostsDao postsDao,
+            UsersDao usersDao,
+            CategoriesDao categoriesDao,
+            DozerBeanMapper beanMapper
+    ) {
+        this.postsDao = postsDao;
+        this.usersDao = usersDao;
+        this.categoriesDao = categoriesDao;
+        this.beanMapper = beanMapper;
+    }
+
+    public List<PostView> getAll(int limit) {
+        return this.postsDao.getAll(limit).stream()
+                .map(entity -> beanMapper.map(
+                        entity, PostView.class
+                ))
+                .collect(Collectors.toList());
     }
 
     public List<Post> getAllByUserId(int id) {
@@ -60,5 +80,16 @@ public class PostsServiceImpl implements PostsService {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public List<CommentView> getCommentByPostId(int id) {
+        return postsDao
+                .get(id)
+                .getComments()
+                .stream()
+                .map(entity -> beanMapper.map(
+                        entity, CommentView.class
+                ))
+                .collect(Collectors.toList());
     }
 }
