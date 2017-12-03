@@ -1,9 +1,7 @@
 {
-  "version": 3,
-  "mappings": "AACE,yBAAe;EAIb,OAAO,EAAE,IAAI;EAHb,qCAAY;IACV,KAAK,EAAE,KAAK;EAGd,yCAAgB;IACd,YAAY,EAAE,IAAI",
-  "sources": [
-    "activity.scss"
-  ],
-  "names": [],
-  "file": "activity.css"
+"version": 3,
+"mappings": "AAIM,oCAAqC;EAFvC,qCAAY;IAGR,UAAU,EAAE,MAAM;AAEpB,oCAAqC;EALvC,qCAAY;IAMR,KAAK,EAAE,KAAK;AAGhB,yCAAgB;EACd,YAAY,EAAE,IAAI;EAClB,oCAAqC;IAFvC,yCAAgB;MAGZ,UAAU,EAAE,MAAM",
+"sources": ["activity.scss"],
+"names": [],
+"file": "activity.css"
 }

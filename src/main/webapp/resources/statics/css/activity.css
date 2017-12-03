@@ -1,21 +1,13 @@
 @media screen and (max-width: 480px) {
-    .activitys .activity-item .date-float {
-        text-align: center;
-    }
-}
-
+  .activitys .activity-item .date-float {
+    text-align: center; } }
 @media screen and (min-width: 480px) {
-    .activitys .activity-item .date-float {
-        float: right;
-    }
-}
-
+  .activitys .activity-item .date-float {
+    float: right; } }
 .activitys .activity-item .text-container {
-    padding-left: 10px;
-}
-
-@media screen and (max-width: 480px) {
+  padding-left: 10px; }
+  @media screen and (max-width: 480px) {
     .activitys .activity-item .text-container {
-        text-align: center;
-    }
-}
+      text-align: center; } }
+
+/*# sourceMappingURL=activity.css.map */

@@ -1,12 +1,9 @@
 footer .icon {
-    font-size: 5em;
-}
-
+  font-size: 5em; }
 footer .elements {
-    display: grid;
-    padding-bottom: 1em;
-}
+  display: grid;
+  padding-bottom: 1em; }
+  footer .elements .element {
+    padding: 5px; }
 
-footer .elements .element {
-    padding: 5px;
-}
+/*# sourceMappingURL=footer.css.map */
