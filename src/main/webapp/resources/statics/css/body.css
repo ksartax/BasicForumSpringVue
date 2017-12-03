@@ -3,7 +3,7 @@ body {
   font-size: 1.5em;
   line-height: 1.4em;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.45);
-  background: url("../img/abcd.jpeg") no-repeat fixed;
+  background: url("../img/Ba.jpg") no-repeat fixed;
   background-size: cover; }
   body a {
     text-decoration: none; }
@@ -88,3 +88,5 @@ body {
 
 a {
   color: black !important; }
+
+/*# sourceMappingURL=body.css.map */
