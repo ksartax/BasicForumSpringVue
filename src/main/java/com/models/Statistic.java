@@ -1,9 +1,16 @@
 package com.models;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@EqualsAndHashCode
+@ToString
+@Setter
+@Getter
+@Data
 @Table(name = "Statistics")
 public class Statistic implements Serializable {
     @Id
@@ -22,46 +29,6 @@ public class Statistic implements Serializable {
 
     @Column(name = "groups_count")
     private int groupsCount;
-
-    public int getGroupsCount() {
-        return groupsCount;
-    }
-
-    public void setGroupsCount(int groupsCount) {
-        this.groupsCount = groupsCount;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getPostsCount() {
-        return postsCount;
-    }
-
-    public void setPostsCount(int postsCount) {
-        this.postsCount = postsCount;
-    }
-
-    public int getCommentsCount() {
-        return commentsCount;
-    }
-
-    public void setCommentsCount(int commentsCount) {
-        this.commentsCount = commentsCount;
-    }
-
-    public int getFriendsCount() {
-        return friendsCount;
-    }
-
-    public void setFriendsCount(int friendsCount) {
-        this.friendsCount = friendsCount;
-    }
 
     public void incrementPostCount(int count) {
         this.postsCount += count;
