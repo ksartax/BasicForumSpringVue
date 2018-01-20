@@ -2,7 +2,6 @@ package com.models;
 
 import com.component.Search.SearchInfection;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,11 +12,6 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@EqualsAndHashCode
-@ToString
-@Setter
-@Getter
-@Data
 @Table(name = "Posts", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
 public class Post implements Serializable, SearchInfection {
     @Id
@@ -73,5 +67,77 @@ public class Post implements Serializable, SearchInfection {
 
     public String getDescrypton() {
         return this.getTitle() + " : " + this.getDescription();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

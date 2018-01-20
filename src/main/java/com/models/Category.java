@@ -2,7 +2,6 @@ package com.models;
 
 import com.component.Search.SearchInfection;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,11 +12,6 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@EqualsAndHashCode
-@ToString
-@Setter
-@Getter
-@Data
 @Table(name = "Categories", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
 public class Category implements Serializable, SearchInfection {
     @Id
@@ -80,5 +74,69 @@ public class Category implements Serializable, SearchInfection {
 
     public String getDescrypton() {
         return this.getTitle() + " : " + this.getDescription();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getPostsCount() {
+        return postsCount;
+    }
+
+    public void setPostsCount(int postsCount) {
+        this.postsCount = postsCount;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

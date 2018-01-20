@@ -1,6 +1,5 @@
 package com.models;
 
-import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -11,11 +10,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
-@EqualsAndHashCode
-@ToString
-@Setter
-@Getter
-@Data
 @Table(name = "Comments", uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
 public class Comment implements Serializable {
     @Id
@@ -51,5 +45,45 @@ public class Comment implements Serializable {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

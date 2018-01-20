@@ -1,15 +1,8 @@
 package com.models;
 
-import lombok.*;
-
 import javax.persistence.*;
 
 @Entity
-@EqualsAndHashCode
-@ToString
-@Setter
-@Getter
-@Data
 @Table(name = "global_statistics")
 public class GlobalStatistic {
     @Id
@@ -29,5 +22,29 @@ public class GlobalStatistic {
 
     public void decrementCount(int count) {
         this.count = this.count - count;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
