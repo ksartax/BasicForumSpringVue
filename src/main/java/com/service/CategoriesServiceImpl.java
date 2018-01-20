@@ -43,7 +43,7 @@ public class CategoriesServiceImpl implements CategoriesService {
                 .collect(Collectors.toList());
     }
 
-    public Category get(int id) {
+    public Category get(String id) {
         return categoriesDao.get(id);
     }
 

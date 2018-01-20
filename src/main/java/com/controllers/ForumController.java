@@ -31,14 +31,14 @@ public class ForumController {
     }
 
     @RequestMapping(path = "/category/{id}")
-    public String category(@PathVariable("id") int id, ModelMap modelMap) {
+    public String category(@PathVariable("id") String id, ModelMap modelMap) {
         modelMap.addAttribute("category", categoriesService.get(id));
 
         return ForumController.DEFAULT_TEMPLATE + "category";
     }
 
-    @RequestMapping(path = "/post/{id}")
-    public String post(@PathVariable("id") int id, ModelMap modelMap) {
+    @RequestMapping(path = "/{category}/{id}")
+    public String post(@PathVariable("id") String id, ModelMap modelMap, @PathVariable("category") String category) {
         modelMap.addAttribute("post", postsService.get(id));
 
         return ForumController.DEFAULT_TEMPLATE + "post";

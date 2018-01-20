@@ -3,6 +3,7 @@ package com.dao;
 import com.models.Category;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -23,6 +24,15 @@ public class CategoriesDaoImpl extends AbstractDao<Integer, Category> implements
 
     public Category get(int id) {
         return this.getByKey(id);
+    }
+
+    public Category get(String id) {
+        return (Category) createEntityCriteria()
+                .add(
+                        Restrictions.eq("title", id)
+                )
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+                .uniqueResult();
     }
 
     public Category add(Category category) {

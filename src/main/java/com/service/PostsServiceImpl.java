@@ -59,6 +59,10 @@ public class PostsServiceImpl implements PostsService {
         return postsDao.get(id);
     }
 
+    public Post get(String id) {
+        return postsDao.get(id);
+    }
+
     public Post add(Post post, int categoryId) {
         post.setUser(usersDao.findByUserName((new Auth().getLoginUser()).getUsername()));
         post.getUser().getStatistics().incrementPostCount(1);

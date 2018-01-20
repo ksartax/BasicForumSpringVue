@@ -69,7 +69,7 @@ public class Category implements Serializable, SearchInfection {
     }
 
     public String getUrl() {
-        return "/forum/category/" + this.getId();
+        return "/forum/category/" + this.getTitle();
     }
 
     public String getDescrypton() {

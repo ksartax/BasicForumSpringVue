@@ -9,7 +9,7 @@
             <div class="text-container width-100">
                 <div>
                     <a v-bind:href="'/members/member/' + post.userView.id"> <b v-html="post.userView.username"></b> </a>
-                    <a v-bind:href="'/forum/post/' + post.id">
+                    <a v-bind:href="'/forum/' + post.categoryView.title + '/' + post.title">
                         <span v-html="'Post: ' + post.title"></span>
                     </a>
                 </div>

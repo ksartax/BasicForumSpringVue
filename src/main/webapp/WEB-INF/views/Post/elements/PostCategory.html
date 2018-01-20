@@ -6,7 +6,7 @@
         <div class="col-sm-8">
             <p>
                 <b>
-                    <a v-bind:href="'/forum/post/' + post.id"> <span v-html="post.title"></span> </a>
+                    <a v-bind:href="'/forum/' + post.categoryView.title + '/' + post.title"> <span v-html="post.title"></span> </a>
                 </b>
             </p>
             <div v-html="post.description"></div>

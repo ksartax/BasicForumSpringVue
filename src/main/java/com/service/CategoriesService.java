@@ -9,7 +9,7 @@ import java.util.List;
 public interface CategoriesService {
     public List<CategoryView> getAll(int limit);
 
-    public Category get(int id);
+    public Category get(String id);
 
     public Category incrementPost(Category category, int count);
 

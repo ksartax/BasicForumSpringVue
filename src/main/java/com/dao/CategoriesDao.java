@@ -9,6 +9,8 @@ public interface CategoriesDao {
 
     public Category get(int id);
 
+    public Category get(String id);
+
     public Category add(Category category);
 
     public void remove(Category category);

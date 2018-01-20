@@ -45,6 +45,15 @@ public class PostsDaoImpl extends AbstractDao<Integer, Post> implements PostsDao
         return getByKey(id);
     }
 
+    public Post get(String id) {
+        return (Post) createEntityCriteria()
+                .add(
+                        Restrictions.eq("title", id)
+                )
+                .setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY)
+                .uniqueResult();
+    }
+
     public Post add(Post post) {
         persist(post);
 

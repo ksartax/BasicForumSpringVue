@@ -47,7 +47,7 @@
 </div>
 
 <div th:fragment="activityCommentMemberFragment" xmlns:th="http://www.w3.org/1999/xhtml">
-    <div class="forum component">
+    <div class="forum component" style="overflow: scroll; max-height: 600px; overflow-x:hidden;">
         <span th:each="comment : ${user.comments}">
             <div>
             <div class="row">
@@ -65,9 +65,9 @@
                             <img th:src="${'/resources/img/' + user.pathImg}" class="img-rounded"
                                  style="max-width: 50px;"/>
                             <p> <b th:text="${user.username}"></b> </p>
-                            <p> <a th:href="${'/forum/category/' + comment.post.category.id}"> <span
+                            <p> <a th:href="${'/forum/category/' + comment.post.category.title}"> <span
                                     th:text="${'Kategoria :' + comment.post.category.title}"></span> </a> </p>
-                            <p> <a th:href="${'/forum/post/' + comment.post.id}"> <span
+                            <p> <a th:href="${'/forum/' + comment.post.category.title + '/' + comment.post.title}"> <span
                                     th:text="${'Post : ' + comment.post.title}"></span> </a> </p>
                         </span>
                     </div>

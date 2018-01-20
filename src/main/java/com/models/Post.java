@@ -62,7 +62,7 @@ public class Post implements Serializable, SearchInfection {
     }
 
     public String getUrl() {
-        return "/forum/post/" + this.getId();
+        return "/forum/" + this.category.getTitle() + "/" + this.getTitle();
     }
 
     public String getDescrypton() {

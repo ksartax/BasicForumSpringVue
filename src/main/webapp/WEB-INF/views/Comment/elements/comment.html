@@ -15,7 +15,7 @@
                 <div>
                     <a v-bind:href="'/members/member/' + comment.postView.userView.id"> <b v-html="comment.userView.username"></b>
                     </a>
-                    <a v-bind:href="'/forum/post/' + comment.postView.id">
+                    <a v-bind:href="'/forum/post/' + comment.postView.title">
                         <span v-html="'Post: ' + comment.postView.title"></span>
                     </a>
                     <span class="date-float" v-html="comment.createdAt"></span>

@@ -13,6 +13,8 @@ public interface PostsDao {
 
     public Post get(int id);
 
+    public Post get(String id);
+
     public Post add(Post post);
 
     public void remove(Post post);
