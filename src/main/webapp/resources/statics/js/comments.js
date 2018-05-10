@@ -1,3 +1,14 @@
+var commentInput = null;
+
+$().ready(function () {
+    commentInput = $('#comment-input');
+
+    commentInput.summernote({
+        tabsize: 2,
+        height: 100
+    });
+});
+
 var commentsElements = new Vue({
     el: '#commentsComponent',
     data: {
@@ -8,9 +19,9 @@ var commentsElements = new Vue({
             'Content-Type': 'application/json',
             'Accept-Language': 'application/json'
         },
-        active: '#postsComponent',
+        active: '#commentsComponent',
         subscribe: '/comment',
-        url: 'http://localhost:8080/api/comment/'
+        url: 'http://localhost:8080/api/comment/?limit=5'
     },
     methods: {
         getData: function () {
@@ -97,6 +108,8 @@ var commentsForumElements = new Vue({
             for (var i = 0; i < data.length; i++) {
                 this.dataArray.push(data[i]);
             }
+            $("#commentsFragment").stop().animate({scrollTop: 999999999}, 500, 'swing', function () {
+            });
         },
         subscribeSocket: function () {
             var self = this;
@@ -106,6 +119,28 @@ var commentsForumElements = new Vue({
 
             stompClient.subscribe(self.subscribe, function (data) {
                 self.getData();
+            });
+        },
+        remove: function (id) {
+            var header = $("meta[name='_csrf_header']").attr("content");
+            var token = $("meta[name='_csrf']").attr("content");
+            var self = this;
+
+            $.ajax({
+                url: 'http://localhost:8080/api/comment/remove/' + id + '/post/' + self.postId,
+                type: 'DELETE',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(header, token);
+                    xhr.setRequestHeader('Accept', 'application/json');
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.setRequestHeader('Accept-Language', 'application/json');
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status + ": " + thrownError);
+                }
             });
         }
     }
@@ -119,6 +154,10 @@ var formAddComment = new Vue({
     },
     methods: {
         submit: function () {
+            if (!this.validate()) {
+                return false;
+            }
+
             var header = $("meta[name='_csrf_header']").attr("content");
             var token = $("meta[name='_csrf']").attr("content");
 
@@ -139,6 +178,21 @@ var formAddComment = new Vue({
                     console.log(xhr.status + ": " + thrownError);
                 }
             });
+        },
+        validate: function () {
+            var element1 = $("#f-a-co-d-e");
+
+            element1.hide();
+
+            this.description = commentInput.summernote('code');
+
+            if (commentInput.summernote('isEmpty')) {
+                element1.show();
+
+                return false;
+            }
+
+            return true;
         }
     }
 });

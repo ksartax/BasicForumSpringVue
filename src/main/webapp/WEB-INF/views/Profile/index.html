@@ -1,0 +1,64 @@
+<div
+        xmlns:th="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+        th:fragment="bodyFragment" class="component member">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="header-member-title">
+                <div>
+                    <center>
+                        <div class="member-title-text">
+                            <h2>
+                                <b th:text="${user.username}"></b>
+                            </h2>
+                        </div>
+                        <div id="userStatus" data-active="1" th:attr="user-id=${user.id}" class="member-active-text"
+                             th:text="${user.active == 0 ? 'Offline' : 'Online'}"></div>
+                    </center>
+                </div>
+                <img th:src="${'/resources/img/' + user.pathImg}" style="max-width: 90px" class="member-img"/>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-12">
+            <div>
+                <div>
+                    <center>
+                        <a class="btn btn-default margin-1p activity-element-button active" role="button"
+                           onclick="activeA()">Aktywność</a>
+                        <a class="btn btn-default margin-1p profil-element-button" role="button" onclick="activeB()">Profil </a>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div style="display: inline" class="row activity-element">
+        <div class="col-sm-12">
+            <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="User/user :: activityCommentMemberFragment"></div>
+        </div>
+    </div>
+    <div style="display: none" class="row profil-element">
+        <div class="col-sm-12">
+
+            <div xmlns:th="http://www.w3.org/1999/xhtml"
+                 sec:authorize="isAuthenticated()"
+                 th:replace="Profile/index :: activityProfileElementAddImgFormFragment"></div>
+
+            <div xmlns:th="http://www.w3.org/1999/xhtml" th:replace="User/user :: activityProfileFragment"></div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="activityProfileElementAddImgFormFragment" xmlns:th="http://www.w3.org/1999/xhtml">
+    <form action="#" enctype="multipart/form-data" id="formAddUserImage" method="post">
+        <div class="form-group">
+            <label for="files">Zdjęcie</label>
+            <input type="file" id="files" name="file" class="form-control-file" accept="image"
+                   aria-describedby="fileHelp">
+        </div>
+        <input type="button" onclick="sendImage()" class="btn btn-default" value="Ustaw zdjęcie">
+    </form>
+</div>

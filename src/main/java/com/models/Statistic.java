@@ -5,8 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "Statistics")
-public class Statistic implements Serializable
-{
+public class Statistic implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true)
@@ -24,12 +23,20 @@ public class Statistic implements Serializable
     @Column(name = "groups_count")
     private int groupsCount;
 
-    public int getGroupsCount() {
-        return groupsCount;
+    public void incrementPostCount(int count) {
+        this.postsCount += count;
     }
 
-    public void setGroupsCount(int groupsCount) {
-        this.groupsCount = groupsCount;
+    public void decrementPostCount(int count) {
+        this.postsCount -= count;
+    }
+
+    public void incrementCommentCount(int count) {
+        this.commentsCount += count;
+    }
+
+    public void decrementCommentCount(int count) {
+        this.commentsCount = this.commentsCount - count;
     }
 
     public int getId() {
@@ -64,13 +71,11 @@ public class Statistic implements Serializable
         this.friendsCount = friendsCount;
     }
 
-    public void incrementPostCount(int count)
-    {
-        this.postsCount += count;
+    public int getGroupsCount() {
+        return groupsCount;
     }
 
-    public void incrementCommentCount(int count)
-    {
-        this.commentsCount += count;
+    public void setGroupsCount(int groupsCount) {
+        this.groupsCount = groupsCount;
     }
 }

@@ -9,7 +9,7 @@ var usersTemplateElements = new Vue({
             'Accept-Language': 'application/json'
         },
         subscribe: '/user',
-        url: 'http://localhost:8080/api/user/?limit=5'
+        url: 'http://localhost:8080/api/user/?limit=15'
     },
     methods: {
         getData: function () {
@@ -41,6 +41,31 @@ var usersTemplateElements = new Vue({
         }
     }
 });
+
+function sendImage() {
+    var header = $("meta[name='_csrf_header']").attr("content");
+    var token = $("meta[name='_csrf']").attr("content");
+    var data = new FormData($("#formAddUserImage")[0]);
+
+    $.ajax({
+        url: 'http://localhost:8080/api/user/upload-img',
+        type: 'POST',
+        processData: false,  // Important!
+        contentType: false,
+        cache: false,
+        enctype: 'multipart/form-data',
+        data: data,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader(header, token);
+        },
+        success: function (data) {
+            location.reload();
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status + ": " + thrownError);
+        }
+    });
+}
 
 var usersMembersElements = new Vue({
     el: '#usersMembersComponent',

@@ -1,8 +1,19 @@
 .activitys {
   .activity-item {
-    display: flex;
+    .date-float {
+
+      @media screen and (max-width: 480px) {
+        text-align: center;
+      }
+      @media screen and (min-width: 480px) {
+        float: right;
+      }
+    }
     .text-container {
       padding-left: 10px;
+      @media screen and (max-width: 480px) {
+        text-align: center;
+      }
     }
   }
 }

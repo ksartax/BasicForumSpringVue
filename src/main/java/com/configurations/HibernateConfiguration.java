@@ -12,32 +12,32 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({Config.CONFIGURATIONS_PATH})
-@PropertySource(value = {Config.APPLICATION_PROPERTIES_PATH})
-public class HibernateConfiguration
-{
+@ComponentScan({GlobalPath.CONFIGURATIONS_PATH})
+@PropertySource(value = {GlobalPath.APPLICATION_PROPERTIES_PATH})
+public class HibernateConfiguration {
+
     @Autowired
     private Environment environment;
 
     @Bean
-    public LocalSessionFactoryBean getSessionFactory()
-    {
+    public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+
         sessionFactory.setDataSource(getDataSource());
-        sessionFactory.setPackagesToScan(Config.MODELS_PATH);
+        sessionFactory.setPackagesToScan(GlobalPath.MODELS_PATH);
         sessionFactory.setHibernateProperties(getHibernateProperties());
 
         return sessionFactory;
     }
 
     @Bean
-    public DataSource getDataSource()
-    {
+    public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
@@ -48,22 +48,20 @@ public class HibernateConfiguration
         return dataSource;
     }
 
-    private Properties getHibernateProperties()
-    {
+    private Properties getHibernateProperties() {
         Properties properties = new Properties();
 
         properties.put(AvailableSettings.DIALECT, environment.getRequiredProperty("hibernate.dialect"));
         properties.put(AvailableSettings.SHOW_SQL, environment.getRequiredProperty("hibernate.show_sql"));
         properties.put(AvailableSettings.FORMAT_SQL, environment.getRequiredProperty("hibernate.format_sql"));
-        properties.put(AvailableSettings.HBM2DDL_AUTO, environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
+        properties.put(AvailableSettings.ENABLE_LAZY_LOAD_NO_TRANS, environment.getRequiredProperty("hibernate.enable_lazy_load_no_trans"));
 
         return properties;
     }
 
     @Bean
     @Autowired
-    public HibernateTransactionManager transactionManager(SessionFactory s)
-    {
+    public HibernateTransactionManager transactionManager(SessionFactory s) {
         HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
         hibernateTransactionManager.setSessionFactory(s);
 

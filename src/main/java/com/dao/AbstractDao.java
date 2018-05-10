@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.configurations.Config;
+import com.configurations.GlobalPath;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,9 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 
-@ComponentScan(value = Config.CONFIGURATIONS_PATH)
+@ComponentScan(value = GlobalPath.CONFIGURATIONS_PATH)
 public abstract class AbstractDao<PK extends Serializable, T> {
-
     private final Class<T> persistentClass;
 
     @Autowired

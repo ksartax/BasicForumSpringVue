@@ -2,38 +2,60 @@ package com.service;
 
 import com.configurations.Auth;
 import com.dao.CategoriesDao;
-import com.dao.CommentsDao;
 import com.dao.UsersDao;
+import com.dvo.CategoryView;
+import com.dvo.PostView;
 import com.models.Category;
-import com.models.Comment;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service("categoriesService")
 @ComponentScan(value = "spring.dao")
 @Transactional
-public class CategoriesServiceImpl implements CategoriesService
-{
-    @Autowired
-    private CategoriesDao categoriesDao;
-    @Autowired
-    private UsersDao usersDao;
+public class CategoriesServiceImpl implements CategoriesService {
 
-    public List<Category> getAll()
-    {
-        return categoriesDao.getAll();
+    private CategoriesDao categoriesDao;
+    private UsersDao usersDao;
+    private DozerBeanMapper beanMapper;
+
+    @Autowired
+    public CategoriesServiceImpl(
+            CategoriesDao categoriesDao,
+            UsersDao usersDao,
+            DozerBeanMapper beanMapper
+    ) {
+        this.categoriesDao = categoriesDao;
+        this.usersDao = usersDao;
+        this.beanMapper = beanMapper;
     }
 
-    public Category get(int id) {
+    public List<CategoryView> getAll(int limit) {
+        return categoriesDao.getAll(limit).stream()
+                .map(entity -> beanMapper.map(
+                        entity, CategoryView.class
+                ))
+                .collect(Collectors.toList());
+    }
+
+    public Category get(String id) {
         return categoriesDao.get(id);
     }
 
-    public List<Category> getByLevel(int level) {
-        return categoriesDao.getByLevel(level);
+    public List<PostView> getPostsByCategoryId(int id) {
+        return categoriesDao
+                .get(id)
+                .getPosts()
+                .stream()
+                .map(entity -> beanMapper.map(
+                        entity, PostView.class
+                ))
+                .collect(Collectors.toList());
     }
 
     public Category incrementPost(Category category, int count) {
@@ -43,9 +65,14 @@ public class CategoriesServiceImpl implements CategoriesService
     }
 
     public Category add(Category category) {
-        category.setLevel(0);
         category.setUser(usersDao.findByUserName((new Auth().getLoginUser()).getUsername()));
 
         return categoriesDao.add(category);
+    }
+
+    public void remove(int id) {
+        Category category = categoriesDao.get(id);
+
+        this.categoriesDao.remove(category);
     }
 }

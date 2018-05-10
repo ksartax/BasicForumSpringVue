@@ -1,12 +1,22 @@
 package com.models;
 
+import com.component.Search.SearchInfection;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
-public class User implements Serializable
-{
+public class User implements Serializable, SearchInfection {
+
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference
+    public Set<Comment> comments;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true)
@@ -15,37 +25,55 @@ public class User implements Serializable
     @Column(name = "active", nullable = false)
     private int active;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, unique = true)
+    @NotBlank
+    @Size(max = 100, min = 5, message = "Pole musi zawierać min 5 znaków")
     private String username;
 
     @Column(name = "password", nullable = false)
+    @Size(max = 100, min = 5, message = "Pole musi zawierać min 5 znaków")
+    @NotBlank
     private String password;
 
     @Column(name = "email", unique = true, nullable = false)
+    @NotBlank
     private String email;
 
+    @Column(name = "role")
     private String role;
 
+    @Transient
+    private String confirmPassword;
+
     @OneToOne
-    @JoinColumn(name="statistics_id", nullable = true)
+    @JoinColumn(name = "statistics_id", nullable = true)
     private Statistic statistics;
 
     @Column(name = "path_img", nullable = true)
     private String pathImg;
 
-    public String getRole() {
-        return role;
-    }
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public int getActive() {
-        return active;
+    public void setPathImg(String pathImg) {
+        if (pathImg.equals("a.jpg")) {
+            this.pathImg = pathImg;
+        } else {
+            this.pathImg = getId() + "/" + pathImg;
+        }
     }
 
-    public void setActive(int active) {
-        this.active = active;
+    public String getUrl() {
+        return "/members/member/" + this.getId();
+    }
+
+    public String getDescrypton() {
+        return this.getUsername() + " : " + this.getEmail();
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 
     public int getId() {
@@ -54,6 +82,14 @@ public class User implements Serializable
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 
     public String getUsername() {
@@ -80,12 +116,20 @@ public class User implements Serializable
         this.email = email;
     }
 
-    public String getPathImg() {
-        return pathImg;
+    public String getRole() {
+        return role;
     }
 
-    public void setPathImg(String pathImg) {
-        this.pathImg = pathImg;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public Statistic getStatistics() {
@@ -94,5 +138,9 @@ public class User implements Serializable
 
     public void setStatistics(Statistic statistics) {
         this.statistics = statistics;
+    }
+
+    public String getPathImg() {
+        return pathImg;
     }
 }

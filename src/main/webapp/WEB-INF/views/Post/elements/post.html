@@ -1,0 +1,23 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml" th:fragment="postFragment">
+    <div class="activity-item row">
+        <div class="col-sm-2">
+            <center>
+                <img v-bind:src="'/resources/img/' + post.userView.pathImg" style="max-width: 50px;" class="img-rounded"/>
+            </center>
+        </div>
+        <div class="col-sm-10">
+            <div class="text-container width-100">
+                <div>
+                    <a v-bind:href="'/members/member/' + post.userView.id"> <b v-html="post.userView.username"></b> </a>
+                    <a v-bind:href="'/forum/' + post.categoryView.title + '/' + post.title">
+                        <span v-html="'Post: ' + post.title"></span>
+                    </a>
+                </div>
+                <span>
+                    <div v-html="post.description"></div>
+                </span>
+            </div>
+        </div>
+    </div>
+    <hr/>
+</div>

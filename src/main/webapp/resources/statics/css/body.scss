@@ -1,5 +1,10 @@
 body {
-  background: #f0f0ed;
+  font-family: arial, sans-serif;
+  font-size: 1.5em;
+  line-height: 1.4em;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.45);
+  background: url('../img/Ba.jpg') no-repeat fixed;
+  background-size: cover;
 
   a {
     text-decoration: none;
@@ -14,9 +19,14 @@ body {
   }
 
   .component {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 5px 5px 0px 5px #000;
+  }
+
+  .component-error {
+    padding: 20px;
   }
 
   .right {
@@ -31,6 +41,27 @@ body {
     text-align: center;
   }
 
+  .active-nav {
+    background-color: dimgrey !important;
+  }
+
+  .display-inline {
+    display: inline-grid;
+  }
+
+  .members-itemDisMar {
+    margin: auto;
+  }
+
+  .logout-form {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .display-inline-flex {
+    display: inline-flex;
+  }
+
   .forum-button-container {
     padding-top: 2em;
     .forum-button {
@@ -38,6 +69,10 @@ body {
       color: white;
       border-radius: 10px;
     }
+  }
+
+  .div-fix {
+    padding-bottom: 10px;
   }
 
   .font-size-big {
@@ -48,7 +83,55 @@ body {
     padding-bottom: 3%;
   }
 
+  .padding-left-10p {
+    padding-left: 10px;
+  }
+
   .img-height-100p {
     max-height: 100%;
   }
+
+  .width-100 {
+    width: 100%;
+  }
+}
+
+//back to top
+.back-to-top {
+  cursor: pointer;
+  padding: 5px;
+  position: fixed;
+  right: 0px;
+  bottom: 45px;
+  display: none;
+  color: #fff;
+  margin-bottom: 46px;
+  z-index: 5;
+  column-rule-color: rgb(64, 64, 64);
+  background: rgba(102, 102, 102, 0.8);
+  transition: background-color .3s ease-in-out;
+  @media (max-width: 991px) {
+    padding: 8px;
+    bottom: 80px;
+    margin-bottom: 15px !important;
+  }
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #333;
+    transition: background-color .3s ease-in-out;
+  }
+  &:focus {
+    color: #fff;
+  }
+  .back-to-top-chevron-up {
+    line-height: 10px;
+  }
+  .back-to-top-title {
+    line-height: 20px;
+  }
+}
+
+a {
+  color: black !important;
 }

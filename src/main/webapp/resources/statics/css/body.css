@@ -1,5 +1,10 @@
 body {
-  background: #f0f0ed; }
+  font-family: arial, sans-serif;
+  font-size: 1.5em;
+  line-height: 1.4em;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.45);
+  background: url("../img/Ba.jpg") no-repeat fixed;
+  background-size: cover; }
   body a {
     text-decoration: none; }
   body .page-wrapper {
@@ -9,24 +14,79 @@ body {
     margin: 0 auto;
     overflow: hidden; }
   body .component {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
-    border-radius: 10px; }
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px 5px #000; }
+  body .component-error {
+    padding: 20px; }
   body .right {
     float: right; }
   body .left {
     float: left; }
   body .center {
     text-align: center; }
+  body .active-nav {
+    background-color: dimgrey !important; }
+  body .display-inline {
+    display: inline-grid; }
+  body .members-itemDisMar {
+    margin: auto; }
+  body .logout-form {
+    padding-top: 15px;
+    padding-bottom: 15px; }
+  body .display-inline-flex {
+    display: inline-flex; }
   body .forum-button-container {
     padding-top: 2em; }
     body .forum-button-container .forum-button {
       background-color: #77AF2B;
       color: white;
       border-radius: 10px; }
+  body .div-fix {
+    padding-bottom: 10px; }
   body .font-size-big {
     font-size: 24px; }
   body .padding-bottom-3p {
     padding-bottom: 3%; }
+  body .padding-left-10p {
+    padding-left: 10px; }
   body .img-height-100p {
     max-height: 100%; }
+  body .width-100 {
+    width: 100%; }
+
+.back-to-top {
+  cursor: pointer;
+  padding: 5px;
+  position: fixed;
+  right: 0px;
+  bottom: 45px;
+  display: none;
+  color: #fff;
+  margin-bottom: 46px;
+  z-index: 5;
+  column-rule-color: #404040;
+  background: rgba(102, 102, 102, 0.8);
+  transition: background-color .3s ease-in-out; }
+  @media (max-width: 991px) {
+    .back-to-top {
+      padding: 8px;
+      bottom: 80px;
+      margin-bottom: 15px !important; } }
+  .back-to-top:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #333;
+    transition: background-color .3s ease-in-out; }
+  .back-to-top:focus {
+    color: #fff; }
+  .back-to-top .back-to-top-chevron-up {
+    line-height: 10px; }
+  .back-to-top .back-to-top-title {
+    line-height: 20px; }
+
+a {
+  color: black !important; }
+
+/*# sourceMappingURL=body.css.map */

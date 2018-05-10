@@ -1,0 +1,19 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="bodyFragment" class="component">
+    <center>
+        <p>
+            <b>
+                Wynik wyszukiwania
+            </b>
+        </p>
+    </center>
+    <table class="table table-bordered">
+        <tbody>
+        <tr th:each="result : ${results}">
+            <td>
+                <a th:href="${result.url}"> <span style="display: flex;"
+                                                  th:utext="${result.descrypton}"></span> </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

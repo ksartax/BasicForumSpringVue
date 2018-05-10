@@ -1,0 +1,20 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="formAddCategoryFragment" class="forum-element">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group form-add-category">
+                <label for="title">Tytuł:</label>
+                <textarea class="form-control" rows="1" id="title" v-model="title"></textarea>
+                <p id="f-a-c-t-e" style="color: red; display: none">Pole nie może być puste</p>
+                <label for="category-description-input">Opis:</label>
+                <div id="category-description-input"></div>
+                <p id="f-a-c-d-e" style="color: red; display: none">Pole nie może być puste</p>
+                <div class="forum-button-container">
+                    <center>
+                        <button @click.prevent="submit" type="button" class="btn btn-default forum-button">Stwórz
+                        </button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

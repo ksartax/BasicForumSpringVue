@@ -1,16 +1,36 @@
-<div th:fragment="bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="forum component">
+<div
+        xmlns:th="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+        th:fragment="bodyFragment"
+        class="forum component">
     <div>
         <p>
+            <a th:href="@{/forum}">
+                <b>Kategorie</b>
+            </a>
+            /
+            <a th:href="${'/forum/category/' + post.category.title}">
+                <b th:text="${post.category.title}"></b>
+            </a>
+            /
             <b th:text="${post.title}"></b>
         </p>
     </div>
-    <div th:replace="elements/forumComments :: forumComments" xmlns:th="http://www.w3.org/1999/xhtml"></div>
 
-    <span th:if="${loginUser != null}">
-        <div th:replace="elements/forumComments :: forumAddComments" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <span id="commentsForumComponent" th:attr="post-id=${post.id}" data-active="1">
+        <div xmlns:th="http://www.w3.org/1999/xhtml"
+             th:replace="Comment/elements/comments :: commentsFragment (activeRemove='1')"></div>
     </span>
 
-    <span th:if="${loginUser == null}">
-        <div th:replace="elements/forumComments :: forumAddCommentsOffline" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <hr/>
+
+    <span sec:authorize="isAuthenticated()">
+        <div xmlns:th="http://www.w3.org/1999/xhtml"
+             th:replace="Comment/elements/formAddComment :: formAddCommentFragment"></div>
+    </span>
+
+    <span sec:authorize="!isAuthenticated()">
+        <div xmlns:th="http://www.w3.org/1999/xhtml"
+             th:replace="Comment/elements/offlineFormAddComment :: offlineFormAddCommentFragment"></div>
     </span>
 </div>

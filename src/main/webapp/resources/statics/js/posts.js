@@ -1,3 +1,14 @@
+var postDescriptionInput = null;
+
+$().ready(function () {
+    postDescriptionInput = $('#post-description-input');
+
+    postDescriptionInput.summernote({
+        tabsize: 2,
+        height: 100
+    });
+});
+
 var postsElements = new Vue({
     el: '#postsComponent',
     data: {
@@ -10,7 +21,7 @@ var postsElements = new Vue({
         },
         active: '#postsComponent',
         subscribe: '/post',
-        url: 'http://localhost:8080/api/post/'
+        url: 'http://localhost:8080/api/post/?limit=5'
     },
     methods: {
         getData: function () {
@@ -96,6 +107,8 @@ var postsCategoryElements = new Vue({
             for (var i = 0; i < data.length; i++) {
                 this.dataArray.push(data[i]);
             }
+            $(this.active).stop().animate({scrollTop: 999999999}, 500, 'swing', function () {
+            });
         },
         subscribeSocket: function () {
             var self = this;
@@ -105,6 +118,28 @@ var postsCategoryElements = new Vue({
 
             stompClient.subscribe(self.subscribe, function (data) {
                 self.getData();
+            });
+        },
+        remove: function (id) {
+            var header = $("meta[name='_csrf_header']").attr("content");
+            var token = $("meta[name='_csrf']").attr("content");
+            var self = this;
+
+            $.ajax({
+                url: 'http://localhost:8080/api/post/remove/' + id + '/category/' + self.categoryId,
+                type: 'DELETE',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(header, token);
+                    xhr.setRequestHeader('Accept', 'application/json');
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.setRequestHeader('Accept-Language', 'application/json');
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status + ": " + thrownError);
+                }
             });
         }
     }
@@ -118,6 +153,10 @@ var formAddPost = new Vue({
     },
     methods: {
         submit: function () {
+            if (!this.validate()) {
+                return false;
+            }
+
             var header = $("meta[name='_csrf_header']").attr("content");
             var token = $("meta[name='_csrf']").attr("content");
 
@@ -125,19 +164,42 @@ var formAddPost = new Vue({
                 url: 'http://localhost:8080/api/post/add/category/' + $("#postsCategoryComponent").attr("category-id"),
                 type: 'POST',
                 data: JSON.stringify(this.$data),
-                beforeSend: function(xhr){
+                beforeSend: function (xhr) {
                     xhr.setRequestHeader(header, token);
                     xhr.setRequestHeader('Accept', 'application/json');
                     xhr.setRequestHeader('Content-Type', 'application/json');
                     xhr.setRequestHeader('Accept-Language', 'application/json');
                 },
-                success: function(data) {
+                success: function (data) {
                     console.log(data);
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log(xhr.status + ": " + thrownError);
                 }
             });
+        },
+        validate: function () {
+            var element1 = $("#f-a-p-t-e");
+            var element2 = $("#f-a-p-d-e");
+
+            element1.hide();
+            element2.hide();
+
+            this.description = postDescriptionInput.summernote('code');
+
+            if (this.title === "") {
+                element1.show();
+
+                return false;
+            }
+
+            if (postDescriptionInput.summernote('isEmpty')) {
+                element2.show();
+
+                return false;
+            }
+
+            return true;
         }
     }
 });

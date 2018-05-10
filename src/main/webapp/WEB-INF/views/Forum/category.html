@@ -1,11 +1,22 @@
-<div th:fragment="bodyFragment" xmlns:th="http://www.w3.org/1999/xhtml" class="forum component">
+<div
+        xmlns:th="http://www.w3.org/1999/xhtml"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+        th:fragment="bodyFragment"
+        class="forum component">
     <div>
         <p>
-            <b th:text="${category.title}"></b>
+            <a th:href="@{/forum}">
+                <b>Kategorie</b>
+            </a> / <b th:text="${category.title}"></b>
         </p>
     </div>
-    <span th:if="${loginUser != null}">
-        <div th:replace="elements/forum :: forumPostsAddFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
+    <span sec:authorize="isAuthenticated()">
+        <div xmlns:th="http://www.w3.org/1999/xhtml"
+             th:replace="Post/elements/formAddPost :: formAddPostFragment"></div>
     </span>
-    <div th:replace="elements/forum :: forumPostsFragment" xmlns:th="http://www.w3.org/1999/xhtml"></div>
-</div>
+
+    <hr/>
+
+    <div xmlns:th="http://www.w3.org/1999/xhtml"
+         th:replace="Post/elements/postsCategory :: postsCategoryFragment"></div>
+</div>  

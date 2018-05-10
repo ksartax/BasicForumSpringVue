@@ -1,0 +1,17 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml" th:fragment="categoriesForumIndexFragment" class="component forum-element">
+    <div class="panel panel-default">
+        <div class="panel-heading header-title">
+            <b>
+                <span>Kategorie</span>
+            </b>
+        </div>
+
+        <div class="panel-body" id="categoriesForumComponent" data-active="1"
+             style="overflow: scroll; max-height: 500px; overflow-x:hidden;">
+            <span v-for="category in dataArray">
+                <div xmlns:th="http://www.w3.org/1999/xhtml"
+                     th:replace="Category/elements/category :: categoryFragment"></div>
+            </span>
+        </div>
+    </div>
+</div>

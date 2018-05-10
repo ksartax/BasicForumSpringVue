@@ -1,0 +1,79 @@
+<nav xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+     th:fragment="fixedNavFragment"
+     class="navbar navbar-inverse"
+     id="fixed-nav-handle"
+     style="position: fixed; width: 100%; z-index: 10; display: none">
+
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/}">
+                <div>
+               <span class="glyphicon glyphicon-comment">
+                  <span class="brand-text">
+                     Buddy
+                  </span>
+               </span>
+                </div>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a th:href="@{/}" th:classappend="${body == 'Home/index'} ? active-nav : ''">
+                        <div>
+                            Strona Główna
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/forum}" th:classappend="${body == 'Forum/index'} ? active-nav : ''">
+                        <div>
+                            Forum
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/members}" th:classappend="${body == 'User/index'} ? active-nav : ''">
+                        <div>
+                            Użytkownicy
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/contact}" th:classappend="${body == 'Contact/index'} ? active-nav : ''">
+                        <div>
+                            Kontakt
+                        </div>
+                    </a>
+                </li>
+                <li sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/register}" th:classappend="${body == 'Register/index'} ? active-nav : ''">
+                        <div class="green">
+                            Rejestracja
+                        </div>
+                    </a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/profile}" th:classappend="${body == 'Profile/index'} ? active-nav : ''">
+                        <div>
+                            Profil
+                        </div>
+                    </a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/logout}">
+                        <div class="green">
+                            Wyloguj
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
